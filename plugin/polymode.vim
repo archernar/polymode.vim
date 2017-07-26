@@ -1,4 +1,5 @@
 let s:polyenabled = -1
+let s:xxxxxxxxxxx = -1
 let s:poly2 = 0
 let s:coco = 81
 function VimNotes()
