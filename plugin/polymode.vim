@@ -31,6 +31,12 @@ function! PolyModeReset()
           return s:polyenabled 
 endfunction
 
+function! PolyModeNERDTreeToggle()
+          let s:polyenabled = 0
+          NERDTreeToggle
+          call KeyReset()
+          return s:polyenabled 
+endfunction
 function! PolyModeResetQuiet()
           let s:polyenabled = 0
           call KeyReset()
@@ -76,7 +82,7 @@ function! PolyMode()
           let s:polyenabled = s:polyenabled + 1
           echo "NERDTree"
           call KeyReset()
-          nnoremap <silent> <PageUp>    :NERDTree<cr>
+          nnoremap <silent> <PageUp>    :call PolyModeNERDTreeToggle()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 1 
