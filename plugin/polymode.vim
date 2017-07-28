@@ -31,6 +31,12 @@ function! PolyModeReset()
           return s:polyenabled 
 endfunction
 
+function! PolyModeBuffergatorToggle()
+          let s:polyenabled = 0
+          BuffergatorToggle
+          call PolyModeReset()
+          return s:polyenabled 
+endfunction
 function! PolyModeNERDTreeToggle()
           let s:polyenabled = 0
           NERDTreeToggle
@@ -89,7 +95,7 @@ function! PolyMode()
           let s:polyenabled = s:polyenabled + 1
           echo "Buffergator"
           call KeyReset()
-          nnoremap <silent> <PageUp>    :BuffergatorOpen<cr>
+          nnoremap <silent> <PageUp>    :call PolyModeBuffergatorToggle()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 2 
