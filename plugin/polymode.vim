@@ -96,12 +96,7 @@ function! PolyMode()
      if s:polyenabled == 2 
           let s:polyenabled = s:polyenabled + 1
           call KeyReset("VimNotes")
-          nnoremap <silent> <Right> :call VimNotes()<cr>
-          nnoremap <silent> <Left>  :call VimNotes()<cr>
-          nnoremap <silent> <Up>    :call VimNotes()<cr>
-          nnoremap <silent> <Down>  :call VimNotes()<cr>
           nnoremap <silent> <PageUp>    :call VimNotes()<cr>
-          nnoremap <silent> <PageDown>  :call VimNotes()<cr>
           return s:polyenabled
      endif
 
@@ -148,13 +143,12 @@ function! PolyMode()
      endif
      if s:polyenabled == 8
           let s:polyenabled = s:polyenabled + 1
-          echo "HL Search"
-          call KeyReset()
+          call KeyReset("HL Search")
           nnoremap <silent> <Up> :call SetHLSearchOn()<cr>
           nnoremap <silent> <Down> :call SetHLSearchOff()<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 8 
+     if s:polyenabled == 9 
           let s:polyenabled = 0 
           call KeyReset("Movement")
           return s:polyenabled 
