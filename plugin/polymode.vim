@@ -11,11 +11,6 @@ function! VimNotes()
      return 0
 endfunction
 
-function! ListBuffers()
-     ls
-     call PolyModeResetQuiet()
-endfunction
-
 function! KeyReset(...)
           if a:0 == 1 
                echo a:1
@@ -94,15 +89,13 @@ function! PolyMode()
      endif
      if s:polyenabled == 1 
           let s:polyenabled = s:polyenabled + 1
-          echo "Buffergator"
-          call KeyReset()
+          call KeyReset("Buffergator")
           nnoremap <silent> <PageUp>    :call PolyModeBuffergatorToggle()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 2 
           let s:polyenabled = s:polyenabled + 1
-          echo "VimNotes"
-          call KeyReset()
+          call KeyReset("VimNotes")
           nnoremap <silent> <Right> :call VimNotes()<cr>
           nnoremap <silent> <Left>  :call VimNotes()<cr>
           nnoremap <silent> <Up>    :call VimNotes()<cr>
@@ -114,8 +107,7 @@ function! PolyMode()
 
      if s:polyenabled == 3
           let s:polyenabled = s:polyenabled + 1
-          echo "Split"
-          call KeyReset()
+          call KeyReset("Split")
           nnoremap <silent> <Right> <C-w>v:call PolyModeReset()<cr>
           nnoremap <silent> <Left>  <C-w>v:call PolyModeReset()<cr>
           nnoremap <silent> <Up>    <C-w>s:call PolyModeReset()<cr>
@@ -124,8 +116,7 @@ function! PolyMode()
      endif
      if s:polyenabled == 4
           let s:polyenabled = s:polyenabled + 1
-          echo "Resize"
-          call KeyReset()
+          call KeyReset("Resize")
           nnoremap <silent> <Right> :vertical resize +5<cr>
           nnoremap <silent> <Left> :vertical resize -5<cr>
           nnoremap <silent> <Up> :resize -5<cr>
@@ -134,8 +125,7 @@ function! PolyMode()
      endif
      if s:polyenabled == 5
           let s:polyenabled = s:polyenabled + 1
-          echo "Zoom"
-          call KeyReset()
+          call KeyReset("Zoom")
           nnoremap <silent> <Right> :wincmd _<cr>:wincmd \|<cr>
           nnoremap <silent> <Left>  :wincmd =<cr>
           nnoremap <silent> <Up>    :wincmd _<cr>:wincmd \|<cr>
@@ -152,8 +142,7 @@ function! PolyMode()
      endif
      if s:polyenabled == 7
           let s:polyenabled = s:polyenabled + 1
-          echo "Drag"
-          call KeyReset()
+          call KeyReset("Drag")
           vmap <Right> :call DVB_Drag('left')<cr>
           return s:polyenabled 
      endif
@@ -165,20 +154,9 @@ function! PolyMode()
           nnoremap <silent> <Down> :call SetHLSearchOff()<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 9
-          let s:polyenabled = s:polyenabled + 1 
-          echo "List Buffers"
-          call KeyReset()
-          nnoremap <silent> <Left>  :ls<cr>
-          nnoremap <silent> <Right> :ls<cr>
-          nnoremap <silent> <Up>    :call ListBuffers()<cr>
-          nnoremap <silent> <Down>  :ls<cr>
-          return s:polyenabled 
-     endif
-     if s:polyenabled == 10 
+     if s:polyenabled == 8 
           let s:polyenabled = 0 
-          echo "Movement"
-          call KeyReset()
+          call KeyReset("Movement")
           return s:polyenabled 
      endif
 endfunction
