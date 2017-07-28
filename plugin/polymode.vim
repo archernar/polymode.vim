@@ -49,7 +49,7 @@ function! PolyModeResetQuiet()
           return s:polyenabled 
 endfunction
 
-function Poly2Mode()
+function! Poly2Mode()
      call PolyModeReset()
      if s:poly2 == 0
           let s:poly2 = 1
