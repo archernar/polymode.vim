@@ -34,7 +34,7 @@ endfunction
 function! PolyModeNERDTreeToggle()
           let s:polyenabled = 0
           NERDTreeToggle
-          call KeyReset()
+          call PolyModeReset()
           return s:polyenabled 
 endfunction
 function! PolyModeResetQuiet()
