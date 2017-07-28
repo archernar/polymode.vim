@@ -16,7 +16,10 @@ function! ListBuffers()
      call PolyModeResetQuiet()
 endfunction
 
-function! KeyReset()
+function! KeyReset(...)
+          if a:0 == 1 
+               echo a:1
+          endif
           nnoremap <silent> <Right> <right>
           nnoremap <silent> <Left> <left>
           nnoremap <silent> <Up> <up>
