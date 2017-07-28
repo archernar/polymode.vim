@@ -2,7 +2,7 @@ let s:polyenabled = 0
 let s:yxxxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
-function VimNotes()
+function! VimNotes()
      echo system('cat /home/mestes/.vim/vimnotes')
      echo " "
      echo " "
@@ -11,7 +11,7 @@ function VimNotes()
      return 0
 endfunction
 
-function ListBuffers()
+function! ListBuffers()
      ls
      call PolyModeResetQuiet()
 endfunction
@@ -64,25 +64,24 @@ function Poly2Mode()
      endif
 endfunction
 
-function SetHLSearchOn()
+function! SetHLSearchOn()
      set hlsearch
      echo "HL On"
 endfunction
-function SetHLSearchOff()
+function! SetHLSearchOff()
      set nohlsearch
      echo "HL Off"
 endfunction
-function CoCoUp()
+function! CoCoUp()
      let s:coco += 1
      execute "set colorcolumn=".s:coco
      echo s:coco
 endfunction
-function CoCoDown()
+function! CoCoDown()
      let s:coco -= 1
      execute "set colorcolumn=".s:coco
      echo s:coco
 endfunction
-
 function! PolyMode()
      if s:polyenabled == 0 
           let s:polyenabled = s:polyenabled + 1
