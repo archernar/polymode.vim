@@ -108,7 +108,7 @@ function! PolyMode()
           nnoremap <silent> <Left>  <C-w>v:call PolyModeReset()<cr>
           nnoremap <silent> <Up>    <C-w>s:call PolyModeReset()<cr>
           nnoremap <silent> <Down>  <C-w>s:call PolyModeReset()<cr>
-          nnoremap <silent> <PageUp>    <C-w>s:call PolyModeReset()<cr>
+          nnoremap <silent> <PageUp>    <C-w>s:call PolyModeReset()<cr><C-W>w<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 4
