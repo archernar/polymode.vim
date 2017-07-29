@@ -3,10 +3,10 @@ let s:y3xxxxxxxxx = 0
 let s:poly2 = 0
 let s:coco = 81
 function! VimNotes()
-     echo system('cat /home/mestes/.vim/vimnotes')
-     echo " "
+     echo system('cat ~/.vim/vimnotes')
      echo " "
      echo "F2: Cycle Window, F3: Cycle Buffer, F4:Split Window, F5: Split Window, F10: Quit All, F12: Save and Build"
+     echo "<leader>p InstallPlugins! "
      call PolyModeResetQuiet()
      return 0
 endfunction
