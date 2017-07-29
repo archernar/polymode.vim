@@ -2,25 +2,22 @@ let s:polyenabled = 0
 let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
-function! VimNotes()
-     echo system('cat ~/.vim/vimnotes')
-     echo " "
-     echo "F2: Cycle Window, F3: Cycle Buffer, F4:Split Window, F5: Split Window, F10: Quit All, F12: Save and Build"
-     echo "<leader>p InstallPlugins! "
-     call PolyModeResetQuiet()
-     return 0
-endfunction
 
 function! KeyReset(...)
           if a:0 == 1 
                echo a:1
           endif
-          nnoremap <silent> <Right> <right>
-          nnoremap <silent> <Left> <left>
-          nnoremap <silent> <Up> <up>
-          nnoremap <silent> <Down> <down>
+          nnoremap <silent> <Right>    <right>
+          nnoremap <silent> <Left>     <left>
+          nnoremap <silent> <Up>       <up>
+          nnoremap <silent> <Down>     <down>
           nnoremap <silent> <PageUp>   <pageup>
           nnoremap <silent> <PageDown> <pagedown>
+          return s:polyenabled 
+endfunction
+function! PolyModeResetQuiet()
+          let s:polyenabled = 0
+          call KeyReset()
           return s:polyenabled 
 endfunction
 function! PolyModeReset()
@@ -41,27 +38,14 @@ function! PolyModeNERDTreeToggle()
           call PolyModeReset()
           return s:polyenabled 
 endfunction
-function! PolyModeResetQuiet()
-          let s:polyenabled = 0
-          call KeyReset()
-          return s:polyenabled 
+function! VimNotes()
+     echo system('cat ~/.vim/vimnotes')
+     echo " "
+     echo "F2: Cycle Window, F3: Cycle Buffer, F4:Split Window, F5: Split Window, F10: Quit All, F12: Save and Build"
+     echo "<leader>p InstallPlugins! "
+     call PolyModeResetQuiet()
+     return 0
 endfunction
-
-function! Poly2Mode()
-     call PolyModeReset()
-     if s:poly2 == 0
-          let s:poly2 = 1
-          wincmd _
-          wincmd \|
-          return s:poly2 
-     endif
-     if s:poly2 == 1
-          let s:poly2 = 0
-          wincmd =
-          return s:poly2 
-     endif
-endfunction
-
 function! SetHLSearchOn()
      set hlsearch
      echo "HL On"
@@ -80,6 +64,22 @@ function! CoCoDown()
      execute "set colorcolumn=".s:coco
      echo s:coco
 endfunction
+
+function! Poly2Mode()
+     call PolyModeReset()
+     if s:poly2 == 0
+          let s:poly2 = 1
+          wincmd _
+          wincmd \|
+          return s:poly2 
+     endif
+     if s:poly2 == 1
+          let s:poly2 = 0
+          wincmd =
+          return s:poly2 
+     endif
+endfunction
+
 function! PolyMode()
      if s:polyenabled == 0 
           let s:polyenabled = s:polyenabled + 1
@@ -113,9 +113,9 @@ function! PolyMode()
           let s:polyenabled = s:polyenabled + 1
           call KeyReset("Resize")
           nnoremap <silent> <Right> :vertical resize +5<cr>
-          nnoremap <silent> <Left> :vertical resize -5<cr>
-          nnoremap <silent> <Up> :resize -5<cr>
-          nnoremap <silent> <Down> :resize +5<cr>
+          nnoremap <silent> <Left>  :vertical resize -5<cr>
+          nnoremap <silent> <Up>    :resize -5<cr>
+          nnoremap <silent> <Down>  :resize +5<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 5
@@ -154,3 +154,5 @@ function! PolyMode()
           return s:polyenabled 
      endif
 endfunction
+
+nnoremap <leader> <Home>  :call PolyModeReset()<cr>
