@@ -13,7 +13,7 @@ function! KeyReset(...)
           nnoremap <silent> <Down>     <down>
           nnoremap <silent> <PageUp>   <pageup>
           nnoremap <silent> <PageDown> <pagedown>
-          nnoremap <leader> <Home>  :call PolyModeReset()<cr>
+          nnoremap <leader> <End>  :call PolyModeReset()<cr>
           return s:polyenabled 
 endfunction
 function! PolyModeResetQuiet()
