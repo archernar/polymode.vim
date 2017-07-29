@@ -104,11 +104,12 @@ function! PolyMode()
      if s:polyenabled == 3
           let s:polyenabled = s:polyenabled + 1
           call KeyReset("Split")
-          nnoremap <silent> <Right> <C-w>v:call PolyModeReset()<cr>
-          nnoremap <silent> <Left>  <C-w>v:call PolyModeReset()<cr>
-          nnoremap <silent> <Up>    <C-w>s:call PolyModeReset()<cr>
-          nnoremap <silent> <Down>  <C-w>s:call PolyModeReset()<cr>
-          nnoremap <silent> <PageUp>    <C-w>s:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <Right>    <C-w>v:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <Left>     <C-w>v:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <PageDown> <C-w>v:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <Up>       <C-w>s:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <Down>     <C-w>s:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <PageUp>   <C-w>s:call PolyModeReset()<cr><C-W>w
           return s:polyenabled 
      endif
      if s:polyenabled == 4
