@@ -23,7 +23,7 @@ function! PolyModeResetQuiet()
 endfunction
 function! PolyModeReset()
           call PolyModeResetQuiet()
-          echo "Movement"
+          echo "Polymode Movement"
           return s:polyenabled 
 endfunction
 
