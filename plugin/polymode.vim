@@ -3,6 +3,13 @@ let s:y3xxxxxxxxx = 0
 let s:poly2 = 0
 let s:coco = 81
 
+function! PolyModeSourceVimrc()
+          let s:polyenabled = 0
+          source $MYVIMRC
+          call PolyModeReset()
+          return s:polyenabled 
+endfunction
+
 function! KeyReset(...)
           if a:0 == 1 
                echo a:1
@@ -154,7 +161,7 @@ function! PolyMode()
      if s:polyenabled == 9
           let s:polyenabled = s:polyenabled + 1
           call KeyReset("Source .vimrc")
-          nnoremap <silent> <PageUp> :source $MYVIMRC<cr>
+          nnoremap <silent> <PageUp> :call PolyModeSourceVimrc()
           return s:polyenabled 
      endif
      if s:polyenabled == 10 
