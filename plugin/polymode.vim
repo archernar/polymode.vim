@@ -151,7 +151,13 @@ function! PolyMode()
           nnoremap <silent> <Down> :call SetHLSearchOff()<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 9 
+     if s:polyenabled == 9
+          let s:polyenabled = s:polyenabled + 1
+          call KeyReset("Source .vimrc")
+          source $MYVIMRC
+          return s:polyenabled 
+     endif
+     if s:polyenabled == 10 
           let s:polyenabled = 0 
           call KeyReset("Movement")
           return s:polyenabled 
