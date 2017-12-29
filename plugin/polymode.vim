@@ -154,7 +154,7 @@ function! PolyMode()
      if s:polyenabled == 9
           let s:polyenabled = s:polyenabled + 1
           call KeyReset("Source .vimrc")
-          source $MYVIMRC
+          nnoremap <silent> <PageUp> :source $MYVIMRC<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 10 
