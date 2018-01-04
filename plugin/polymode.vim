@@ -179,8 +179,8 @@ function! PolyMode()
      if s:polyenabled == 11 
           let s:polyenabled = s:polyenabled + 1
           call KeyReset("Color Schemes")
-          nnoremap <silent> <PageUp> :call Colorlet()<cr>
-          nnoremap <silent> <PageDown> :call Colorlet()<cr>
+          nnoremap <silent> <PageUp> :call Colorlet(1)<cr>
+          nnoremap <silent> <PageDown> :call Colorlet(-1)<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 12 
