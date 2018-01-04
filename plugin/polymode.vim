@@ -14,13 +14,14 @@ function! KeyReset(...)
           if a:0 == 1 
                echo a:1
           endif
+          nnoremap <silent> <Insert>   <insert>
           nnoremap <silent> <Right>    <right>
           nnoremap <silent> <Left>     <left>
           nnoremap <silent> <Up>       <up>
           nnoremap <silent> <Down>     <down>
           nnoremap <silent> <PageUp>   <pageup>
           nnoremap <silent> <PageDown> <pagedown>
-          nnoremap <leader> <End>  :call PolyModeReset()<cr>
+          nnoremap <silent> <End>  :call PolyModeReset()<cr>
           return s:polyenabled 
 endfunction
 function! PolyModeResetQuiet()
@@ -30,7 +31,7 @@ function! PolyModeResetQuiet()
 endfunction
 function! PolyModeReset()
           call PolyModeResetQuiet()
-          echo "Polymode Movement"
+          echo "Polymode (reset)"
           return s:polyenabled 
 endfunction
 
@@ -91,15 +92,27 @@ endfunction
 function! PolyMode()
      if s:polyenabled == 0 
           let s:polyenabled = s:polyenabled + 1
-          call KeyReset("NERDTree")
-          nnoremap <silent> <PageUp>    :call PolyModeNERDTreeToggle()<cr>
-          return s:polyenabled
+          call KeyReset("Split")
+          nnoremap <silent> <Right>    <C-w>v:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <Left>     <C-w>v:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <Up>       <C-w>s:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <Down>     <C-w>s:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <PageUp>   <C-w>s:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <PageDown> <C-w>v:call PolyModeReset()<cr><C-W>w
+          return s:polyenabled 
      endif
      if s:polyenabled == 1 
           let s:polyenabled = s:polyenabled + 1
-          call KeyReset("Buffergator")
-          nnoremap <silent> <PageUp>    :call PolyModeBuffergatorToggle()<cr>
-          return s:polyenabled
+          call KeyReset("Enhanced Zoom")
+          nnoremap <silent> <PageUp> :wincmd _<cr>:wincmd \|<cr>
+          nnoremap <silent> <PageDown> :wincmd =<cr>
+          nnoremap <silent> <Insert> :wincmd =<cr>
+
+          nnoremap <silent> <Right> :wincmd _<cr>:wincmd \|<cr>
+          nnoremap <silent> <Left>  :wincmd =<cr>
+          nnoremap <silent> <Up>    :wincmd _<cr>:wincmd \|<cr>
+          nnoremap <silent> <Down>  :wincmd =<cr>
+          return s:polyenabled 
      endif
      if s:polyenabled == 2 
           let s:polyenabled = s:polyenabled + 1
@@ -110,14 +123,9 @@ function! PolyMode()
 
      if s:polyenabled == 3
           let s:polyenabled = s:polyenabled + 1
-          call KeyReset("Split")
-          nnoremap <silent> <Right>    <C-w>v:call PolyModeReset()<cr><C-W>w
-          nnoremap <silent> <Left>     <C-w>v:call PolyModeReset()<cr><C-W>w
-          nnoremap <silent> <PageDown> <C-w>v:call PolyModeReset()<cr><C-W>w
-          nnoremap <silent> <Up>       <C-w>s:call PolyModeReset()<cr><C-W>w
-          nnoremap <silent> <Down>     <C-w>s:call PolyModeReset()<cr><C-W>w
-          nnoremap <silent> <PageUp>   <C-w>s:call PolyModeReset()<cr><C-W>w
-          return s:polyenabled 
+          call KeyReset("NERDTree")
+          nnoremap <silent> <PageUp>    :call PolyModeNERDTreeToggle()<cr>
+          return s:polyenabled
      endif
      if s:polyenabled == 4
           let s:polyenabled = s:polyenabled + 1
@@ -130,12 +138,9 @@ function! PolyMode()
      endif
      if s:polyenabled == 5
           let s:polyenabled = s:polyenabled + 1
-          call KeyReset("Zoom")
-          nnoremap <silent> <Right> :wincmd _<cr>:wincmd \|<cr>
-          nnoremap <silent> <Left>  :wincmd =<cr>
-          nnoremap <silent> <Up>    :wincmd _<cr>:wincmd \|<cr>
-          nnoremap <silent> <Down>  :wincmd =<cr>
-          return s:polyenabled 
+          call KeyReset("Buffergator")
+          nnoremap <silent> <PageUp>    :call PolyModeBuffergatorToggle()<cr>
+          return s:polyenabled
      endif
      if s:polyenabled == 6
           let s:polyenabled = s:polyenabled + 1
@@ -165,6 +170,13 @@ function! PolyMode()
           return s:polyenabled 
      endif
      if s:polyenabled == 10 
+          let s:polyenabled = s:polyenabled + 1
+          call KeyReset("Color Schemes")
+          nnoremap <silent> <PageUp> :call Colorlet()<cr>
+          nnoremap <silent> <PageDown> :call Colorlet()<cr>
+          return s:polyenabled 
+     endif
+     if s:polyenabled == 11 
           let s:polyenabled = 0 
           call KeyReset("Movement")
           return s:polyenabled 
