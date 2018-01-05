@@ -1,4 +1,4 @@
-let s:polyenabled = 0 
+let s:polyenabled = -1 
 let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
@@ -25,7 +25,7 @@ function! KeyReset(...)
           return s:polyenabled 
 endfunction
 function! PolyModeResetQuiet()
-          let s:polyenabled = 0
+          let s:polyenabled = -1
           call KeyReset()
           return s:polyenabled 
 endfunction
@@ -36,13 +36,13 @@ function! PolyModeReset()
 endfunction
 
 function! PolyModeBuffergatorToggle()
-          let s:polyenabled = 0
+          let s:polyenabled = -1
           BuffergatorToggle
           call PolyModeReset()
           return s:polyenabled 
 endfunction
 function! PolyModeNERDTreeToggle()
-          let s:polyenabled = 0
+          let s:polyenabled = -1
           NERDTreeToggle
           call PolyModeReset()
           return s:polyenabled 
@@ -89,9 +89,14 @@ function! Poly2Mode()
      endif
 endfunction
 
-function! PolyMode()
+function! PolyMode(direction)
+     let s:polyenabled = s:polyenabled + a:direction
+
+     if s:polyenabled < 0 
+          let s:polyenabled == 0 
+     endif
+
      if s:polyenabled == 0 
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("Split")
           nnoremap <silent> <Right>    <C-w>v:call PolyModeReset()<cr><C-W>w
           nnoremap <silent> <Left>     <C-w>v:call PolyModeReset()<cr><C-W>w
@@ -102,7 +107,6 @@ function! PolyMode()
           return s:polyenabled 
      endif
      if s:polyenabled == 1 
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("Enhanced Zoom")
           nnoremap <silent> <PageUp> :wincmd _<cr>:wincmd \|<cr>
           nnoremap <silent> <PageDown> :wincmd =<cr>
@@ -115,34 +119,29 @@ function! PolyMode()
           return s:polyenabled 
      endif
      if s:polyenabled == 2 
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("Close Window")
           nnoremap <silent> <PageUp>    :close<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>  :close<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 3 
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("VimNotes")
           nnoremap <silent> <PageUp>    :call VimNotes()<cr>
           return s:polyenabled
      endif
 
      if s:polyenabled == 4
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("NERDTree")
           nnoremap <silent> <PageUp>    :call PolyModeNERDTreeToggle()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 5
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("VimScript Help")
           nnoremap <silent> <PageUp>    :edit ~/.vim/vimscript.txt<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>  :edit ~/.vim/vimscript.txt<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 6
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("Vim Tutor Text")
           nnoremap <silent> <PageUp>    :edit ~/.vim/vimtutor.txt<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>  :edit ~/.vim/vimtutor.txt<cr>:call PolyModeReset()<cr>
@@ -155,7 +154,6 @@ function! PolyMode()
      endif
 
      if s:polyenabled == 15
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("Resize")
           nnoremap <silent> <Right> :vertical resize +5<cr>
           nnoremap <silent> <Left>  :vertical resize -5<cr>
@@ -164,13 +162,11 @@ function! PolyMode()
           return s:polyenabled 
      endif
      if s:polyenabled == 16
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("Buffergator")
           nnoremap <silent> <PageUp>    :call PolyModeBuffergatorToggle()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 17
-          let s:polyenabled = s:polyenabled + 1
           echo s:coco
           call KeyReset()
           nnoremap <silent> <Right> :call CoCoUp()<cr>
@@ -178,33 +174,29 @@ function! PolyMode()
           return s:polyenabled 
      endif
      if s:polyenabled == 18
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("Drag")
           vmap <Right> :call DVB_Drag('left')<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 19
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("HL Search")
           nnoremap <silent> <Up> :call SetHLSearchOn()<cr>
           nnoremap <silent> <Down> :call SetHLSearchOff()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 20 
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("Source .vimrc")
           nnoremap <silent> <PageUp> :call PolyModeSourceVimrc()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 21 
-          let s:polyenabled = s:polyenabled + 1
           call KeyReset("Color Schemes")
           nnoremap <silent> <PageUp> :call Colorlet(1)<cr>:echom @a<cr>
           nnoremap <silent> <PageDown> :call Colorlet(-1)<cr>:echom @a<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 22 
-          let s:polyenabled = 0 
+          let s:polyenabled = -1 
           call KeyReset("Movement")
           return s:polyenabled 
      endif
