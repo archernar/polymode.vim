@@ -126,7 +126,8 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 3 
           call KeyReset("VimNotes")
-          nnoremap <silent> <PageUp>    :call VimNotes()<cr>
+          nnoremap <silent> <PageUp>    :edit ~/.vim/vimnotes<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown>  :edit ~/.vim/vimnotes<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
 
