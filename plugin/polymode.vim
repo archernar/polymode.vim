@@ -2,6 +2,12 @@ let s:polyenabled = -1
 let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
+function! OpenLibrary()
+     execute "botright split ~/.vim/vimnotes"
+     execute "botright split ~/.vim/vimscript.txt"
+     execute "botright split ~/.vim/vimtutor.txt"
+     call PolyModeReset()
+endfunction
 
 function! PolyModeSourceVimrc()
           let s:polyenabled = 0
@@ -28,6 +34,9 @@ function! PolyModeResetQuiet()
           let s:polyenabled = -1
           call KeyReset()
           return s:polyenabled 
+endfunction
+function! PMR()
+          call PolyModeReset()
 endfunction
 function! PolyModeReset()
           call PolyModeResetQuiet()
@@ -126,8 +135,8 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 3 
           call KeyReset("VimNotes")
-          nnoremap <silent> <PageUp> :botright split ~/.vim/vimnotes<cr> :botright split ~/.vim/vimscript.txt<cr> :botright split ~/.vim/vimtutor.txt<cr> :call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown>  :bortight split ~/.vim/vimnotes<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageUp>  :call OpenLibrary()<cr>
+          nnoremap <silent> <PageDown> :botright split ~/.vim/vimnotes<cr>:botright split ~/.vim/vimscript.txt<cr>:botright split ~/.vim/vimtutor.txt<cr> :call PolyModeReset()<cr>
           return s:polyenabled
      endif
 
