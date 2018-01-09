@@ -3,9 +3,9 @@ let s:y3xxxxxxxxx = 0
 let s:poly2 = 0
 let s:coco = 81
 function! OpenLibrary()
-     execute "botright split ~/.vim/vimnotes"
      execute "botright split ~/.vim/vimscript.txt"
      execute "botright split ~/.vim/vimtutor.txt"
+     execute "botright split ~/.vim/vimnotes"
      call PolyModeReset()
 endfunction
 
