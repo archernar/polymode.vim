@@ -6,6 +6,16 @@ function! OpenNotes()
      execute "botright split ~/.vim/vimnotes"
      call PolyModeReset()
 endfunction
+function! CloseLibrary()
+     execute "b ~/.vim/vimscript.txt"
+     execute "bd"
+     execute "b ~/.vim/vimtutor.txt"
+     execute "bd"
+     execute "b ~/.vim/vimnotes"
+     execute "bd"
+     call PolyModeReset()
+endfunction
+
 function! OpenLibrary()
      execute "botright split ~/.vim/vimscript.txt"
      execute "botright split ~/.vim/vimtutor.txt"
