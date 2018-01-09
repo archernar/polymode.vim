@@ -2,6 +2,10 @@ let s:polyenabled = -1
 let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
+function! OpenNotes()
+     execute "botright split ~/.vim/vimnotes"
+     call PolyModeReset()
+endfunction
 function! OpenLibrary()
      execute "botright split ~/.vim/vimscript.txt"
      execute "botright split ~/.vim/vimtutor.txt"
