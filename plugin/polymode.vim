@@ -171,9 +171,16 @@ function! PolyMode(direction)
           nnoremap <silent> <PageDown>  :edit ~/.vim/vimtutor.txt<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
-
-
      if s:polyenabled == 7
+          call KeyReset("Mappings")
+          execute "redir! > /tmp/vim_keys.txt"
+          execute "silent verbose map"
+          execute "redir END"
+          nnoremap <silent> <PageUp>    :edit /tmp/vim_keys.txt<cr>:call PolyModeReset()<cr>
+          return s:polyenabled
+     endif
+
+     if s:polyenabled == 8
           let s:polyenabled = 15
      endif
 
