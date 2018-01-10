@@ -176,7 +176,7 @@ function! PolyMode(direction)
           execute "redir! > /tmp/vim_keys.txt"
           execute "silent verbose map"
           execute "redir END"
-          execute "! grep -v Last /tmp/vim_keys.txt > /tmp/vim_keys"
+          execute "silent ! grep -v Last /tmp/vim_keys.txt > /tmp/vim_keys"
           nnoremap <silent> <PageUp>    :edit /tmp/vim_keys<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
