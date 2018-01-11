@@ -4,6 +4,7 @@ let s:poly2 = 0
 let s:coco = 81
 function! OpenNotes()
      execute "botright split ~/.vim/vimnotes"
+     let @x = join(readfile("~/.vim/vimnotes","\n")
      call PolyModeReset()
 endfunction
 function! CloseLibrary()
