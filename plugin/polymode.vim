@@ -190,35 +190,28 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 17
-          echo s:coco
-          call KeyReset()
-          nnoremap <silent> <Right> :call CoCoUp()<cr>
-          nnoremap <silent> <Left>  :call CoCoDown()<cr>
-          return s:polyenabled 
-     endif
-     if s:polyenabled == 18
           call KeyReset("Drag")
           vmap <Right> :call DVB_Drag('left')<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 19
+     if s:polyenabled == 18
           call KeyReset("HL Search")
           nnoremap <silent> <Up> :call SetHLSearchOn()<cr>
           nnoremap <silent> <Down> :call SetHLSearchOff()<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 20 
+     if s:polyenabled == 19 
           call KeyReset("Source .vimrc")
           nnoremap <silent> <PageUp> :call PolyModeSourceVimrc()<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 21 
+     if s:polyenabled == 20 
           call KeyReset("Color Schemes")
           nnoremap <silent> <PageUp> :call Colorlet(1)<cr>:echom @a<cr>
           nnoremap <silent> <PageDown> :call Colorlet(-1)<cr>:echom @a<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 22 
+     if s:polyenabled == 21 
           let s:polyenabled = -1 
           call KeyReset("Movement")
           return s:polyenabled 
