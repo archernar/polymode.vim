@@ -132,14 +132,13 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 1 
           call KeyReset("Enhanced Zoom")
-          nnoremap <silent> <PageUp> :wincmd _<cr>:wincmd \|<cr>
-          nnoremap <silent> <PageDown> :wincmd =<cr>
-          nnoremap <silent> <Insert> :wincmd =<cr>
-
-          nnoremap <silent> <Right> :wincmd _<cr>:wincmd \|<cr>
-          nnoremap <silent> <Left>  :wincmd =<cr>
-          nnoremap <silent> <Up>    :wincmd _<cr>:wincmd \|<cr>
-          nnoremap <silent> <Down>  :wincmd =<cr>
+          nnoremap <silent> <PageUp> :wincmd _<cr>:wincmd \|<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown> :wincmd =<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <Insert> :wincmd =<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <Right> :wincmd _<cr>:wincmd \|<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <Left>  :wincmd =<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <Up>    :wincmd _<cr>:wincmd \|<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <Down>  :wincmd =<cr>:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 2 
