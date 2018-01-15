@@ -181,13 +181,6 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 7
-          call KeyReset("Set B & E Strings")
-          nnoremap <silent> <PageUp>    :call SetBE()<cr>:call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown>  :call SetBE()<cr>:call PolyModeReset()<cr>
-          return s:polyenabled
-     endif
-
-     if s:polyenabled == 8
           let s:polyenabled = 15
      endif
 
