@@ -2,6 +2,15 @@ let s:polyenabled = -1
 let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
+function! SetBE()
+      let szIn = input('Set Prefix (@b): ')
+      let @b = szIn
+      let szIn = input('Set Suffix (@e): ')
+      let @e = szIn
+      echo "\r"
+      echo ""
+      echo @b."<--->".@e
+endfunction
 function! OpenNotes()
      execute "botright split /home/mestes/.vim/vimnotes"
      let @x = join(readfile("/home/mestes/.vim/vimnotes","\n"))
@@ -171,8 +180,14 @@ function! PolyMode(direction)
           nnoremap <silent> <PageDown>  :edit ~/.vim/vimtutor.txt<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
-
      if s:polyenabled == 7
+          call KeyReset("Set B & E Strings")
+          nnoremap <silent> <PageUp>    :call SetBE()<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown>  :call SetBE()<cr>:call PolyModeReset()<cr>
+          return s:polyenabled
+     endif
+
+     if s:polyenabled == 8
           let s:polyenabled = 15
      endif
 
