@@ -9,7 +9,7 @@ function! SetRegistersBE()
       let @e = szIn
       echo "\r"
       echo ""
-      echo "@b is \"".@b."\", ".@e." is \"".@e."\""
+      echo "@b is \"".@b."\", @e is \"".@e."\""
 endfunction
 function! OpenNotes()
      execute "botright split /home/mestes/.vim/vimnotes"
