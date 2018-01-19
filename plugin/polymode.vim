@@ -2,14 +2,14 @@ let s:polyenabled = -1
 let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
-function! SetBE()
+function! SetRegistersBE()
       let szIn = input('Set Prefix (@b): ')
       let @b = szIn
       let szIn = input('Set Suffix (@e): ')
       let @e = szIn
       echo "\r"
       echo ""
-      echo @b."<--->".@e
+      echo "@b is \"".@b."\", ".@e." is \"".@e."\""
 endfunction
 function! OpenNotes()
      execute "botright split /home/mestes/.vim/vimnotes"
@@ -107,6 +107,11 @@ function! CoCoDown()
      echo s:coco
 endfunction
 
+function! PolyModeSet(n)
+     let s:polyenabled == n 
+     call PolyMode(0)
+endfunction
+
 function! Poly2Mode()
      call PolyModeReset()
      if s:poly2 == 0
@@ -123,7 +128,10 @@ function! Poly2Mode()
 endfunction
 
 function! PolyMode(direction)
-     let s:polyenabled = s:polyenabled + a:direction
+     if a:direction = 0
+     else
+          let s:polyenabled = s:polyenabled + a:direction
+     endif
 
      if s:polyenabled < 0 
           let s:polyenabled == 0 
