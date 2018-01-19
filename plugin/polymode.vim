@@ -128,9 +128,14 @@ function! Poly2Mode()
 endfunction
 
 function! PolyMode(direction)
-     if a:direction = 0
-     else
-          let s:polyenabled = s:polyenabled + a:direction
+     if a:direction == -1
+          let s:polyenabled = s:polyenabled + 1
+     endif
+     if a:direction == -1
+          let s:polyenabled = s:polyenabled - 1
+     endif
+     if a:direction > 0 
+          let s:polyenabled = a:direction
      endif
 
      if s:polyenabled < 0 
