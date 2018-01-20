@@ -131,7 +131,7 @@ function! PolyMode(direction)
      if a:direction == -1
           let s:polyenabled = s:polyenabled + 1
      endif
-     if a:direction == -1
+     if a:direction == -2
           let s:polyenabled = s:polyenabled - 1
      endif
      if a:direction > 0 
