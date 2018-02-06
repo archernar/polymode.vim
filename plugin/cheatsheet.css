@@ -1,407 +1,79 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Vim Cheat Sheet - English</title>
-  <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
-  <meta name="Googlebot" content="nofollow">
-  <meta name="ROBOTS" content="NOARCHIVE">
-  <meta name="GOOGLEBOT" content="NOARCHIVE">
-  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes">
-  <meta name="description" content="A mobile friendly VIM cheat sheet">
-  <link rel="shortcut icon" sizes="32x32" href="/images/vim-cheat-sheet-icon-32.png">
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
-  <link rel='stylesheet' type='text/css'  href='thevimcheatsheet.css'>
-  <!--
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#f93f40">
-  <link rel="manifest" href="/manifest.json"> 
-  <meta name="theme-color" content="#FA4949">
-  -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-  <script>
-       var amountScrolled = 300;
-       $(window).scroll(function() {
-            if ( $(window).scrollTop() > amountScrolled ) {
-                 $('a.sf-back-to-top').fadeIn('slow');
-            } else {
-                 $('a.sf-back-to-top').fadeOut('slow');
-            }
-       });
-       $('a.sf-back-to-top').click(function() {
-            $('html, body').animate({ scrollTop: 0 }, 700);
-            return false;
-       });
-  </script>
-</head>
-    <body class="en_us">
-  <div class="container">
-    <div class="grid-block">
-  <div class="grid-1">
-      <h1><a class="site-title" href="/">Vim Cheat Sheet</a></h1><br>
-      <a href='#Global'>Global</a>&nbsp&nbsp;
-      <a href='#CursorMovement'>Cursor Movement</a>&nbsp&nbsp;
-      <a href='#Editing'>Editing</a>&nbsp&nbsp;
-      <a href='#Folding'>Folding</a>&nbsp&nbsp;
-      <a href='#CutPaste'>Cut and Paste</a>&nbsp&nbsp;
-      <a href='#MarkingText'>Marking Text</a>&nbsp&nbsp;
-      <a href='#VisualCommands'>Visual Commands</a>&nbsp&nbsp;
-      <a href='#Registers'>Registers</a>&nbsp&nbsp;
-      <a href='#InsertMode'>Insert Mode</a>&nbsp&nbsp;
-      <a href='#Marks'>Marks</a>&nbsp&nbsp;
-      <a href='#Tabs'>Tabs</a>&nbsp&nbsp;
-      <a href='#Files'>Files</a>&nbsp&nbsp;
-      <a href='#Search'>Search</a>&nbsp&nbsp;
-      <a href='#Macros'>Macros</a>&nbsp&nbsp;
-      <a href='#AutoCommands'>Auto-Commands</a>&nbsp&nbsp;
-      <a href='#Exiting'>Exiting</a>&nbsp&nbsp;
-      <a href='#ksh'>KornShell</a>&nbsp&nbsp;
-      <a href="#" class="sf-back-to-top"><span class="arrow"></span>Top</a>
-  </div>
-</div> <!-- end row -->
+.sf-back-to-top {
+     background-color: #50A1CB; /* button color */
+     color: white; /* text/arrow color */ 
+     display: none; z-index: 999;
+     /* float in bottom right corner */
+     /* 20 pixels from edge */
+     position: fixed; right: 20px; bottom: 20px;
+     /* size of button is 50 pixels*/
+     width: 50px; height: 50px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; 
+     /* round button */
+     -webkit-border-radius: 50%; border-radius: 50%;
+}
+a.sf-back-to-top { font-weight: 600; letter-spacing: 2px; font-size: 12px; text-transform: uppercase; text-align: center;
+                   line-height: 1.6; padding-left: 2px; padding-top: 4px;    
+}
+a.sf-back-to-top .arrow:before { content: "\e02d"; font-family: 'squarespace-ui-font'; font-style: normal; font-weight: 600; font-size: 18px;
+                                 line-height: 1; speak: none; -webkit-font-smoothing: antialiased; content: "\e02d"; text-align: center;
+                                 display: block; vertical-align: middle; transform: rotate(-90deg); -webkit-transform: rotate(-90deg);
+                                 -moz-transform: rotate(-90deg); -ms-transform: rotate(-90deg); -o-transform: rotate(-90deg);
+                                 cursor: pointer; margin-left: -4px;
+}
+* {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.grid-block { clear:both;letter-spacing:-.31em;display:-webkit-flex;-webkit-flex-flow:row wrap;display:-ms-flexbox;-ms-flex-flow:row wrap;overflow:hidden;text-rendering:optimizespeed;width:100%}.grid-block,.grid-1,.grid-lg-1-2,.grid-lg-1-3{display:inline-block;float:left;letter-spacing:normal;padding:0px 10px;vertical-align:top;word-spacing:normal;text-rendering:auto;width:100%;zoom:1}@media screen and (min-width: 64em){.grid-lg-1-2{width:50%}.grid-lg-1-3{width:33.3333%}}
 
-    <div class="commands-container">
-      <div class="grid-block">
-        <div class="grid-lg-1-3">
-          <a name='Global'></a>
-          <h2>Global</h2>
-          <ul>
-            <li><kbd>:help keyword</kbd> - open help for keyword</li>
-            <li><kbd>:o file</kbd> - open file</li>
-            <li><kbd>:saveas file</kbd> - save file as</li>
-            <li><kbd>:close</kbd> - close current pane</li>
-            <li><kbd>K</kbd> - open man page for word under the cursor</li>
-          </ul>
-          <a name='CursorMovement'></a>
-          <h2>Cursor movement</h2>
-          <ul>
-            <li><kbd>h</kbd> - move cursor left</li>
-            <li><kbd>j</kbd> - move cursor down</li>
-            <li><kbd>k</kbd> - move cursor up</li>
-            <li><kbd>l</kbd> - move cursor right</li>
-            <li><kbd>H</kbd> - move to top of screen</li>
-            <li><kbd>M</kbd> - move to middle of screen</li>
-            <li><kbd>L</kbd> - move to bottom of screen</li>
-            <li><kbd>w</kbd> - jump forwards to the start of a word</li>
-            <li><kbd>W</kbd> - jump forwards to the start of a word (words can contain punctuation)</li>
-            <li><kbd>e</kbd> - jump forwards to the end of a word</li>
-            <li><kbd>E</kbd> - jump forwards to the end of a word (words can contain punctuation)</li>
-            <li><kbd>b</kbd> - jump backwards to the start of a word</li>
-            <li><kbd>B</kbd> - jump backwards to the start of a word (words can contain punctuation)</li>
-            <li><kbd>%</kbd> - move to matching character (default supported pairs: '()', '{}', '[]' - use <code>:h matchpairs</code> in vim for more info)</li>
-            <li><kbd>0</kbd> - jump to the start of the line</li>
-            <li><kbd>^</kbd> - jump to the first non-blank character of the line</li>
-            <li><kbd>$</kbd> - jump to the end of the line</li>
-            <li><kbd>g_</kbd> - jump to the last non-blank character of the line</li>
-            <li><kbd>gg</kbd> - go to the first line of the document</li>
-            <li><kbd>G</kbd> - go to the last line of the document</li>
-            <li><kbd>5G</kbd> - go to line 5</li>
-            <li><kbd>fx</kbd> - jump to next occurrence of character x</li>
-            <li><kbd>tx</kbd> - jump to before next occurrence of character x</li>
-            <li><kbd>Fx</kbd> - jump to previous occurence of character x</li>
-            <li><kbd>Tx</kbd> - jump to after previous occurence of character x</li>
-            <li><kbd>;</kbd> - repeat previous f, t, F or T movement</li>
-            <li><kbd>,</kbd> - repeat previous f, t, F or T movement, backwards</li>
-            <li><kbd>}</kbd> - jump to next paragraph (or function/block, when editing code)</li>
-            <li><kbd>{</kbd> - jump to previous paragraph (or function/block, when editing code)</li>
-            <li><kbd>zz</kbd> - center cursor on screen</li>
-            <li><kbd>Ctrl</kbd> + <kbd>b</kbd> - move back one full screen</li>
-            <li><kbd>Ctrl</kbd> + <kbd>f</kbd> - move forward one full screen</li>
-            <li><kbd>Ctrl</kbd> + <kbd>d</kbd> - move forward 1/2 a screen</li>
-            <li><kbd>Ctrl</kbd> + <kbd>u</kbd> - move back 1/2 a screen</li>
-          </ul>
-          <div class="well">
-            <strong>Tip</strong> Prefix a cursor movement command with a number to repeat it. For example, <kbd>4j</kbd> moves down 4 lines.
-          </div>
-
-
-          <a name='Folding'></a>
-          <h2>Folding</h2>
-          <ul>
-              <li><kbd>zi</kbd> - switch folding on or off</li>
-              <li><kbd>za</kbd> - toggle current fold open/closed</li>
-              <li><kbd>zc</kbd> - close current fold</li>
-              <li><kbd>zR</kbd> - open all folds</li>
-              <li><kbd>zM</kbd> - close all folds</li>
-              <li><kbd>zv</kbd> - expand folds to reveal cursor</li>
-              <li><kbd>zo</kbd> - open current fold</li>          
-              <li><kbd>zO</kbd> - recursively open current fold</li>          
-              <li><kbd>zc</kbd> - close current fold</li>          
-              <li><kbd>zC</kbd> - recursively close current fold</li>          
-              <li><kbd>za</kbd> - toggle current fold</li>          
-              <li><kbd>zA</kbd> - recursively open/close current fold</li>          
-              <li><kbd>zm</kbd> - reduce `foldlevel` by one</li>          
-              <li><kbd>zM</kbd> - close all folds</li>          
-              <li><kbd>zr</kbd> - increase `foldlevel` by one</li>          
-              <li><kbd>zR</kbd> - open all folds</li>          
-          </ul>
-              <div class="well">
-              <ul>
-                   <strong>On UnFolded Buffers</strong>
-                   <li><kbd>zj</kbd> - move down to top of next fold</li>
-                   <li><kbd>zk</kbd> - move up to bottom of previous fold</li>
-              </ul>
-              </div>
-
-
-          <a name='InsertMode'></a>
-          <h2>Insert mode - inserting/appending text</h2>
-          <ul>
-            <li><kbd>i</kbd> - insert before the cursor</li>
-            <li><kbd>I</kbd> - insert at the beginning of the line</li>
-            <li><kbd>a</kbd> - insert (append) after the cursor</li>
-            <li><kbd>A</kbd> - insert (append) at the end of the line</li>
-            <li><kbd>o</kbd> - append (open) a new line below the current line</li>
-            <li><kbd>O</kbd> - append (open) a new line above the current line</li>
-            <li><kbd>ea</kbd> - insert (append) at the end of the word</li>
-            <li><kbd>Esc</kbd> - exit insert mode</li>
-          </ul>
-        </div>
-        <div class="grid-lg-1-3">
-          <a name='Editing'></a>
-          <h2>Editing</h2>
-          <ul>
-            <li><kbd>r</kbd> - replace a single character</li>
-            <li><kbd>J</kbd> - join line below to the current one with one space in between</li>
-            <li><kbd>gJ</kbd> - join line below to the current one without space in between</li>
-            <li><kbd>cc</kbd> - change (replace) entire line</li>
-            <li><kbd>cw</kbd> - change (replace) to the end of the word</li>
-            <li><kbd>c$</kbd> - change (replace) to the end of the line</li>
-            <li><kbd>s</kbd> - delete character and substitute text</li>
-            <li><kbd>S</kbd> - delete line and substitute text (same as cc)</li>
-            <li><kbd>xp</kbd> - transpose two letters (delete and paste)</li>
-            <li><kbd>u</kbd> - undo</li>
-            <li><kbd>Ctrl</kbd> + <kbd>r</kbd> - redo</li>
-            <li><kbd>.</kbd> - repeat last command</li>
-          </ul>
-          <a name='MarkingText'></a>
-          <h2>Marking text (visual mode)</h2>
-          <ul>
-            <li><kbd>v</kbd> - start visual mode, mark lines, then do a command (like y-yank)</li>
-            <li><kbd>V</kbd> - start linewise visual mode</li>
-            <li><kbd>o</kbd> - move to other end of marked area</li>
-            <li><kbd>Ctrl</kbd> + <kbd>v</kbd> - start visual block mode</li>
-            <li><kbd>O</kbd> - move to other corner of block</li>
-            <li><kbd>aw</kbd> - mark a word</li>
-            <li><kbd>ab</kbd> - a block with ()</li>
-            <li><kbd>aB</kbd> - a block with {}</li>
-            <li><kbd>ib</kbd> - inner block with ()</li>
-            <li><kbd>iB</kbd> - inner block with {}</li>
-            <li><kbd>Esc</kbd> - exit visual mode</li>
-          </ul>
-          <a name='VisualCommands'></a>
-          <h2>Visual commands</h2>
-          <ul>
-            <li><kbd>&#62;</kbd> - shift text right</li>
-            <li><kbd>&#60;</kbd> - shift text left</li>
-            <li><kbd>y</kbd> - yank (copy) marked text</li>
-            <li><kbd>d</kbd> - delete marked text</li>
-            <li><kbd>~</kbd> - switch case</li>
-          </ul>
-          <a name='Registers'></a>
-          <h2>Registers</h2>
-          <ul>
-            <li><kbd>:reg</kbd> - show registers content</li>
-            <li><kbd>"xy</kbd> - yank into register x</li>
-            <li><kbd>"xp</kbd> - paste contents of register x</li>
-          </ul>
-          <div class="well">
-            <strong>Tip</strong> Registers are being stored in ~/.viminfo, and will be loaded again on next restart of vim.
-          </div>
-          <div class="well">
-            <strong>Tip</strong> Register 0 contains always the value of the last yank command.
-          </div>
-
-          <a name='Marks'></a>
-          <h2>Marks</h2>
-          <ul>
-            <li><kbd>:marks</kbd> - list of marks</li>
-            <li><kbd>ma</kbd> - set current position for mark A</li>
-            <li><kbd>`a</kbd> - jump to position of mark A</li>
-            <li><kbd>y`a</kbd> - yank text to position of mark A</li>
-          </ul>
-          <a name='Macros'></a>
-          <h2>Macros</h2>
-          <ul>
-            <li><kbd>qa</kbd> - record macro a</li>
-            <li><kbd>q</kbd> - stop recording macro</li>
-            <li><kbd>@a</kbd> - run macro a</li>
-            <li><kbd>@@</kbd> - rerun last run macro</li>
-          </ul>
-          <a name='CutPaste'></a>
-          <h2>Cut and paste</h2>
-          <ul>
-            <li><kbd>yy</kbd> - yank (copy) a line</li>
-            <li><kbd>2yy</kbd> - yank (copy) 2 lines</li>
-            <li><kbd>yw</kbd> - yank (copy) the characters of the word from the cursor position to the start of the next word</li>
-            <li><kbd>y$</kbd> - yank (copy) to end of line</li>
-            <li><kbd>p</kbd> - put (paste) the clipboard after cursor</li>
-            <li><kbd>P</kbd> - put (paste) before cursor</li>
-            <li><kbd>dd</kbd> - delete (cut) a line</li>
-            <li><kbd>2dd</kbd> - delete (cut) 2 lines</li>
-            <li><kbd>dw</kbd> - delete (cut) the characters of the word from the cursor position to the start of the next word</li>
-            <li><kbd>D</kbd> - delete (cut) to the end of the line</li>
-            <li><kbd>d$</kbd> - delete (cut) to the end of the line</li>
-            <li><kbd>x</kbd> - delete (cut) character</li>
-          </ul>
-          <a name='Exiting'></a>
-          <h2>Exiting</h2>
-          <ul>
-            <li><kbd>:w</kbd> - write (save) the file, but don't exit</li>
-            <li><kbd>:w !sudo tee %</kbd> - write out the current file using sudo</li>
-            <li><kbd>:wq</kbd> or <kbd>:x</kbd> or <kbd>ZZ</kbd> - write (save) and quit</li>
-            <li><kbd>:q</kbd> - quit (fails if there are unsaved changes)</li>
-            <li><kbd>:q!</kbd> or <kbd>ZQ</kbd> - quit and throw away unsaved changes</li>
-            <li><kbd>:wqa</kbd> - write (save) and quit on all tabs</li>
-          </ul>
-        </div>
-        <!-- ------------------------------------------------------------------------------------------------------------ -->
-        <!-- End of Second Column -->
-        <!-- ------------------------------------------------------------------------------------------------------------ -->
-
-        <div class="grid-lg-1-3">
-          <a name='Search'></a>
-          <h2>Search and Replace</h2>
-          <ul>
-            <li><kbd>/pattern</kbd> - search for pattern</li>
-            <li><kbd>?pattern</kbd> - search backward for pattern</li>
-            <li><kbd>\vpattern</kbd> - 'very magic' pattern: non-alphanumeric chars are interpreted as special regex symbols (no escaping needed)</li>
-            <li><kbd>n</kbd> - repeat search in same direction</li>
-            <li><kbd>N</kbd> - repeat search in opposite direction</li>
-            <li><kbd>:s/old/new</kbd> - replace next occurence of old with new</li>
-            <li><kbd>:s/old/new/g</kbd> - replace all occurences on a line</li>
-            <li><kbd>:%s/old/new/g</kbd> - replace all old with new throughout file</li>
-            <li><kbd>:%s/old/new/gc</kbd> - replace all old with new throughout file with confirmations</li>
-            <li><kbd>:noh</kbd> - remove highlighting of search matches</li>
-          </ul>
-          <h2>Search in multiple files</h2>
-          <ul>
-            <li><kbd>:vimgrep /pattern/ {file}</kbd> - search for pattern in multiple files</li>
-          </ul>
-          <div class="well">
-            e.g.
-            <kbd>:vimgrep /foo/ **/*</kbd>
-          </div>
-          <ul>
-            <li><kbd>:cn</kbd> - jump to the next match</li>
-            <li><kbd>:cp</kbd> - jump to the previous match</li>
-            <li><kbd>:copen</kbd> - open a window containing the list of matches</li>
-          </ul>
-        <a name='ksh'></a>
-        <h2>Korn Shell</h2>
-        <div class="well">
-            <font size='-2'>
-            <code>
-              #!/usr/bin/ksh<br>
-              Tmp="/tmp/$$"<br>
-              TmpDir="/tmp/dir$$"<br>
-              trap 'rm -f "$Tmp" >/dev/null 2>&1' 0<br>
-              trap "exit 2" 1 2 3 13 15<br>
-              rm $Tmp  >/dev/null 2>&1<br>
-            </code>
-            </font>
-        </div>
-
-        <div class="well">
-            <font size='-2'>
-            <code>
-                if [[ $name = "John" ]];then<br>
-                # commands....<br>
-                fi<br>
-                if [[ $size -eq 1000 ]];then<br>
-                # commands....<br>
-                fi<br>
-                <ul>
-                <li><kbd>$1 - $9</kbd>      these variables are the positional parameters.</li>
-                <li><kbd>$0</kbd>            the name of the command currently being executed.</li>
-                <li><kbd>$argv[20]</kbd>     refers to the 20th command line argument</li>
-                <li><kbd>$#</kbd>            the number of positional arguments given to this invocation of the shell.</li>
-                <li><kbd>$?</kbd>            the exit status of the last command executed is given as a decimal string.  When a command
-                completes successfully, it returns the exit status of 0 (zero), otherwise it returns a non-zero exit status.</li>
-                <li><kbd>$$</kbd>            the process number of this shell - useful for including in filenames, to make them unique.</li>
-                <li><kbd>$!</kbd>            the process id of the last command run in the background.</li>
-                <li><kbd>$-</kbd>            the current options supplied to this invocation of the shell.</li>
-                <li><kbd>$*</kbd>            a string containing all the arguments to the shell, starting at $1.</li>
-                <li><kbd>$@</kbd>            same as above, except when quoted :<br>
-                                             "$*" expanded into ONE long element : "$1 $2 $3"<br>
-                                             "$@" expanded into THREE elements : "$1" "$2" "$3"</li>
-                <li><kbd>shift</kbd>   : $2 -> $1 ...)</li>
-                </ul>
-
-
-            </code>
-            </font>
-        </div>
-
-
-
-        </div>
-
-      </div>
-      <!-- end grid-block -->
-      <!-- ------------------------------------------------------------------------------------------------------------ -->
-      <!-- End of Third Column -->
-      <!-- ------------------------------------------------------------------------------------------------------------ -->
-
-
-      <div class="grid-block">
-        <div class="grid-lg-1-3">
-          <a name='Files'></a>
-          <h2>Working with multiple files</h2>
-          <ul>
-            <li><kbd>:e file</kbd> - edit a file in a new buffer</li>
-            <li><kbd>:bnext</kbd> or <kbd>:bn</kbd> - go to the next buffer</li>
-            <li><kbd>:bprev</kbd> or <kbd>:bp</kbd> - go to the previous buffer</li>
-            <li><kbd>:bd</kbd> - delete a buffer (close a file)</li>
-            <li><kbd>:ls</kbd> - list all open buffers</li>
-            <li><kbd>:sp file</kbd> - open a file in a new buffer and split window</li>
-            <li><kbd>:vsp file</kbd> - open a file in a new buffer and vertically split window</li>
-            <li><kbd>Ctrl</kbd> + <kbd>ws</kbd> - split window</li>
-            <li><kbd>Ctrl</kbd> + <kbd>ww</kbd> - switch windows</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wq</kbd> - quit a window</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wv</kbd> - split window vertically</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wh</kbd> - move cursor to the left window (vertical split)</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wl</kbd> - move cursor to the right window (vertical split)</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wj</kbd> - move cursor to the window below (horizontal split)</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wk</kbd> - move cursor to the window above (horizontal split)</li>
-          </ul>
-          <a name='AutoCommands'></a>
-          <h2>Auto Commands Reading</h2>
-          <ul>
-          <li><i>RAF=read a file, RTF=read the file, R=reading</i></li>
-          <li><kbd>BufNewFile</kbd>	starting to edit a file that doesn't exist</li>
-          <li><kbd>BufReadPre</kbd>	starting to edit a new buffer, before RTF</li>
-          <li><kbd>BufRead</kbd>	starting to edit a new buffer, after RTF</li>
-          <li><kbd>BufReadPost</kbd>	starting to edit a new buffer, after RTF</li>
-          <li><kbd>BufReadCmd</kbd>	before starting to edit a new buffer |Cmd-event|</li>
-          <li><kbd>FileReadPre</kbd>	before RAF with a ":read"</li>
-          <li><kbd>FileReadPost</kbd>	after RAF with ":read"</li>
-          <li><kbd>FileReadCmd</kbd>	before RAF with ":read" |Cmd-event|</li>
-          <li><kbd>FilterReadPre</kbd>	before RAF from a filter Cmd</li>
-          <li><kbd>FilterReadPost</kbd>	after RAF from a filter Cmd</li>
-          <li><kbd>StdinReadPre</kbd>	before R from stdin into the buffer</li>
-          <li><kbd>StdinReadPost</kbd>	After R from the stdin into the buffer</li>
-          </ul>
-          <a name='Tabs'></a>
-          <h2>Tabs</h2>
-          <ul>
-            <li><kbd>:tabnew</kbd> or <kbd>:tabnew file</kbd> - open a file in a new tab</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wT</kbd> - move the current split window into its own tab</li>
-            <li><kbd>gt</kbd> or <kbd>:tabnext</kbd> or <kbd>:tabn</kbd> - move to the next tab</li>
-            <li><kbd>gT</kbd> or <kbd>:tabprev</kbd> or <kbd>:tabp</kbd> - move to the previous tab</li>
-            <li><kbd>#gt</kbd> - move to tab number #</li>
-            <li><kbd>:tabmove #</kbd> - move current tab to the #th position (indexed from 0)</li>
-            <li><kbd>:tabclose</kbd> or <kbd>:tabc</kbd> - close the current tab and all its windows</li>
-            <li><kbd>:tabonly</kbd> or <kbd>:tabo</kbd> - close all tabs except for the current one</li>
-            <li><kbd>:tabdo</kbd> command - run the <code>command</code> on all tabs (e.g. <code>:tabdo q</code> - closes all opened tabs)</li>
-          </ul>
-<!--
--->
-      </div>
-      <!-- end grid-block -->
-</div>
-
-  </div>
-</body>
-
-</html>
+body {
+    background-color:#fff;
+    color:#000;
+    font-family:Georgia, serif;
+    font-size:16px
+}
+pre {
+    color:#000;
+    font-size:16px
+}
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
+    color:inherit;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:500;
+    letter-spacing:normal;
+    line-height:1.1;
+    margin-top:20px;margin-bottom:10px
+}
+h1{font-size:45px;margin-bottom:0px;margin-top:30px}h1 a{color:Blue}
+h2{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-size:24px}
+a{color:#1a0dab;text-decoration:none}a:hover{text-decoration:underline}
+p{margin:12px 0;line-height:20px;letter-spacing:normal}ul{padding:0}
+li{border-bottom:1px dashed #e0e0e0;line-height:1.55;list-style-type:none;padding:7px 0}
+kbd {
+    background-color:#eee;
+    color:#000;
+    border-radius:0;
+    box-shadow:none;
+    font-family:'Inconsolata', monospace;
+    font-size:1em;
+    font-weight:bold;
+    padding:4px;
+}
+.container{background:#fff;margin:0 auto;width:100%;max-width:1170px}
+.well{background:#f8f8f8;border:none;border-radius:0;-webkit-box-shadow:none;box-shadow:none;min-height:20px;margin-bottom:20px;padding:19px}
+.wellcode {
+    background:#f8f8f8;border:none;border-radius:0;-webkit-box-shadow:none;box-shadow:none;min-height:20px;margin-bottom:20px;padding:19px
+    font-family:'Inconsolata', monospace;
+    font-size:1em;
+    font-weight:bold;
+}
+.link-to-repo{margin:20px 0;text-align:center}
+.link-to-repo p{margin-bottom:inherit}
+.ja{font-size:13px}
+.ja h2{font-size:20px}
+.ja kbd{font-size:16px}
+.box{background:#f8f8f8;border:1px solid #E7E7E7;margin:10px 0;width:100%}
+.box 
+.grid-block{padding:0}
+.box-header{background:#EBEBEB;min-height:30px;padding:10px}
+.box-header h2{font-size:16px;margin:5px 0}
+.box-body{font-size:14px;display:block;clear:both;overflow:hidden;padding:0 10px;padding-bottom:20px}
+.box-body li{border-bottom:none;line-height:inherit;list-style-type:none;padding:7px 7px}@media print{html,body{height:90%}body{line-height:1.3;font-size:10px}h1{font-size:20px;margin-left:0;margin-bottom:8px;margin-top:0}h2{font-size:10px;margin-bottom:-10px;margin-top:0;line-height:10px}#footer,.link-to-repo{height:0px;display:none}
+ .commands-container{clear:both;overflow:hidden}
+ .commands-container>.grid-block:first-child{width:60%}.commands-container>.grid-block:last-child .grid-lg-1-3{width:50%}.grid-block{clear:none;float:left;display:inline-block;overflow:hidden;width:40%}.grid-1{padding:0;margin:0}.grid-lg-1-3{display:inline-block;float:left;letter-spacing:normal;padding:0;word-spacing:normal;text-rendering:auto;width:33.3333%;zoom:1}li{line-height:initial;padding:4px 5px}kbd{color:#000;font-size:12px;padding:0}
+ .well{height:0px;display:none}}@page{margin:0.5cm}
