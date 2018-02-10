@@ -1,0 +1,1716 @@
+<html>
+<head>
+<title>Unix  KornShell Quick Reference -  - Free Computer, Programming, Mathematics, Technical Books, Lecture Notes and Tutorials</title>
+<meta name="keywords" content="Unix, Linux, Unix Shell, Korn Shell scripting, Shell Programming, Linux Programming, C Programming, C++ Programming, Linux Administration">
+<meta name="description" content="This free book provides complete shell scripts plus detailed descriptions of each part. UNIX programmers and system administrators can tailor these to build tools that monitor for specific system events and situations, building solid UNIX shell scripting skills to solve real-world system administration problems. - free book at FreeComputerBooks.com"/>
+<script Language="JavaScript" SRC="common.js"></script>
+</head>
+<body>
+<script type="text/javascript"><!--
+google_ad_client = "pub-5976068913745703";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "image";
+google_ad_channel = "";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "008000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<TABLE WIDTH="728" BORDER="0">
+<TR><TD COLSPAN=2>&nbsp;</TD></TR>
+<TR>
+	<TD>
+	<FONT SIZE="+3" FACE="arial" COLOR="green"><B>Unix KornShell Quick Reference</B></FONT>
+	</TD>
+	<TD ALIGN="right" VALIGN="bottom">
+	<a href="/index.html"><img SRC="/home.gif" WIDTH="60" HEIGHT="20" BORDER="0" ALT="Go to the home" title="Go to the home"></A>
+	</TD>
+        <TD ALIGN="right" VALIGN="bottom">
+	<A HREF="javascript:printPage()"><IMG SRC="print.jpg" WIDTH="60" HEIGHT="21" BORDER="0" ALT="Print this page" title="Print this page"></A>
+	</TD>
+</TR>
+</TABLE>
+<HR>
+<table border=0 width=728>
+<tr>
+<td width=350>
+<body>
+<h1>Contents</a></h1>
+<ol>
+<li> <a href="#Command Language"> Command Language</a>
+<ul>
+<li>I/O redirection and pipe
+<li>Shell variables
+<li>Pattern matching
+<li>Control characters
+</ul>
+<li><a href="#The environment"> The environment </a>
+<li><a href="#Most usual commands"> Most usual commands </a>
+<ul>
+<li>Help
+<li>Directory listing
+<li>Creating a directory
+<li>Changing directory
+<li>Comparing files
+<li>Access to files
+<li>copying files and directories
+<li>deleting files & directory
+<li>moving files & directories
+<li>Visualizing files
+<li>linking files & directories
+<li>Compiling & Linking
+<li> <A HREF="dbx.html">Debugging a program</A>
+<li> <A HREF="ar.html">Archive library </A>
+<li> <A HREF="make.html">Make</A>
+<li>Job control
+<li>miscellaneous
+<li>History & Command line editing
+</ul>
+<li><a href="#Creating KORN shell scripts"> Creating KORNshell scripts </a>
+<ul>
+<li>The different shells
+<li>Special shell variables
+<li>special characters
+<li>Evaluating shell variables
+<li>The if statement
+<li>The logical operators
+<li>Math operators
+<li>Controlling execution
+<li>Debug mode
+<li>Examples
+<ul>
+<li>Example 1 : loops, cases ...
+<li>Example 2 : switches
+<li>Example 3
+<li>Example 4
+<li>Example 5
+</ul>
+</ul>
+<li><a href="#List of usual commands"> List of Usual commands </a>
+<li><a href="#List of Administrator commands">List of Administrator commands </a>
+</ol>
+</td>
+<td align=right valign=top>
+<script type="text/javascript"><!--
+google_ad_client = "pub-5976068913745703";
+google_ad_width = 336;
+google_ad_height = 280;
+google_ad_format = "336x280_as";
+google_ad_type = "text_image";
+google_ad_channel = "";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "008000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br>
+<script type="text/javascript"><!--
+google_ad_client = "pub-5976068913745703";
+google_ad_width = 336;
+google_ad_height = 280;
+google_ad_format = "336x280_as";
+google_ad_type = "text_image";
+google_ad_channel = "";
+google_color_border = "336699";
+google_color_bg = "FFFFFF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "008000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br>
+
+<script id="mNCC" language="javascript">  medianet_width='336';  medianet_height= '280';  medianet_crid='680458601';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CU44QE36" language="javascript"></script>
+<!--<STYLE>
+.TPtable{font-family:verdana,arial,helvetica; border:1px solid; background:#FFFFFF; border-color:#D2E4FC; border-collapse:collapse;width:336;height:280;}
+.TPheader{text-decoration:none; font-size: 12px; font-weight:bold; font-style:normal; color:#000000; padding:2px; text-align:center; background:#D2E4FC;}
+.TProw{text-decoration:none; font-size: 10px; font-weight:normal; font-style:normal; color:#000000; padding:4px;}
+a.TProw{text-decoration:underline; font-size: 10px; font-weight:bold; font-style:normal; color:#000099; padding:0px;}
+a:hover.TProw{text-decoration:underline; font-size: 10px; font-weight:bold; font-style:normal; color:#000000;}
+</STYLE>
+<script language="javascript" src="http://cts.tradepub.com/cts4/?ptnr=freecomputerbooks&tm=p_mix01cnd&cat=&type=pub&key="></script>-->
+</td>
+</tr>
+</table>
+<HR>
+<a name="Command Language">
+<ol>
+<LI><h1>Command Language</h1></a>
+
+<h2>I/O redirection and pipe</h2>
+<tt><blockquote><pre>
+% command                   running in foreground (interactive)
+% command >file             redirects stdout to file
+% command 2>err_file        redirects stderr to err_file
+% command >file 2>&1        redirects both stdout and stderr on file
+% (command > f1) 2>f2       send stdout on f1, stderr on f2
+% command >>file            appends stdout to file
+% command &lt;file             redirects stdin from file
+% command &lt;&lt; text           Read standard input uo to line identical
+                            to <em>text</em>
+% command1  |  command2     redirects stdout from command1 into stdin of
+                            command2 via a pipe
+                            Ex : <em> du ~ | sort -nr | head </em>
+% command | tee f1 f2 ...   The output of <em>command</em> is sent on
+                            stdout and copied into f1, f2, ...
+% command&                  running in background
+% nohup command&            running in background even after log out
+% set -o monitor            to have a message when a background job ends
+<em>stderr</em> : to print on it in a script, use the option -u2 in command print
+</pre></blockquote></tt>
+<h2>Shell variables</h2>
+<tt><blockquote><pre>
+    # Warning : no blank before of after the = sign
+    # Integers :
+        n=100  ;  x=&n
+        integer t
+        typeset -r roues=4      # definition of a CONSTANT (read only)
+        typeset -i2 x           # declares x as binary integer
+        typeset -i8 y           # declares y as octal integer
+        typeset -i16 z          # guess what ?
+    # Strings  :
+        lettre="Q" ; mot="elephant"
+        phrase="Hello, word"
+        print "n=$n ; lettre=$lettre ; mot=$mot ; phrase=$phrase"
+        typeset -r nom="JMB"    # string constant
+    # Arrays   :  one dimensional arrays of integers or strings
+    #             automatically dimensionned to 1024
+        animal[0]="dog" ; animal[1]="horse" ; animal[3]="donkey"
+        set -A flower tulip gardenia " " rose
+        print ${animal[*]}
+        print ${flower[@]}
+        print "cell#1 content : ${flower[1]}
+</pre></blockquote></tt>
+<h2>Pattern matching</h2>
+<tt><blockquote><pre>
++------------------------+------------------------------------------------+
+| Wild card              | matches                                        |
++------------------------+------------------------------------------------+
+| ?                      | any single char                                |
+| [char1char2... charN]  | any single char from the specified list        |
+| [!char1char2... charN] | any single char other than one from the        |
+|                        | specified list                                 |
+| [char1-charN]          | any char between char1 and charN inclusive     |
+| [!char1-charN]         | any char other than between char1 and charN    |
+|                        | inclusive                                      |
+| *                      | any char or any group of char (including none) |
+| ?(pat1|pat2...|patN)   | zero or one of the specified patterns          |
+| @(pat1|pat2...|patN)   | exactly one of the specified patterns          |
+| *(pat1|pat2...|patN)   | zero, one or more of the specified patterns    |
+| +(pat1|pat2...|patN)   | one or more of the specified patterns          |
+| !(pat1|pat2...|patN)   | any pattern except one of the specif. patterns |
++------------------------+------------------------------------------------+
+  Tilde Expansion :
+    ~               your home directory (ls ~)
+    ~frenkiel       home directory of another user
+    ~+              absolute pathname of the working directory
+    ~-              previous directory (cd ~-) ( or cd -)
+</pre></blockquote></tt>
+<h2>Control characters </h2>
+<tt><blockquote><pre>
+    &lt; ctrl_c> Cancel the currently running process (foreground)
+    &lt; ctrl_z> Suspend the currently running process
+           then : > bg              : to send it in background
+           or     > fg              : continue in foreground
+           or     > kill -option    : sends signals (such as TERMINATE)
+           ex     > kill -9 pid     : to kill a background job
+                    kill -l         : to find out all the signals
+                                      supported by your system.
+    &lt; ctrl_d> End of file character
+    $ stty       to see what are the KILL & &lt;EOF> characters
+</pre></blockquote></tt>
+<HR><br>
+<a name="The environment">
+<LI><h1>The environment</h1></a>
+
+<tt><blockquote><pre>
+    +-----------------------------------------------+-----------------------+
+    | environmental characteristic                  | child inherit this ?  |
+    +-----------------------------------------------+-----------------------+
+    | parent's access rights to files, directories  | yes                   |
+    | the files that parent has opened              | yes                   |
+    | parent's ressource limits (type ulimit)       | yes                   |
+    | parent's response to signal                   | yes                   |
+    | aliases defined by parent                     | NO (expect opt -x)    |
+    | functions defined by parent                   | if exported (*)       |
+    | variables defined by parent                   | if exported (*)       |
+    | KornShell variables (except IFS)              | if exported (*)       |
+    | KornShell variable IFS                        | if NOT exported       |
+    | parent's option settings (type set -o)        | no                    |
+    +-----------------------------------------------+-----------------------+
+    (*) Not needed if a 'set -o allexport' statement has told the KornShell to
+        export all these variables and functions
+</pre></blockquote></tt>
+To export a variable :
+<tt><blockquote><pre>
+    $ export LPDEST=pshpa
+
+    $ echo $LPDEST                      ---> pshpa
+    $ echo LPDEST                       ---> LPDEST
+</pre></blockquote></tt>
+Dot Scripts : a script that runs in the parent's environment, so it is not a
+child of the caller. A dot script inherits ALL of the caller's environment.
+To invoke a dot script, just preface the name of the script with a dot and a
+space :
+<tt><blockquote><pre>
+    $ ficus.ksh     # invoke this script as a regular script.
+    $ . ficus.fsh   # invoke the same script as a dot script.
+</pre></blockquote></tt>
+Aliases : An alias is a nickname for a KornShell statement or script, a user
+program or a command. Example:
+<tt><blockquote><pre>
+    $ alias del='rm -i'     # whenever you type 'del', it's replace by 'rm -i'
+    $ alias                 # to see a list of all aliases
+    $ unalias del           # remove an alias
+</pre></blockquote></tt>
+It is recommanded (but not mandatory) to write the local variable names in
+lower case letters and those of global variables in upper case letters.<BR>
+Sequence of KornShell start-up scripts : The KornShell supports 3 start-up
+scripts. The first 2 are login scripts; they are executed when you log in. A
+third one runs whenever you create a KornShell or run a KornShell script.
+<tt><blockquote><pre>
+    - /etc/profile
+    - $HOME/.profile
+        Use this file to :
+            - set & export values of variables
+            - set options such as ignoreeof that you want to apply to your
+              login shell only
+            - specify a script to execute when yu log out
+        Example :
+            set -o allexport                    # export all variables
+            PATH=.:/bin:/usr/bin:$HOME/bin      # define command search path
+            CDPATH=.:$HOME:$HOME/games          # define search path for cd
+            FPATH=$HOME/mathlib:/usr/funcs      # define path for autoload
+            PS1='! $PWD> '                      # define primary prompt
+            PS2='Line continues here> '         # define secondary prompt
+            HISTSIZE=100                        # define size of history file
+            ENV=$HOME/.kshrc                    # pathname of environment script
+            TMOUT=0                             # KornShell won't be timed out
+            VISUAL=vi                           # make vi the comm. line editor
+            set +o allexport                    # turn off allexport feature
+    - script whose name is hold in the KornShell variable ENV
+        Use this file to :
+            - define aliases & functions that apply for interactive use only
+            - set default options that you want to apply to all ksh invocations
+            - set variables that you want to apply to the current ksh invoc.
+        Example :
+            # The information in this region will be accessible to the KornShell
+            # command line and scripts.
+            alias -x disk='du'      # -x makes alias accessible to scripts
+
+            case $- in
+                *i*)                # Here you are NOT in a script
+                    alias copy='cp';;
+            esac
+</pre></blockquote></tt>
+KornShell Reserved variables :
+<tt><blockquote><pre>
+  +-----------+-----------------------------------+-------------------+------+
+  | Variable  | What this variable holds          | Default           | Who  |
+  |           |                                   |                   | sets |
+  +-----------+-----------------------------------+-------------------+------+
+  | CDPATH    | directories that cd searches      | none              | U    |
+  | COLUMNS   | terminal width                    | 80                | SA   |
+  | EDITOR    | pathname of command line editor   | /bin/ed           | U,SA |
+  | ENV       | pathname of startup script        | none              | U,SA |
+  | ERRNO     | error number of most recently     | none              | KSH  |
+  |           | failed system call                |                   |      |
+  | FCEDIT    | pathname of history file editor   | /bin/ed           | U,SA |
+  | FPATH     | path of autoload functions        | none              | U    |
+  | HISTFILE  | pathname of history file          | $HOME/.sh_history | U,SA |
+  | HISTFILE  | nb of command in history file     | 128               | U,SA |
+  | HOME      | login directory                   | none              | SA   |
+  | IFS       | set of token delimiters           | white space       | U    |
+  | LINENO    | current line number within        | none              | KSH  |
+  |           | script or function                |                   |      |
+  | LINES     | terminal height                   | 24                | SA   |
+  | LOGNAME   | user name                         | none              | SA   |
+  | MAIL      | patname of master mail file       | none              | SA   |
+  | MAILCHECK | mail checking frequency           | 600 seconds       | U,SA |
+  | MAILPATH  | pathnames of master mail files    | none              | SA   |
+  | OLDPWD    | previous current directory        | none              | KSH  |
+  | OPTARG    | name of argument to a switch      | none              | KSH  |
+  | OPTIND    | option's ordinal position on      | none              | KSH  |
+  |           | command line                      |                   |      |
+  | PATH      | command search directories        | /bin:/usr/bin     | U,SA |
+  | PPID      | PID of parent                     | none              | KSH  |
+  | PS1       | command line prompt               | $                 | U    |
+  | PS2       | prompt for commands that          | >                 | U    |
+  |           | extends more than 1 line          |                   |      |
+  | PS3       | prompt of 'select' statements     | #?                | U    |
+  | PS4       | debug mode prompt                 | +                 | U    |
+  | PWD       | current directory                 | none              | U    |
+  | RANDOM    | random integer                    | none              | KSH  |
+  | REPLY     | input repository                  | none              | KSH  |
+  | SECONDS   | nb of seconds since KornShell     | none              | KSH  |
+  |           | was invoked                       |                   |      |
+  | SHELL     | executed shell (sh, csh, ksh)     | none              | SA   |
+  | TERM      | type of terminal you're using     | none              | SA   |
+  | TMOUT     | turn off (timeout) an unused      | 0 (unlimited)     | KSH  |
+  |           | KornShell                         |                   |      |
+  | VISUAL    | command line editor               | /bin/ed           | U,SA |
+  | $         | PID of current process            | none              | KSH  |
+  | !         | PID of the background process     | none              | KSH  |
+  | ?         | last command exit status          | none              | KSH  |
+  | _         | miscellaneous data                | none              | KSH  |
+  +-----------+-----------------------------------+-------------------+------+
+  | Variable  | What this variable holds          | Default           | Who  |
+  |           |                                   |                   | sets |
+  +-----------+-----------------------------------+-------------------+------+
+    Where U  : User sets this variable
+          SA : system administrator
+          KSH: KornShell
+</pre></blockquote></tt>
+To get a list of exported objetcts available to the current environment :
+<tt><blockquote><pre>
+    $ typeset -x        # list of exported variables
+    $ typeset -fx       # list of exported functions
+</pre></blockquote></tt>
+To get a list of environment variables :
+<tt><blockquote><pre>
+    $ set
+</pre></blockquote></tt>
+<HR><br>
+<LI><a name="Most usual commands"><h1>Most usual commands</h1></a>
+<iframe src="http://rcm-na.amazon-adsystem.com/e/cm?t=compubookstut-20&o=1&p=48&l=bn1&mode=books&browse=5&fc1=&lt1=&lc1=&bg1=&f=ifr" marginwidth="0" marginheight="0" width="728" height="90" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>
+<!-- <a href="http://computerbooks.tradepub.com/free/orm/" target=_blank><img alt="Free IT Magzines" border="0" src="/boat/tradepub/orm728x90.gif"></a> -->
+<h2>Help</h2>
+<tt><blockquote><pre>
+    > man command               Ex: > man man
+    > man -k keyword            list of commands related to this keyword
+    > apropos keyword           locates commands by keyword lookup
+    > whatis command            brief command description
+</pre></blockquote></tt>
+<h2>Directory listing</h2>
+<tt><blockquote><pre>
+    > ls [opt]
+        -a list hidden files
+        -d list the name of the current directory
+        -F show directories with a trailing '/'
+           executable files with a trailing '*'
+        -g show group ownership of file in long listing
+        -i print the inode number of each file
+        -l long listing giving details about files and directories
+        -R list all subdirectories encountered
+        -t sort by time modified instead of name
+</pre></blockquote></tt>
+<h2>Creating / Deleting a directory</h2>
+<tt><blockquote><pre>
+    > mkdir dir_name
+    > rmdir dir_name	(directory must be empty)
+</pre></blockquote></tt>
+<h2>Changing directory</h2>
+<tt><blockquote><pre>
+    > cd pathname
+    > cd
+    > cd ~tristram
+    > cd -              # return to the previous working directory
+
+    > pwd               # display the path name of the working directory
+</pre></blockquote></tt>
+<h2>Comparing files</h2>
+<tt><blockquote><pre>
+    > diff  f1   f2      text files comparison
+    > sdiff f1   f2      idem in 2 columns
+    > diff  dir1 dir2    directory comparison
+    > cmp   f1   f2      for binary files
+    > file  filename     determine file type
+    > comm  f1   f2      compare lines common to 2 sorted files
+</pre></blockquote></tt>
+<h2>Access to files</h2>
+<tt><blockquote><pre>
+    user      group     others
+    r w x      rwx        rwx
+    4 2 1
+    > ls -l             display access permission
+    > chmod 754 file    change access (rwx r-x r--)
+    > chmod u+x file1   gives yourself permition to execute file1
+    > chmod g+re file2  gives read and execute permissions for group members
+    > chmod a+r *.pub   gives read permition to everyone
+    > umask 002         (default permissions : inverse) removes write permission
+                        for other in this example
+    > groups username   to find out which group 'username' belongs to
+    > ls -gl            list the group ownwership of the files
+    > chgrp group_name file/directory_name
+                        change the group ownwership
+</pre></blockquote></tt>
+<h2>copying files and directories</h2>
+<tt><blockquote><pre>
+    > cp [-opt] source destination
+    > cp source path_to_destination     copy a file into another
+    > cp *.txt dir_name                 copy a file to another directory
+    > cp -r dir1 dir2                   copy several files into a directory
+    > cat fil1 fil2 > fil3              concatenates fil1 and fil2, and places
+                                        the result in fil3
+</pre></blockquote></tt>
+<h2>deleting files & directory</h2>
+<tt><blockquote><pre>
+    > rm [opt] filename
+    > rm -r dir_name
+    > rmdir dirname
+</pre></blockquote></tt>
+<h2>moving files & directories</h2>
+<tt><blockquote><pre>
+    > mv [opt] file1 file2
+    > mv [opt] dir1 dir2
+    > mv [opt] file dir
+</pre></blockquote></tt>
+<h2>Visualizing files</h2>
+<tt><blockquote><pre>
+    > cat file1 file2 ...   print all files on stdout
+    > more file             print 'file' on stdout, pausing at each end of page
+    > pg file               idem, with more options
+    > od file               octal dump for a binary file
+    > tail file             list the end of a file (last lines)
+    > tail -n file          idem for the last n lines
+    > tail -f file          idem, but read repeatedly in case the file grows
+    > tail +n file          read the fisrt n lines of 'file'
+    > head                  give first few lines
+</pre></blockquote></tt>
+<h2>linking files & directories</h2>
+<tt><blockquote><pre>
+    > ln [-opt] source linkname
+                              The 2 names (source & linkname) address the same
+                              file or directory
+    > ln part1.txt ../helpdata/sect1 /public/helpdoc/part1
+                              This links part1.txt to ../helpdata/sect1 and
+                              /public/helpdoc/part1.
+    > ln -s sdir/file .       makes a symbolic link between 'file' in the
+                              subdirectory 'sdir' to the filename 'file' in
+                              the current directory
+    > ln ~sandra/prog.c .     To make a link to a file in another user's home
+                              directory
+    > ln -s directory_name(s) directory_name
+                              To link one or more directories to another dir.
+    > ln -s $HOME/accounts/may .
+                              To link a directory into your current directory
+  <em>Examples :</em>
+    > ln -s /net/cdfap2/user/jmb   cdfap2
+    > ln -s ~frenkiel/cdf/man/manuel   pfmanuel
+</pre></blockquote></tt>
+
+<h2>Compiling & Linking</h2>
+Use "man xxx" to have a precise description of the following commands :
+<tt><blockquote><pre>
+    > cc        C compiler
+    > f77       Fortran compiler
+    > ar        archive & library maintainer
+    > ld        link editor
+    > dbx       symbolic debugger
+  Examples :
+    > cc hello.c                     executable : a.out
+    > f77 hello.f                    idem
+    > cc main.c func1.c func2.c      sevaral files
+    > cc hello.c -o hello            redefine the executable name
+    > cc -c func1.c                  compilation only, then :
+    > cc main.c func1.o -o prog
+</pre></blockquote></tt>
+
+<h2>Job control</h2>
+<tt><blockquote><pre>
+    > nohup command             run a command immune to hangups, logouts,
+                                and quits
+    > at, batch                 execute commands at a later time (see 'man at')
+    > jobs [-lp] [job_name]     Display informations about jobs
+    > kill -l                   Display signal numbers ans names
+    > kill [-signal] job...     Send a signal to the specified jobs
+    > wait [job...]             Wait for the specified jobs to terminate
+                                (or for all child processes if no argument)
+    > ps                        List executing processes
+</pre></blockquote></tt>
+<h2>miscellaneous</h2>
+<tt><blockquote><pre>
+    > who [am i]        lists names of users currently logged in
+    > rwho              idem for all machines on the local network
+    > w                 idem + what they are doing
+    > whoami            your userid
+    > groups            names of the groups you belong to
+    > hostname          name of the host currently connected
+    > finger            names of users, locally or remotly logged in
+    > finger name       information about this user
+    > finger name@cdfhp3
+    > mail              electronic mail
+    > grep              searching strings in files
+    > sleep             sleep for a given amount of time (shell scripts)
+    > sort              sort items in a file
+    > touch             change the modification time of a file
+    > tar               compress all files in a directory (and its
+                        subdirectories) into one file
+    > type              tells you where a command is located (or what it is an
+                        alias for)
+    > find pathname -name "name" -print
+                        seach recursively from pathename for "name". "name" can
+                        contain wild chars.
+    > findw string
+                        search recursively for filenames containing 'string'
+    > file fich         tries to guess the type of 'fich' (wild chars allowed)
+    > passwd            changing Pass Word
+    > sh -x command     Debugging a shell script
+    > echo $SHELL       Finding out which shell you are using
+        /.../sh                 Bourne shell
+        /.../csh                C shell
+        /.../tcsh               TC shell
+        /.../ksh                Korn shell
+        /.../bash               Bourne Again SHell
+    > df                gives a list of available disk space
+    > du                gives disk space used by the current directory and all
+                        its subdirectories
+    > time command      execute 'command' and then, gives the elapse time
+    > ruptime           gives the status of all machines on the local network
+    > telnet host       for remote login
+    > rlogin host       idem for machines running UNIX
+    > stty              set terminal I/O options
+                        (without args or with -a, list current settings)
+    > tty, pty          get the name of the terminal
+    > write user_name   send a message (end by &lt; ctrl_d --> to a logged user
+    > msg y             enable message reception
+    > msg n             disable message recpt.
+    > mes               status of mes. recept.
+    > wall              idem write, but for all logged users.
+    > date              display date and time on standard output
+    > ulimit            set or display system ressource limits
+    > whence command    find pathname corresponding to 'command'
+    > whence -v name    gives the type of 'name' (built-in, alias, files ...)
+    > tee [-a] file     reads standard input, writes to standard output and
+                        file. Appends to 'file' if option -a
+    > wc file           Counts lines, words and chars in 'file'
+</pre></blockquote></tt>
+for other commands, looks in appendix or in directories such as :
+<tt><blockquote><pre>
+    /bin
+    /usr/bin
+    /usr/ucb
+    /usr/local/bin
+</pre></blockquote></tt>
+<h2>History & Command line editing</h2>
+<tt><blockquote><pre>
+    > history
+    > history 166 168           # list commands 166 through 168
+    > history -r 166 168        # idem in reverse order
+    > history -2                # list previous 2 commands
+    > history set               # list commands from most recent set command
+    > r                         # repeat last command
+    > r cc                      # repeat most recent command starting with cc
+    > r foo=bar cc              # idem, changing 'foo' to 'bar'
+    > r 215                     # repeat command 215
+    > r math.c=cond.c 214       # repeat command 214, but substitute cond.c
+                                # for math.c
+</pre></blockquote></tt>
+You can edit the command line with the 'vi' or 'emacs' editor :
+<tt><blockquote><pre>
+    Put the following line inside a KornShell login script :
+        FCEDIT=vi; export FCEDIT
+        $ set -o emacs
+    > fc [-e editor] [-nlr] [first [last]]
+        * display (-l) commands from history file
+        * Edit and re-execute previous commands (FCEDIT if no -e).
+          'last' and 'first' can be numbers or strings
+    $ fc                        # edit a copy of last command
+    $ fc 271                    # edit, then re-execute command number 271
+    $ fc 270 272                # group command 270, 271 & 272, edit, re-execute
+</pre></blockquote></tt>
+<HR><br>
+<LI><a name="Creating KORN shell scripts"><h1>Creating KORNshell scripts</h1>
+<iframe src="http://rcm-na.amazon-adsystem.com/e/cm?t=compubookstut-20&o=1&p=48&l=bn1&mode=books&browse=5&fc1=&lt1=&lc1=&bg1=&f=ifr" marginwidth="0" marginheight="0" width="728" height="90" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>
+<h2>The different shells</h2>
+<tt><blockquote><pre>
+    /bin/csh        C shell (C like command syntax)
+    /bin/sh         Bourne shell (the oldest one)
+    /bin/ksh        Korn shell (variant of the previous one)
+    + public domain (tcsh, bash, ...)
+</pre></blockquote></tt>
+<h2>Special shell variables</h2>
+    There are some variables which are set internally by the shell and which
+   are available to the user:
+<tt><blockquote><pre>
+    $1 - $9       these variables are the positional parameters.
+    $0            the name of the command currently being executed.
+    $argv[20]     refers to the 20th command line argument
+    $#            the number of positional arguments given to this
+                  invocation of the shell.
+    $?            the exit status of the last command executed is
+                  given as a decimal string.  When a command
+                  completes successfully, it returns the exit status
+                  of 0 (zero), otherwise it returns a non-zero exit
+                  status.
+    $$            the process number of this shell - useful for
+                  including in filenames, to make them unique.
+    $!            the process id of the last command run in
+                  the background.
+    $-            the current options supplied to this invocation
+                  of the shell.
+    $*            a string containing all the arguments to the
+                  shell, starting at $1.
+    $@            same as above, except when quoted :
+                  "$*" expanded into ONE long element : "$1 $2 $3"
+                  "$@" expanded into THREE elements : "$1" "$2" "$3"
+    shift   : $2 -> $1 ...)
+</pre></blockquote></tt>
+<h2>special characters</h2>
+<tt><blockquote><pre>
+The special chars of the Korn shell are :
+    $  \  #  ?  [  ]  *  +  &  |  (  )  ;  `  "  '
+- A pair of simple quotes '...' turns off the significance of ALL enclosed chars
+- A pair of double quotes "..." : idem except for $ ` " \
+- A '\' shuts off the special meaning of the char immediately to its right.
+  Thus, \$ is equivalent to '$'.
+- In a script shell :
+    #       : all text that follow it up the newline is a comment
+    \       : if it is the last char on a line, signals a continuation line
+              qui suit est la continuation de celle-ci
+</pre></blockquote></tt>
+<h2>Evaluating shell variables</h2>
+    The following set of rules govern the evaluation of all shell variables.
+<tt><blockquote><pre>
+    $var                  signifies the value of var or nothing,
+                          if var is undefined.
+    ${var}                same as above except the braces enclose
+                          the name of the variable to be substituted.
+    +-------------------+---------------------------+-------------------+
+    | Operation         | if str is unset or null   | else              |
+    +-------------------+---------------------------+-------------------+
+    | var=${str:-expr}  | var= expr                 | var= ${string}    |
+    | var=${str:=expr}  | str= expr ; var= expr     | var= ${string}    |
+    | var=${str:+expr}  | var becomes null          | var= expr         |
+    | var=${str:?expr}  | expr is printed on stderr | var= ${string}    |
+    +-------------------+---------------------------+-------------------+
+</pre></blockquote></tt>
+<h2>The if statement</h2>
+    The if statement uses the exit status of the given command
+<tt><blockquote><pre>
+        if test
+        then
+            commands     (if condition is true)
+        else
+            commands     (if condition is false)
+        fi
+</pre></blockquote></tt>
+    if statements may be nested:
+<tt><blockquote><pre>
+        if ...
+        then ...
+        else if ...
+        ...
+        fi
+        fi
+</pre></blockquote></tt>
+Test on numbers :
+<tt><blockquote><pre>
+    ((number1 == number2))
+    ((number1 != number2))
+    ((number1   number2))
+    ((number1 >  number2))
+    ((number1 = number2))
+    ((number1 >= number2))
+        Warning : 5 different possible syntaxes (not absolutely identical) :
+            if ((x == y))
+            if test $x -eq $y
+            if let "$x == $y"
+            if [ $x -eq $y ]
+            if [[ $x -eq $y ]]
+</pre></blockquote></tt>
+Test on strings: (pattern may contain special chars)
+<tt><blockquote><pre>
+    [[string  =  pattern]]
+    [[string  != pattern]]
+    [[string1   string2]]
+    [[string1 >  string2]]
+    [[ -z string]]                  true if length is zero
+    [[ -n string]]                  true if length is not zero
+        Warning : 3 different possible syntaxes :
+            if [[ $str1 = $str2 ]]
+            if [ "$str1" = "$str2" ]
+            if test "$str1" = "$str2"
+</pre></blockquote></tt>
+Test on objects : files, directories, links ...
+<tt><blockquote><pre>
+    examples :
+            [[ -f $myfile ]]            # is $myfile a regular file?
+            [[ -x /usr/users/judyt ]]   # is this file executable?
+    +---------------+---------------------------------------------------+
+    | Test          | Returns true if object...                         |
+    +---------------+---------------------------------------------------+
+    | -a object     | exist; any type of object                         |
+    | -f object     | is a regular file or a symbolic link              |
+    | -d object     | is a directory                                    |
+    | -c object     | is a character special file                       |
+    | -b object     | is a block special file                           |
+    | -p object     | is a named pipe                                   |
+    | -S object     | is a socket                                       |
+    | -L object     | is a symbolic (soft) link with another object     |
+    | -k object     | object's "sticky bit" is set                      |
+    | -s object     | object isn't empty                                |
+    | -r object     | I may read this object                            |
+    | -w object     | I may write to (modify) this object               |
+    | -x object     | object is an executable file                      |
+    |               |        or a directory I can search                |
+    | -O object     | I ownn this object                                |
+    | -G object     | the group to which I belong owns object           |
+    | -u object     | object's set-user-id bit is set                   |
+    | -g object     | object's set-group-id bit is set                  |
+    | obj1 -nt obj2 | obj1 is newer than obj2                           |
+    | obj1 -ot obj2 | obj1 is older than obj2                           |
+    | obj1 -ef obj2 | obj1 is another name for obj2 (equivalent)        |
+    +---------------+---------------------------------------------------+
+</pre></blockquote></tt>
+<h2>The logical operators</h2>
+    You can use the && operator to execute a command and, if it is
+    successful, execute the next command in the list.  For example:
+<tt><blockquote><pre>
+        cmd1 && cmd2
+</pre></blockquote></tt>
+    cmd1 is executed and its exit status examined.  Only if cmd1 succeeds
+    is cmd2 executed.
+    You can use the || operator to execute a command and, if it fails, execute
+    the next command in the command list.
+<tt><blockquote><pre>
+        cmd1 || cmd2
+</pre></blockquote></tt>
+Of course, ll combinaisons of these 2 operators are possible. Example :
+<tt><blockquote><pre>
+        cmd1 || cmd2 && cmd3
+</pre></blockquote></tt>
+<h2>Math operators</h2>
+First, don't forget that you have to enclose the entire mathematical operation
+within a DOUBLE pair of parentheses. A single pair has a completely different
+meaning to the Korn-Shell.
+<tt><blockquote><pre>
+        +-----------+-----------+-------------------------+
+        | operator  | operation | example                 |
+        +-----------+-----------+-------------------------+
+        | +         | add.      | ((y = 7 + 10))          |
+        | -         | sub.      | ((y = 7 - 10))          |
+        | *         | mult.     | ((y = 7 * 4))           |
+        | /         | div.      | ((y = 37 / 5))          |
+        | %         | modulo    | ((y = 37 + 5))          |
+        |         | shift     | ((y = 2#1011  2))     |
+        | >>        | shift     | ((y = 2#1011 >> 2))     |
+        | &         | AND       | ((y = 2#1011 & 2#1100)) |
+        | ^         | excl OR   | ((y = 2#1011 ^ 2#1100)) |
+        | |         | OR        | ((y = 2#1011 | 2#1100)) |
+        +-----------+-----------+-------------------------+
+
+</pre></blockquote></tt>
+<h2>Controlling execution</h2>
+<tt><blockquote><pre>
+    goto my_label
+    ......
+    my_label:
+  -----
+    case value in
+        pattern1) command1 ; ... ; commandN;;
+        pattern2) command1 ; ... ; commandN;;
+            ........
+        patternN) command1 ; ... ; commandN;;
+    esac
+        where : value    value of a variable
+                pattern  any constant, pattern or group of pattern
+                command  name of any program, shell script or ksh statement
+        example 1 :
+            case $advice in
+                [Yy][Ee][Ss])   print "A yes answer";;
+                [Mm]*)          print "M followed by anything";;
+                +([0-9))        print "Any integer...";;
+                "oui" | "bof")  print "one or the other";;
+                *)              print "Default";;
+        example 2 :     Creating nice menus
+            PS3="Enter your choice :"
+            select menu_list in English francais
+            do
+                case $menu_list in
+                    English)  print "Thank you";;
+                    francais) print "Merci";;
+                    *)        print "???"; break;;
+                esac
+            done
+  -----
+    while( logical expression)
+    do
+        ....
+    done
+    while :                 # infinite loop
+        ....
+    done
+    while read line         # read until an EOF (or &lt;crtl_d> )
+    do
+        ....
+    done  fname             # redirect input within this while loop
+    until( logical expression)
+    do
+        ....
+    done &lt;fin >fout         # redirect both input and output
+  -----
+    for name in 1 2 3 4     # a list of elements
+    do
+        ....
+    done
+    for obj in *            # list of every object in the current directory
+    do
+        ....
+    done
+    for obj in * */*        # $PWD and the next level below it contain
+    do
+        ....
+    done
+  -----
+    break;                  # to leave a loop (while, until, for)
+    continue;               # to skip part of one loop iteration
+                            # nested loops are allowed in ksh
+  ----
+    select ident in Un Deux # a list of identifiers
+    do
+        case $ident in
+            Un) ....... ;;
+            Deux) ..... ;;
+            *) print " Defaut" ;;
+        esac
+    done
+</pre></blockquote></tt>
+<h2>Debug mode</h2>
+<tt><blockquote><pre>
+    > ksh -x script_name
+  ou, dans un 'shell script' :
+    set -x          # start debug mode
+    set +x          # stop  debug mode
+</pre></blockquote></tt>
+<h2>Examples</h2>
+<h3>Example 1 : loops, cases ...</h3>
+<tt><blockquote><pre>
+    #!/bin/ksh
+    USAGE="usage :  fmr [dir_name]"	# how to invoke this script
+    print "
+        +------------------------+
+        | Start fmr shell script |
+        +------------------------+
+    "
+    function fonc
+    {
+    echo "Loop over params, with shift function"
+    for i do
+        print "parameter $1"    # print is equivalent to echo
+        shift
+    done                        # Beware that $# in now = 0 !!!
+    }
+    echo "Loop over all ($#) parameters : $*"
+    for i do
+        echo "parameter $i"
+    done
+                                #----------------------
+    if (( $# > 0 ))             # Is the first arg. a directory name ?
+    then
+        dir_name=$1
+    else
+        print -n "Directory name:"
+        read dir_name
+    fi
+    print "You specified the following directory; $dir_name"
+    if [[ ! -d $dir_name ]]
+    then
+        print "Sorry, but $dir_name isn't the name of a directory"
+    else
+        echo "-------- List of directory $dir_name -----------------"
+        ls -l $dir_name
+        echo "------------------------------------------------------"
+    fi
+                                  #----------------------
+    echo "switch on #params"
+    case $# in
+        0) echo "command with no parameter";;
+        1) echo "there is only one parameter : $1";;
+        2) echo "there are two parameters";;
+        [3,4]) echo "3 or 4 params";;
+        *) echo "more than 4 params";;
+    esac
+                                  #----------------------
+    fonc
+    echo "Parameters number (after function fonc) : $#"
+                                  #------- To read and execute a command
+    echo "==> Enter a name"
+    while read com
+    do
+        case $com in
+            tristram) echo "gerard";;
+            guglielmi) echo "laurent";;
+            dolbeau) echo "Jean";;
+            poutot) echo "Daniel ou Claude ?";;
+            lutz | frenkiel) echo "Pierre";;
+            brunet) echo "You lost !!!"; exit ;;
+            *) echo "Unknown guy !!! ( $com )"; break ;;
+        esac
+        echo "==> another name, please"
+    done
+                                  #------ The test function :
+    echo "Enter a file name"
+    read name
+    if [ -r $name ]
+    then echo "This file is readable"
+    fi
+    if [ -w $name ]
+        then echo "This file is writable"
+    fi
+    if [ -x $name ]
+        then echo "This file is executable"
+    fi
+                                  #------
+    echo "--------------- Menu select ----------"
+    PS3="Enter your choice: "
+    select menu_list in English francais quit
+    do
+        case $menu_list in
+            English)   print "Thank you";;
+            francais)  print "Merci.";;
+            quit)       break;;
+            *)       print " ????";;
+        esac
+    done
+    print "So long!"
+</pre></blockquote></tt>
+<h3>Example 2 : switches</h3>
+<tt><blockquote><pre>
+    #!/bin/ksh
+    USAGE="usage: gopt.ksh [+-d] [ +-q]"    # + and - switches
+    while getopts :dq arguments             # note the leading colon
+    do
+      case $arguments in
+        d) compile=on;;                     # don't precede d with a minus sign
+       +d) compile=off;;
+        q) verbose=on;;
+       +q) verbose=off;;
+       \?) print "$OPTARG is not a valid option"
+           print "$USAGE";;
+      esac
+    done
+    print "compile=$compile - verbose= $verbose"
+</pre></blockquote></tt>
+<h3>Example 3</h3>
+<tt><blockquote><pre>
+    ###############################################################
+    # This is a function named 'sqrt'
+    function sqrt            # square the input argument
+    {
+        ((s = $1 * $1 ))
+    }
+    # In fact, all KornShell variables are, by default, global
+    # (execpt when defined with typeset, integer or readonly)
+    # So, you don't have to use 'return $s'
+    ###############################################################
+    # The shell script begins execution at the next line
+    print -n "Enter an integer : "
+    read an_integer
+    sqrt $an_integer
+    print "The square of $an_integer is $s"
+</pre></blockquote></tt>
+<h3>Example 4</h3>
+<tt><blockquote><pre>
+    #!/bin/ksh
+    ############ Using exec to do I/O on multiple files ############
+    USAGE="usage : ex4.ksh file1 file2"
+    if (($# != 2))                    # this script needs 2 arguments
+    then
+        print "$USAGE"
+        exit 1
+    fi
+
+    ############ Both arguments must be readable regular files
+    if [[ (-f $1) && (-f $2) && (-r $1) && (-r $2) ]]
+    then                              # use exec to open 4 files
+        exec 3 &lt;$1                    # open $1 for input
+        exec 4 &lt;$2                    # open $2 for input
+        exec 5> match                 # open file "match" for output
+        exec 6> nomatch               # open file "nomatch" for output
+    else                              # if user enters bad arguments
+        print "$        USAGE"
+        exit 2
+    fi
+    while read -u3 lineA              # read a line on descriptor 3
+    do
+        read -u4 lineB                # read a line on descriptor 4
+        if [ "$lineA" = "$lineB" ]
+        then                          # send matching line to one file
+            print -u5 "$lineA"
+        else                          # send nonmatching lines to another
+            print -u6 "$lineA; $lineB"
+        fi
+    done
+
+    print "Done, today : $(date)"     # $(date) : output of 'date' command
+    date_var=$(date)                  # or put it in a variable
+    print " I said $date_var"         # and print it...
+</pre></blockquote></tt>
+<h3>Example 5</h3>
+<tt><blockquote><pre>
+    ############ String manipulation examples ##################
+    read str1?"Enter a string: "
+    print "\nYou said : $str1"
+    typeset -u  str1                  # Convert to uppercase
+    print "UPPERCASE: $str1"
+    typeset -l str1                   # Convert to lowercase
+    print "lowercase: $str1"
+    typeset +l str1                   # turn off lowercase attribute
+    read str2?"Enter another one: "
+    str="$str1 and $str2"             #concatenate 2 strings
+    print "String concatenation : $str"
+        # use '#'  to delete from left
+        #     '##' to delete all
+        #     '%'  to delete all
+        #     '%%' to delete from right
+    print "\nRemove the first 2 chars -- ${str#??}"
+    print "Remove up to (including) the first 'e' -- ${str#*e}"
+    print "Remove the first 2 words -- ${str#* * }"
+    print "\nRemove the last 2 chars -- ${str%??}"
+    print "Remove from last 'e' -- ${str%e*}"
+    print "Remove the last 2 tokens -- ${str% * *}"
+    print "length of the  string= ${#str}"
+    ########################
+    # Parsing strings into words :
+    typeset -l line                     # line will be stored in lowercase
+    read finp?"Pathname of the file to analyze: "
+    read fout?"Pathname of the file to store words: "
+    # Set IFS equal to newline, space, tab and common punctuation marks
+    IFS="
+        ,. ;!?"
+    while read line                     # read one line of text
+    do                                  # then Parse it :
+        if [[ "$line" != "" ]]          # ignore blank lines
+        then
+            set $line                   # parse the line into words
+            print "$*"                  # print each word on a separate line
+        fi
+    done &lt; $finp > $fout                # define the input & output paths
+    sort $fout | uniq | wc -l           # UNIX utilities
+</pre></blockquote></tt>
+<HR><br>
+<LI><a name="List of usual commands"><h1>List of Usual commands</h1></a>
+<marquee width=600 border="0" scrolldelay="20"  scrollamount="1" turespeed="true" behavior="alternate">
+<A HREF=discounted.html target=_blank><nobr><FONT size=3 face=arial COLOR="blue">Support this site, buy deep discounted Computer Books <U><FONT COLOR="green"><B>here</B></FONT></U>!</FONT></nobr></a>
+</marquee>
+<tt><blockquote><pre>
+adb                 absolute debugger
+adjust              simple text formatter
+admin               create and administer SCCS files
+ar                  maintain portable archives and libraries
+as                  assembler
+asa                 interpret ASA carriage control characters
+astrn               translate assembly language
+at, batch           execute commands at a later time
+atime               time an assembly language instruction sequence
+atrans              translate assembly language
+awk                 pattern - directed scanning and processing language
+banner              make posters in large letters
+basename, dirname   extract portions of path names
+bc                  arbitrary - precision arithmetic language
+bdftosnf            BDF to SNF font compiler for X11
+bdiff               big diff
+bfs                 big file scanner
+bifchmod            change mode of a BIF file
+bifchown, bifchgrp  change file owner or group
+bifcp               copy to or from BIF files
+biffind             find files in a BIF system
+bifls               list contents of BIF directories
+bifmkdir            make a BIF directory
+bifrm, bifrmdir     remove BIF files or directories
+bitmap, bmtoa       bitmap editor and converter utilities
+bs                  a compiler/interpreter for modest - sized programs
+cal                 print calendar
+calendar            reminder service
+cat                 concatenate, copy, and print files
+cb                  C program beautifier, formatter
+cc, c89             C compiler
+cd                  change working directory
+cdb, fdb, pdb       C, C++, FORTRAN, Pascal symbolic debugger
+cdc                 change the delta commentary of an SCCS delta
+cflow               generate C flow graph
+chacl               add, modify, delete, copy, or summarize access con
+chatr               change program's internal attributes
+checknr             check nroff/troff files
+chfn                change finger entry
+chmod               change file mode
+chown, chgrp        change file owner or group
+chsh                change default login shell
+ci                  check in RCS revisions
+clear               clear terminal screen
+cmp                 compare two files
+cnodes              display information about specified cluster nodes
+co                  check out RCS revisions
+col                 filter reverse line - feeds and backspaces
+comb                combine SCCS deltas
+comm                select or reject lines common to two sorted files
+compact, uncompact  compact and uncompact files
+cp                  copy files and directory subtrees
+cpio                copy file archives in and out
+cpp                 the C language preprocessor
+crontab             user crontab file
+crypt               encode/decode files
+csh                 a shell (command interpreter) with C - like syntax
+csplit              context split
+ct                  spawn getty to a remote terminal (call terminal)
+ctags               create a tags file
+cu                  call another (UNIX) system; terminal emulator
+cut                 cut out (extract) selected fields of each line of a
+cxref               generate C program cross - reference
+date                print or set the date and time
+datebook            calendar and reminder program for X11
+dbmonth             datebook monthly calendar formatter for postscript
+dbweek              datebook weekly calendar formatter for postscript
+dc                  desk calculator
+dd                  convert, reblock, translate, and copy a (tape) file
+delta               make a delta (change) to an SCCS file
+deroff              remove nroff, tbl, and neqn constructs
+diff                differential file and directory comparator
+diff3               3 - way differential file comparison
+diffmk              mark differences between files
+dircmp              directory comparison
+domainname          set or display name of Network Information Ser -
+dos2ux, ux2dos      convert ASCII file format
+doschmod            change attributes of a DOS file
+doscp               copy to or from DOS files
+dosdf               report number of free disk clusters
+dosls, dosll        list contents of DOS directories
+dosmkdir            make a DOS directory
+dosrm, dosrmdir     remove DOS files or directories
+du                  summarize disk usage
+echo                echo (print) arguments
+ed, red             text editor
+elm                 process mail through screen - oriented interface
+elmalias            create and verify elm user and system aliases
+enable, disable     enable/disable LP printers
+env                 set environment for command execution
+et                  Datebook weekly calendar formatter for laserjet
+ex, edit            extended line - oriented text editor
+expand, unexpand    expand tabs to spaces, and vice versa
+expr                evaluate arguments as an expression
+expreserve          preserve editor buffer
+factor, primes      factor a number, generate large primes
+file                determine file type
+find                find files
+findmsg, dumpmsg    create message catalog file for modification
+findstr             find strings for inclusion in message catalogs
+finger              user information lookup program
+fixman              fix manual pages for faster viewing with
+fold                fold long lines for finite width output device
+forder              convert file data order
+from                who is my mail from?
+ftio                faster tape I/O
+ftp                 file transfer program
+gencat              generate a formatted message catalog file
+get                 get a version of an SCCS file
+getaccess           list access rights to
+getconf             get system configuration values
+getcontext          display current context
+getopt              parse command options
+getprivgrp          get special attributes for group
+gprof               display call graph profile data
+grep, egrep, fgrep  search a file for a pattern
+groups              show group memberships
+gwindstop           terminate the window helper facility
+help                ask for help
+hostname            set or print name of current host system
+hp                  handle special functions of HP2640 and HP2621 - series
+hpterm              X window system Hewlett - Packard terminal emulator.
+hyphen              find hyphenated words
+iconv               code set conversion
+id                  print user and group IDs and names
+ident               identify files in RCS
+ied                 input editor and command history for interactive progs
+imageview           display TIFF file images on an X11 display
+intro               introduction to command utilities and application
+iostat              report I/O statistics
+ipcrm               remove a message queue, semaphore set or shared
+ipcs                report inter - process communication facilities status
+join                relational database operator
+kermit              kermit file transfer
+keysh               context - sensitive softkey shell
+kill                terminate a process
+ksh, rksh           shell, the standard/restricted command program
+lastcomm            show last commands executed in reverse order
+ld                  link editor
+leave               remind you when you have to leave
+lex                 generate programs for lexical analysis of text
+lifcp               copy to or from LIF files
+lifinit             write LIF volume header on file
+lifls               list contents of a LIF directory
+lifrename           rename LIF files
+lifrm               remove a LIF file
+line                read one line from user input
+lint                a C program checker/verifier
+ln                  link files and directories
+lock                reserve a terminal
+logger              make entries in the system log
+login               sign on
+logname             get login name
+lorder              find ordering relation for an object library
+lp, cancel, lpalt   send/cancel/alter requests to an LP line
+lpstat              print LP status information
+ls, l, ll, lsf, lsr, lsxlist contents of directories
+lsacl               list access control lists (ACLs) of files
+m4                  macro processor
+mail, rmail         send mail to users or read mail
+mailfrom            summarize mail folders by subject and sender
+mailstats           print mail traffic statistics
+mailx               interactive message processing system
+make                maintain, update, and regenerate groups of programs
+makekey             generate encryption key
+man                 find manual information by keywords; print out a
+mediainit           initialize disk or cartridge tape media
+merge               three - way file merge
+mesg                permit or deny messages to terminal
+mkdir               make a directory
+mkfifo              make FIFO (named pipe) special files
+mkfontdir           create fonts.dir file from directory of font
+mkmf                make a makefile
+mkstr               extract error messages from C source into a file
+mktemp              make a name for a temporary file
+mm, osdd            print documents formatted with the mm macros
+more, page          file perusal filter for crt viewing
+mt                  magnetic tape manipulating program
+mv                  move or rename files and directories
+mwm                 The Motif Window Manager.
+neqn                format mathematical text for nroff
+netstat             show network status
+newform             change or reformat a text file
+newgrp              log in to a new group
+newmail             notify users of new mail in mailboxes
+news                print news items
+nice                run a command at low priority
+nl                  line numbering filter
+nljust              justify lines, left or right, for printing
+nlsinfo             display native language support information
+nm                  print name list of common object file
+nm                  print name list of common object file.
+nm                  print name list of object file
+nodename            assign a network node name or determine current
+nohup               run a command immune to hangups, logouts, and quits
+nroff               format text
+nslookup            query name servers interactively
+od, xd              octal and hexadecimal dump
+on                  execute command on remote host with environment similar
+pack, pcat, unpack  compress and expand files
+pam                 Personal Applications Manager, a visual shell
+passwd              change login password
+paste               merge same lines of several files or subsequent
+pathalias           electronic address router
+pax                 portable archive exchange
+pcltrans            translate a Starbase bitmap file into PCL raster
+pg                  file perusal filter for soft - copy terminals
+ppl                 point-to - point serial networking
+pplstat             give status of each invocation of
+pr                  print files
+praliases           print system - wide sendmail aliases
+prealloc            preallocate disk storage
+printenv            print out the environment
+printf              format and print arguments
+prmail              print out mail in the incoming mailbox file
+prof                display profile data
+protogen            ANSI C function prototype generator
+prs                 print and summarize an SCCS file
+ps, cps             report process status
+ptx                 permuted index
+pwd                 working directory name
+pwget, grget        get password and group information
+quota               display disk usage and limits
+rcp                 remote file copy
+rcs                 change RCS file attributes
+rcsdiff             compareRCS revisions
+rcsmerge            merge RCS revisions
+readmail            read mail from specified mailbox
+remsh               execute from a remote shell
+resize              reset shell parameters to reflect the current size
+rev                 reverse lines of a file
+rgb                 X Window System color database creator.
+rlog                print log messages and other information on RCS files
+rlogin              remote login
+rm                  remove files or directories
+rmdel               remove a delta from an SCCS file
+rmdir               remove directories
+rmnl                remove extra new - line characters from file
+rpcgen              an RPC protocol compiler
+rtprio              execute process with real - time priority
+rup                 show host status of local machines (RPC version)
+ruptime             show status of local machines
+rusers              determine who is logged in on machines on local
+rwho                show who is logged in on local machines
+sact                print current SCCS file editing activity
+sar                 system activity reporter
+sb2xwd              translate Starbase bitmap to xwd bitmap format
+sbvtrans            translate a Starbase HPSBV archive to Personal
+sccsdiff            compare two versions of an SCCS file
+screenpr            capture the screen raster information and
+script              make typescript of terminal session
+sdfchmod            change mode of an SDF file
+sdfchown, sdfchgrp  change owner or group of an SDF file
+sdfcp, sdfln, sdfmv copy, link, or move files to/from an
+sdffind             find files in an SDF system
+sdfls, sdfll        list contents of SDF directories
+sdfmkdir            make an SDF directory
+sdfrm, sdfrmdir     remove SDF files or directories
+sdiff               side-by - side difference program
+sed                 stream text editor
+sh                  shell partially based on preliminary POSIX draft
+sh, rsh             shell, the standard/restricted command programming
+shar                make a shell archive package
+shl                 shell layer manager
+showcdf             show the actual path name matched for a CDF
+size                print section sizes of object files
+sleep               suspend execution for an interval
+slp                 set printing options for a non - serial printer
+soelim              eliminate .so's from nroff input
+softbench           SoftBench Software Development Environment
+sort                sort and/or merge files
+spell, hashmake     spelling errors
+split               split a file into pieces
+ssp                 remove multiple line - feeds from output
+stconv              Utility to convert scalable type symbol set map
+stlicense           server access control program for X
+stload              Utility to load Scalable Type outlines
+stmkdirs            Utility to build Scalable Type ``.dir'' and
+stmkfont            Scalable Typeface font compiler to create X and
+strings             find the printable strings in an object or other
+strip               strip symbol and line number information from an
+stty                set the options for a terminal port
+su                  become super - user or another user
+sum                 print checksum and block or byte count of
+tabs                set tabs on a terminal
+tar                 tape file archiver
+tbl                 format tables for nroff
+tcio                Command Set 80 CS/80 Cartridge Tape Utility
+tee                 pipe fitting
+telnet              user interface to the TELNET protocol
+test                condition evaluation command
+tftp                trivial file transfer program
+time                time a command
+timex               time a command; report process data and system
+touch               update access, modification, and/or change times of
+tput                query terminfo database
+tr                  translate characters
+true, false         return zero or one exit status respectively
+tset, reset         terminal - dependent initialization
+tsort               topological sort
+ttytype             terminal identification program
+ul                  do underlining
+umask               set file - creation mode mask
+umodem              XMODEM - protocol file transfer program
+uname               print name of current HP - UX version
+unget               undo a previous get of an SCCS file
+unifdef             remove preprocessor lines
+uniq                report repeated lines in a file
+units               conversion program
+uptime              show how long system has been up
+users               compact list of users who are on the system
+uucp, uulog, uuname UNIX system to UNIX system copy
+uuencode, uudecode  encode/decode a binary file for
+uupath, mkuupath    access and manage the pathalias database
+uustat              uucp status inquiry and job control
+uuto, uupick        public UNIX system to UNIX system file copy
+uux                 UNIX system to UNIX system command execution
+vacation            return ``I am not here'' indication
+val                 validate SCCS file
+vc                  version control
+vi                  screen - oriented (visual) display editor
+vis, inv            make unprintable characters in a file visible or
+vmstat              report virtual memory statistics
+vt                  log in on another system over lan
+wait                await completion of process
+wc                  word, line, and character count
+what                get SCCS identification information
+which               locate a program file including aliases and paths
+who                 who is on the system
+whoami              print effective current user id
+write               interactively write (talk) to another user
+x11start            start the X11 window system
+xargs               construct argument
+xcal                display calendar in an X11 window
+xclock              analog / digital clock for X
+xdb                 C, FORTRAN, Pascal, and C++ Symbolic Debugger
+xdialog             display a message in an X11 Motif dialog window
+xfd                 font displayer for X
+xhost               server access control program for X
+xhpcalc             Hewlett - Packard type calculator emulator
+xinit               X Window System initializer
+xinitcolormap       initialize the X colormap
+xline               an X11 based real - time system resource observation
+xload               load average display for X
+xlsfonts            server font list displayer for X
+xmodmap             utility for modifying keymaps in X
+xpr                 print an X window dump
+xrdb                X server resource database utility
+xrefresh            refresh all or part of an X screen
+xseethru            opens a transparent window into the image planes
+xset                user preference utility for X
+xsetroot            root window parameter setting utility for X
+xstr                extract strings from C programs to implement shared
+xtbdftosnf          BDF to SNF font compiler (HP 700/RX)
+xterm               terminal emulator for X
+xthost              server access control program for X
+xtmkfontdir         create a fonts.dir file for a directory of
+xtshowsnf           print contents of an SNF file (HP 700/RX)
+xtsnftosnf          convert SNF file from one format to another (HP
+xwcreate            create a new X window
+xwd                 dump an image of an X window
+xwd2sb              translate xwd bitmap to Starbase bitmap format
+xwdestroy           destroy one or more existing windows
+xwininfo            window information utility for X
+xwud                image displayer for X
+yacc                yet another compiler - compiler
+yes                 be repetitively affirmative
+ypcat               print all values in Network Information Service map
+ypmatch             print values of selected keys in Network Information
+yppasswd            change login password in Network Information System
+ypwhich             list which host is Network Information System
+</pre></blockquote></tt>
+<HR><br>
+<LI><a name="List of Administrator commands"><h1>List of Administrator commands</h1></a>
+<SCRIPT Language="JavaScript" SRC="/boat/tradepub468x60.js"></SCRIPT>
+<tt><blockquote><pre>
+accept, reject      allow/prevent LP requests
+acctcms             command summary from per - process accounting
+acctcom             search and print process accounting
+acctcon1, acctcon2  time accounting
+acctdisk, acctdusg  overview of account
+acctmerg            merge or add total accounting files
+acctprc1, acctprc2  process accounting
+arp                 address resolution display and control
+audevent            change or display event or system call audit
+audisp              display the audit information as requested by the
+audomon             audit overflow monitor daemon
+audsys              start or halt the auditing system and set or
+audusr              select users to audit
+automount           automatically mount NFS file systems
+backup              backup or archive file system
+bdf                 report number of free disk blocks (Berkeley version)
+bifdf               report number of free disk blocks
+biffsck             Bell file system consistency check and interactive
+biffsdb             Bell file system debugger
+bifmkfs             construct a Bell file system
+boot                bootstrap process
+bootpd              Internet Boot Protocol server
+bootpquery          send BOOTREQUEST to BOOTP server
+brc, bcheckrc, rc   system initializa
+buildlang           generate and display locale.def file
+captoinfo           convert a termcap description into a terminfo
+catman              create the cat files for the manual
+ccck                HP Cluster configuration file checker
+chroot              change root directory for a command
+clri                clear inode
+clrsvc              clear x25 switched virtual circuit
+cluster             allocate resources for clustered operation
+config              configure an HP - UX system
+convertfs           convert a file system to allow long file names
+cpset               install object files in binary directories
+cron                clock daemon
+csp                 create cluster server processes
+devnm               device name
+df                  report number of free disk blocks
+diskinfo            describe characteristics of a disk device
+disksecn            calculate default disk section sizes
+diskusg             generate disk accounting data by user ID
+dmesg               collect system diagnostic messages to form error log
+drm admin           Data Replication Manager administrative tool
+dump, rdump         incremental file system dump, local or across
+dumpfs              dump file system information
+edquota             edit user disk quotas
+eisa config         EISA configuration tool
+envd                system physical environment daemon
+fbackup             selectively backup files
+fingerd             remote user information server
+frecover            selectively recover files
+freeze              freeze sendmail configuration file on a cluster
+fsck                file system consistency check and interactive repair
+fsclean             determine shutdown status of specified file system
+fsdb                file system debugger
+fsirand             install random inode generation numbers
+ftpd                DARPA Internet File Transfer Protocol server
+fuser, cfuser       list process IDs of all processes that have
+fwtmp, wtmpfix      manipulate connect accounting records
+gated               gateway routing daemon
+getty               set terminal type, modes, speed, and line discip.
+getx25              get x25 line
+glbd                Global Location Broker Daemon
+grmd                graphics resource manager daemon
+gwind               graphics window daemon
+hosts to named      Translate host table to name server file
+ifconfig            configure network interface parameters
+inetd               Internet services daemon
+init, telinit       process control initialization
+insf                install special files
+install             install commands
+instl adm           maintain network install message and default
+intro               introduction to system maintenance commands and
+ioinit              initialize I/O system
+ioscan              scan I/O system
+isl                 initial system loader
+killall             kill all active processes
+lanconfig           configure network interface parameters
+lanscan             display LAN device configuration and status
+last, lastb         indicate last logins of users and ttys
+lb admin            Location Broker administrative tool
+lb test             test the Location Broker
+link, unlink        exercise link and unlink system calls
+llbd                Local Location Broker daemon
+lockd               network lock daemon
+lpadmin             configure the LP spooling system
+lpana               print LP spooler performance analysis information
+lpsched, lpshut     start/stop the LP request
+ls admin            Display and edit the license server database
+ls rpt              Report on license server events
+ls stat             Display the status of the license server system
+ls targetid         Prints information about the local NetLS tar
+ls tv               Verify that Network License Servers are working
+lsdev               list device drivers in the system
+lssf                list a special file
+makecdf             create context - dependent files
+makedbm             make a Network Information System database
+mkboot, rmboot      install, update, or remove boot programs
+mkdev               make device files
+mkfs                construct a file system
+mklost+found        make a lost+found directory
+mklp                configure the LP spooler subsystem
+mknod               create special files
+mkpdf               create a Product Description File from a prototype
+mkrs                construct a recovery system
+mksf                make a special file
+mount, umount       mount and unmount file system
+mountd              NFS mount request server
+mvdir               move a directory
+named               Internet domain name server
+ncheck              generate path names from inode numbers
+netdistd            network file distribution (update) server daemon
+netfmt              format tracing and logging binary files.
+netlsd              Starts the license server
+nettl               control network tracing and logging
+nettlconf           configure network tracing and logging command
+nettlgen            generate network tracing and logging commands
+newfs               construct a new file system
+nfsd, biod          NFS daemons
+nfsstat             Network File System statistics
+nrglbd              Non - Replicatable Global Location Broker daemon
+opx25               execute HALGOL programs
+pcnfsd              PC - NFS daemon
+pcserver            Basic Serial and HP AdvanceLink server
+pdc                 processor - dependent code (firmware)
+pdfck               compare Product Description File to File System
+pdfdiff             compare two Product Description Files
+perf                test the NCS RPC runtime library
+ping                send ICMP ECHO REQUEST packets to network hosts
+portmap             DARPA port to RPC program number mapper
+proxy               manipulates the NS Probe proxy table
+pwck, grpck         password/group file checkers
+quot                summarize file system ownership
+quotacheck          file system quota consistency checker
+quotaon, quotaoff   turn file system quotas on and off
+rbootd              remote boot server
+rcancel             remove requests from a remote line printer spool
+reboot              reboot the system
+recoversl           check and recover damaged or missing shared
+regen               regenerate (uxgen) an updated HP - UX system
+remshd              remote shell server
+repquota            summarize quotas for a file system
+restore, rrestore   restore file system incrementally, local
+revck               check internal revision numbers of HP - UX files
+rexd                RPC - based remote execution server
+rexecd              remote execution server
+ripquery            query RIP gateways
+rlb                 remote loopback diagnostic
+rlbdaemon           remote loopback diagnostic server
+rlogind             remote login server
+rlp                 send LP line printer request to a remote system
+rlpdaemon           remote spooling line printer daemon, message
+rlpstat             print status of LP spooler requests on a remote
+rmfn                remove HP - UX functionality (partitions and filesets)
+rmsf                remove a special file
+rmt                 remote magnetic - tape protocol module
+route               manually manipulate the routing tables
+rpcinfo             report RPC information
+rquotad             remote quota server
+rstatd              kernel statistics server
+runacct             run daily accounting
+rusersd             network username server
+rwall               write to all users over a network
+rwalld              network rwall server
+rwhod               system status server
+sa1, sa2, sadc      system activity report package
+sam                 system administration manager
+savecore            save a core dump of the operating system
+sdfdf               report number of free SDF disk blocks
+sdffsck             SDF file system consistency check, interactive
+sdffsdb             examine/modify an SDF file system
+sdsadmin            create and administer Software Disk Striping
+sendmail            send mail over the internet
+setmnt              establish mount table /etc/mnttab
+setprivgrp          set special attributes for group
+showmount           show all remote mounts
+shutdown            terminate all processing
+sig named           send signals to the domain name server
+snmpd               daemon that responds to SNMP requests
+spray               spray packets
+sprayd              spray server
+statd               network status monitor
+stcode              translate hexadecimal status code value to textual
+subnetconfig        configure subnet behavior
+swapinfo            system swap space information
+swapon              enable additional device or file system for paging
+sync                synchronize file systems
+syncer              periodically sync for file system integrity
+sysdiag             online diagnostic system interface
+syslogd             log systems messages
+sysrm               remove optional HP - UX products (filesets)
+telnetd             TELNET protocol server
+tftpd               trivial file transfer protocol server
+tic                 terminfo compiler
+tunefs              tune up an existing file system
+untic               terminfo de - compiler
+update, updist      update or install HP - UX files (software
+uucheck             check the uucp directories and permissions file
+uucico              transfer files for the uucp system
+uuclean             uucp spool directory clean - up
+uucleanup           uucp spool directory clean - up
+uugetty             set terminal type, modes, speed and line discip.
+uuid gen            UUID generating program
+uuls                list spooled uucp transactions grouped by transaction
+uusched             schedule uucp transport files
+uusnap              show snapshot of the UUCP system
+uusnaps             sort and embellish uusnap output
+uusub               monitor uucp network
+uuxqt               execute remote uucp or uux command requests
+uxgen               generate an HP - UX system
+vhe altlog          login when Virtual Home Environment (VHE) home
+vhe mounter         start the Virtual Home Environment (VHE)
+vhe u mnt           perform Network File System (NFS) mount to
+vipw                edit the password file
+vtdaemon            respond to vt requests
+wall, cwall         write to all users
+whodo               which users are doing what
+xdm                 X Display Manager
+xtptyd              X terminal pty daemon program
+ypinit              build and install Network Information Service data
+ypmake              create or rebuild Network Information Service data
+yppasswdd           daemon for modifying Network Information Service
+yppoll              query NIS server for information about NIS map
+yppush              force propagation of Network Information Service
+ypserv, ypbind      Network Information Service server and
+ypset               bind to particular Network Information Service
+</pre></blockquote></tt>
+</ol>
+<HR>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2891492-2";
+urchinTracker();
+</script>
+</body>
+</html>
+
+
+

@@ -334,6 +334,99 @@
         </div>
 
 
+        <div class="wellcode">
+<pre>
+    #!/bin/ksh
+    USAGE="usage :  fmr [dir_name]"	# how to invoke this script
+    print "
+        +------------------------+
+        | Start fmr shell script |
+        +------------------------+
+    "
+    function fonc
+    {
+    echo "Loop over params, with shift function"
+    for i do
+        print "parameter $1"    # print is equivalent to echo
+        shift
+    done                        # Beware that $# in now = 0 !!!
+    }
+    echo "Loop over all ($#) parameters : $*"
+    for i do
+        echo "parameter $i"
+    done
+                                #----------------------
+    if (( $# > 0 ))             # Is the first arg. a directory name ?
+    then
+        dir_name=$1
+    else
+        print -n "Directory name:"
+        read dir_name
+    fi
+    print "You specified the following directory; $dir_name"
+    if [[ ! -d $dir_name ]]
+    then
+        print "Sorry, but $dir_name isn't the name of a directory"
+    else
+        echo "-------- List of directory $dir_name -----------------"
+        ls -l $dir_name
+        echo "------------------------------------------------------"
+    fi
+                                  #----------------------
+    echo "switch on #params"
+    case $# in
+        0) echo "command with no parameter";;
+        1) echo "there is only one parameter : $1";;
+        2) echo "there are two parameters";;
+        [3,4]) echo "3 or 4 params";;
+        *) echo "more than 4 params";;
+    esac
+                                  #----------------------
+    fonc
+    echo "Parameters number (after function fonc) : $#"
+                                  #------- To read and execute a command
+    echo "==> Enter a name"
+    while read com
+    do
+        case $com in
+            tristram) echo "gerard";;
+            guglielmi) echo "laurent";;
+            dolbeau) echo "Jean";;
+            poutot) echo "Daniel ou Claude ?";;
+            lutz | frenkiel) echo "Pierre";;
+            brunet) echo "You lost !!!"; exit ;;
+            *) echo "Unknown guy !!! ( $com )"; break ;;
+        esac
+        echo "==> another name, please"
+    done
+                                  #------ The test function :
+    echo "Enter a file name"
+    read name
+    if [ -r $name ]
+    then echo "This file is readable"
+    fi
+    if [ -w $name ]
+        then echo "This file is writable"
+    fi
+    if [ -x $name ]
+        then echo "This file is executable"
+    fi
+                                  #------
+    echo "--------------- Menu select ----------"
+    PS3="Enter your choice: "
+    select menu_list in English francais quit
+    do
+        case $menu_list in
+            English)   print "Thank you";;
+            francais)  print "Merci.";;
+            quit)       break;;
+            *)       print " ????";;
+        esac
+    done
+    print "So long!"
+</pre>
+        </div>
+
 
         </div>
 
