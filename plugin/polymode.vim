@@ -2,7 +2,7 @@ let s:polyenabled = -1
 let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
-let s:fbar = "<F2> Next Window, <F3> Next Buffer, <F4> New ShellScript, <F5> Colorlet, <F6> ColorReset, <F7> MRU, <F8> UndoTree"
+let s:fbar = "<F2> Next Window, <F3> Next Buffer, <F4> New ShellScript, <F5> Colorlet, <F6> ColorReset, <F7> MRU, <F8> UndoTree, <F9> PasteMode"
 function! SetRegistersBE()
       let szIn = input('Set Prefix (@b): ')
       let @b = szIn
