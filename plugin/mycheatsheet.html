@@ -12,7 +12,7 @@
   <meta name="description" content="Mobile friendly cheatsheet">
   <link rel="shortcut icon" sizes="32x32" href="/images/vim-cheat-sheet-icon-32.png">
   <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
-  <link rel='stylesheet' type='text/css'  href='cheatsheet.css'>
+  <link rel='stylesheet' type='text/css'  href='cheatsheet2.css'>
   <!--
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#f93f40">
   <link rel="manifest" href="/manifest.json"> 
@@ -327,32 +327,33 @@
                                              "$@" expanded into THREE elements : "$1" "$2" "$3"</li>
                 <li><kbd>shift</kbd>   : $2 -> $1 ...)</li>
                 </ul>
-+---------------+---------------------------------------------------+
-    | Test          | Returns true if object...                         |
-    +---------------+---------------------------------------------------+
-    | -a object     | exist; any type of object                         |
-    | -f object     | is a regular file or a symbolic link              |
-    | -d object     | is a directory                                    |
-    | -c object     | is a character special file                       |
-    | -b object     | is a block special file                           |
-    | -p object     | is a named pipe                                   |
-    | -S object     | is a socket                                       |
-    | -L object     | is a symbolic (soft) link with another object     |
-    | -k object     | object's "sticky bit" is set                      |
-    | -s object     | object isn't empty                                |
-    | -r object     | I may read this object                            |
-    | -w object     | I may write to (modify) this object               |
-    | -x object     | object is an executable file                      |
-    |               |        or a directory I can search                |
-    | -O object     | I ownn this object                                |
-    | -G object     | the group to which I belong owns object           |
-    | -u object     | object's set-user-id bit is set                   |
-    | -g object     | object's set-group-id bit is set                  |
-    | obj1 -nt obj2 | obj1 is newer than obj2                           |
-    | obj1 -ot obj2 | obj1 is older than obj2                           |
-    | obj1 -ef obj2 | obj1 is another name for obj2 (equivalent)        |
-    +---------------+---------------------------------------------------+
-
+<pre>
++---------------+------------------------------------------------+
+| Test          | Returns true if object...                      |
++---------------+------------------------------------------------+
+| -a object     | exist; any type of object                      |
+| -f object     | is a regular file or a symbolic link           |
+| -d object     | is a directory                                 |
+| -c object     | is a character special file                    |
+| -b object     | is a block special file                        |
+| -p object     | is a named pipe                                |
+| -S object     | is a socket                                    |
+| -L object     | is a symbolic (soft) link with another object  |
+| -k object     | object's "sticky bit" is set                   |
+| -s object     | object isn't empty                             |
+| -r object     | I may read this object                         |
+| -w object     | I may write to (modify) this object            |
+| -x object     | object is an executable file                   |
+|               |        or a directory I can search             |
+| -O object     | I ownn this object                             |
+| -G object     | the group to which I belong owns object        |
+| -u object     | object's set-user-id bit is set                |
+| -g object     | object's set-group-id bit is set               |
+| obj1 -nt obj2 | obj1 is newer than obj2                        |
+| obj1 -ot obj2 | obj1 is older than obj2                        |
+| obj1 -ef obj2 | obj1 is another name for obj2 (equivalent)     |
++---------------+------------------------------------------------+
+</pre>
             </code>
             </font>
         </div>
