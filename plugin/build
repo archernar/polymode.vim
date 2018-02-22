@@ -11,5 +11,6 @@ putfile() {
              return true;
 }
 
+putfile mycheatsheet.html
 putfile vimcheatsheet.html
 putfile cheatsheet.css
