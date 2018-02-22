@@ -56,6 +56,7 @@
       <a href='#AutoCommands'>Auto-Commands</a>&nbsp&nbsp;
       <a href='#Exiting'>Exiting</a>&nbsp&nbsp;
       <a href='#ksh'>KornShell</a>&nbsp&nbsp;
+      <a href='#kshvars'>kshvars</a>&nbsp&nbsp;
       <a href="#" class="sf-back-to-top"><span class="arrow"></span>Top</a>
   </div>
 </div> <!-- end row -->
@@ -327,6 +328,8 @@
                                              "$@" expanded into THREE elements : "$1" "$2" "$3"</li>
                 <li><kbd>shift</kbd>   : $2 -> $1 ...)</li>
                 </ul>
+                <a name='kshvars'></a>
+                <h2>Korn Shell Variables</h2>
 <pre>
 Special shell variables
 $1 - $9       these variables are the positional parameters.
@@ -351,7 +354,8 @@ $@            same as above, except when quoted :
               "$*" expanded into ONE long element : "$1 $2 $3"
               "$@" expanded into THREE elements : "$1" "$2" "$3"
 shift         : $2 -> $1 ...)
-
+</pre>
+<pre>
 +---------------+------------------------------------------------+
 | Test          | Returns true if object...                      |
 +---------------+------------------------------------------------+
