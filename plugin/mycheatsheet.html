@@ -56,8 +56,8 @@
       <a href='#AutoCommands'>Auto-Commands</a>&nbsp&nbsp;
       <a href='#Exiting'>Exiting</a>&nbsp&nbsp;
       <a href='#ksh'>KornShell</a>&nbsp&nbsp;
-      <a href='#kshvars'>kshvars</a>&nbsp&nbsp;
-      <a href='#gawkvars'>gawkvars</a>&nbsp&nbsp;
+      <a href='#kshvars'>Kshvars</a>&nbsp&nbsp;
+      <a href='#gawkvars'>Gawkvars</a>&nbsp&nbsp;
       <a href="#" class="sf-back-to-top"><span class="arrow"></span>Top</a>
   </div>
 </div> <!-- end row -->
@@ -345,6 +345,22 @@ ARGV        Array of command line arguments.  The array is indexed
             from 0 to ARGC - 1.  Dynamically changing the contents of
             ARGV can control the files used for data.
 
+FS          The input field separator, a space by default.  See
+            Fields, above.
+
+NF          The number of fields in the current input record.
+
+NR          The total number of input records seen so far.
+
+OFMT        The output format for numbers, "%.6g", by default.
+
+OFS         The output field separator, a space by default.
+
+ORS         The output record separator, by default a newline.
+
+RS          The input record separator, by default a newline.
+
+
 BINMODE     On non-POSIX systems, specifies use of “binary” mode for
             all file I/O.  Numeric values of 1, 2, or 3, specify that
             input files, output files, or all files, respectively,
@@ -398,9 +414,6 @@ FPAT        A regular expression describing the contents of the
             instead of using the value of the FS variable as the
             field separator.  See Fields, above.
 
-FS          The input field separator, a space by default.  See
-            Fields, above.
-
 FUNCTAB     An array whose indices and corresponding values are the
             names of all the user-defined or extension functions in
             the program.  NOTE: You may not use the delete statement
@@ -427,16 +440,6 @@ LINT        Provides dynamic control of the --lint option from within
             When false, it does not.  When assigned the string value
             "fatal", lint warnings become fatal errors, exactly like
             --lint=fatal.  Any other true value just prints warnings.
-
-NF          The number of fields in the current input record.
-
-NR          The total number of input records seen so far.
-
-OFMT        The output format for numbers, "%.6g", by default.
-
-OFS         The output field separator, a space by default.
-
-ORS         The output record separator, by default a newline.
 
 PREC        The working precision of arbitrary precision floating-
             point numbers, 53 by default.
@@ -613,8 +616,6 @@ ROUNDMODE   The rounding mode to use for arbitrary precision
             "Z" or "z" for roundTowardZero, and if your version of
             GNU MPFR library supports it, "A" or "a" for rounding
             away from zero.
-
-RS          The input record separator, by default a newline.
 
 RT          The record terminator.  Gawk sets RT to the input text
             that matched the character or regular expression
