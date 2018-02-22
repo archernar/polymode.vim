@@ -329,29 +329,28 @@
                 </ul>
 <pre>
 Special shell variables
-There are some variables which are set internally by the shell and which are available to the user:
-    $1 - $9       these variables are the positional parameters.
-    $0            the name of the command currently being executed.
-    $argv[20]     refers to the 20th command line argument
-    $#            the number of positional arguments given to this
-                  invocation of the shell.
-    $?            the exit status of the last command executed is
-                  given as a decimal string.  When a command
-                  completes successfully, it returns the exit status
-                  of 0 (zero), otherwise it returns a non-zero exit
-                  status.
-    $$            the process number of this shell - useful for
-                  including in filenames, to make them unique.
-    $!            the process id of the last command run in
-                  the background.
-    $-            the current options supplied to this invocation
-                  of the shell.
-    $*            a string containing all the arguments to the
-                  shell, starting at $1.
-    $@            same as above, except when quoted :
-                  "$*" expanded into ONE long element : "$1 $2 $3"
-                  "$@" expanded into THREE elements : "$1" "$2" "$3"
-    shift   : $2 -> $1 ...)
+$1 - $9       these variables are the positional parameters.
+$0            the name of the command currently being executed.
+$argv[20]     refers to the 20th command line argument
+$#            the number of positional arguments given to this
+              invocation of the shell.
+$?            the exit status of the last command executed is
+              given as a decimal string.  When a command
+              completes successfully, it returns the exit status
+              of 0 (zero), otherwise it returns a non-zero exit
+              status.
+$$            the process number of this shell - useful for
+              including in filenames, to make them unique.
+$!            the process id of the last command run in
+              the background.
+$-            the current options supplied to this invocation
+              of the shell.
+$*            a string containing all the arguments to the
+              shell, starting at $1.
+$@            same as above, except when quoted :
+              "$*" expanded into ONE long element : "$1 $2 $3"
+              "$@" expanded into THREE elements : "$1" "$2" "$3"
+shift         : $2 -> $1 ...)
 
 +---------------+------------------------------------------------+
 | Test          | Returns true if object...                      |
