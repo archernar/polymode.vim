@@ -327,7 +327,31 @@
                                              "$@" expanded into THREE elements : "$1" "$2" "$3"</li>
                 <li><kbd>shift</kbd>   : $2 -> $1 ...)</li>
                 </ul>
-
++---------------+---------------------------------------------------+
+    | Test          | Returns true if object...                         |
+    +---------------+---------------------------------------------------+
+    | -a object     | exist; any type of object                         |
+    | -f object     | is a regular file or a symbolic link              |
+    | -d object     | is a directory                                    |
+    | -c object     | is a character special file                       |
+    | -b object     | is a block special file                           |
+    | -p object     | is a named pipe                                   |
+    | -S object     | is a socket                                       |
+    | -L object     | is a symbolic (soft) link with another object     |
+    | -k object     | object's "sticky bit" is set                      |
+    | -s object     | object isn't empty                                |
+    | -r object     | I may read this object                            |
+    | -w object     | I may write to (modify) this object               |
+    | -x object     | object is an executable file                      |
+    |               |        or a directory I can search                |
+    | -O object     | I ownn this object                                |
+    | -G object     | the group to which I belong owns object           |
+    | -u object     | object's set-user-id bit is set                   |
+    | -g object     | object's set-group-id bit is set                  |
+    | obj1 -nt obj2 | obj1 is newer than obj2                           |
+    | obj1 -ot obj2 | obj1 is older than obj2                           |
+    | obj1 -ef obj2 | obj1 is another name for obj2 (equivalent)        |
+    +---------------+---------------------------------------------------+
 
             </code>
             </font>
@@ -337,26 +361,22 @@
         <div class="wellcode">
 <pre>
     #!/bin/ksh
-    USAGE="usage :  fmr [dir_name]"	# how to invoke this script
-    print "
-        +------------------------+
-        | Start fmr shell script |
-        +------------------------+
-    "
-    function fonc
-    {
-    echo "Loop over params, with shift function"
-    for i do
-        print "parameter $1"    # print is equivalent to echo
-        shift
-    done                        # Beware that $# in now = 0 !!!
+
+    function fonc {
+         echo "Loop over params, with shift function"
+         for i do
+             print "parameter $1"
+             shift
+         done
     }
+
     echo "Loop over all ($#) parameters : $*"
     for i do
         echo "parameter $i"
     done
-                                #----------------------
-    if (( $# > 0 ))             # Is the first arg. a directory name ?
+    # ---------------------------------------
+    # Is the first arg. a directory name ?
+    if (( $# > 0 ))
     then
         dir_name=$1
     else
@@ -368,11 +388,18 @@
     then
         print "Sorry, but $dir_name isn't the name of a directory"
     else
-        echo "-------- List of directory $dir_name -----------------"
+        echo "List of directory $dir_name "
         ls -l $dir_name
-        echo "------------------------------------------------------"
+        echo "----------------------------"
     fi
-                                  #----------------------
+    # ---------------------------------------
+    # Loop over files in a directory
+    for file in "$@"
+    do
+         print "$file"
+    done
+    # 
+    # 
     echo "switch on #params"
     case $# in
         0) echo "command with no parameter";;
@@ -381,10 +408,10 @@
         [3,4]) echo "3 or 4 params";;
         *) echo "more than 4 params";;
     esac
-                                  #----------------------
+    # 
     fonc
     echo "Parameters number (after function fonc) : $#"
-                                  #------- To read and execute a command
+    # To read and execute a command
     echo "==> Enter a name"
     while read com
     do
@@ -399,7 +426,8 @@
         esac
         echo "==> another name, please"
     done
-                                  #------ The test function :
+    # 
+    # The test function :
     echo "Enter a file name"
     read name
     if [ -r $name ]
@@ -411,8 +439,8 @@
     if [ -x $name ]
         then echo "This file is executable"
     fi
-                                  #------
-    echo "--------------- Menu select ----------"
+    #
+    echo "Menu select"
     PS3="Enter your choice: "
     select menu_list in English francais quit
     do
