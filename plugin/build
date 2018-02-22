@@ -14,3 +14,4 @@ putfile() {
 putfile mycheatsheet.html
 putfile vimcheatsheet.html
 putfile cheatsheet.css
+putfile cheatsheet2.css
