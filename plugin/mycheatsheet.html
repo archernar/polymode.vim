@@ -289,6 +289,42 @@
             <li><kbd>:cp</kbd> - jump to the previous match</li>
             <li><kbd>:copen</kbd> - open a window containing the list of matches</li>
           </ul>
+          <a name='Files'></a>
+          <h2>Working with multiple files</h2>
+          <ul>
+            <li><kbd>:e file</kbd> - edit a file in a new buffer</li>
+            <li><kbd>:bnext</kbd> or <kbd>:bn</kbd> - go to the next buffer</li>
+            <li><kbd>:bprev</kbd> or <kbd>:bp</kbd> - go to the previous buffer</li>
+            <li><kbd>:bd</kbd> - delete a buffer (close a file)</li>
+            <li><kbd>:ls</kbd> - list all open buffers</li>
+            <li><kbd>:sp file</kbd> - open a file in a new buffer and split window</li>
+            <li><kbd>:vsp file</kbd> - open a file in a new buffer and vertically split window</li>
+            <li><kbd>Ctrl</kbd> + <kbd>ws</kbd> - split window</li>
+            <li><kbd>Ctrl</kbd> + <kbd>ww</kbd> - switch windows</li>
+            <li><kbd>Ctrl</kbd> + <kbd>wq</kbd> - quit a window</li>
+            <li><kbd>Ctrl</kbd> + <kbd>wv</kbd> - split window vertically</li>
+            <li><kbd>Ctrl</kbd> + <kbd>wh</kbd> - move cursor to the left window (vertical split)</li>
+            <li><kbd>Ctrl</kbd> + <kbd>wl</kbd> - move cursor to the right window (vertical split)</li>
+            <li><kbd>Ctrl</kbd> + <kbd>wj</kbd> - move cursor to the window below (horizontal split)</li>
+            <li><kbd>Ctrl</kbd> + <kbd>wk</kbd> - move cursor to the window above (horizontal split)</li>
+          </ul>
+          <a name='AutoCommands'></a>
+          <h2>Auto Commands Reading</h2>
+          <ul>
+          <li><i>RAF=read a file, RTF=read the file, R=reading</i></li>
+          <li><kbd>BufNewFile</kbd>	starting to edit a file that doesn't exist</li>
+          <li><kbd>BufReadPre</kbd>	starting to edit a new buffer, before RTF</li>
+          <li><kbd>BufRead</kbd>	starting to edit a new buffer, after RTF</li>
+          <li><kbd>BufReadPost</kbd>	starting to edit a new buffer, after RTF</li>
+          <li><kbd>BufReadCmd</kbd>	before starting to edit a new buffer |Cmd-event|</li>
+          <li><kbd>FileReadPre</kbd>	before RAF with a ":read"</li>
+          <li><kbd>FileReadPost</kbd>	after RAF with ":read"</li>
+          <li><kbd>FileReadCmd</kbd>	before RAF with ":read" |Cmd-event|</li>
+          <li><kbd>FilterReadPre</kbd>	before RAF from a filter Cmd</li>
+          <li><kbd>FilterReadPost</kbd>	after RAF from a filter Cmd</li>
+          <li><kbd>StdinReadPre</kbd>	before R from stdin into the buffer</li>
+          <li><kbd>StdinReadPost</kbd>	After R from the stdin into the buffer</li>
+          </ul>
         <a name='ksh'></a>
         <h2>Korn Shell</h2>
         <div class="well">
@@ -815,42 +851,6 @@ shift         : $2 -> $1 ...)
 
       <div class="grid-block">
         <div class="grid-lg-1-3">
-          <a name='Files'></a>
-          <h2>Working with multiple files</h2>
-          <ul>
-            <li><kbd>:e file</kbd> - edit a file in a new buffer</li>
-            <li><kbd>:bnext</kbd> or <kbd>:bn</kbd> - go to the next buffer</li>
-            <li><kbd>:bprev</kbd> or <kbd>:bp</kbd> - go to the previous buffer</li>
-            <li><kbd>:bd</kbd> - delete a buffer (close a file)</li>
-            <li><kbd>:ls</kbd> - list all open buffers</li>
-            <li><kbd>:sp file</kbd> - open a file in a new buffer and split window</li>
-            <li><kbd>:vsp file</kbd> - open a file in a new buffer and vertically split window</li>
-            <li><kbd>Ctrl</kbd> + <kbd>ws</kbd> - split window</li>
-            <li><kbd>Ctrl</kbd> + <kbd>ww</kbd> - switch windows</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wq</kbd> - quit a window</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wv</kbd> - split window vertically</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wh</kbd> - move cursor to the left window (vertical split)</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wl</kbd> - move cursor to the right window (vertical split)</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wj</kbd> - move cursor to the window below (horizontal split)</li>
-            <li><kbd>Ctrl</kbd> + <kbd>wk</kbd> - move cursor to the window above (horizontal split)</li>
-          </ul>
-          <a name='AutoCommands'></a>
-          <h2>Auto Commands Reading</h2>
-          <ul>
-          <li><i>RAF=read a file, RTF=read the file, R=reading</i></li>
-          <li><kbd>BufNewFile</kbd>	starting to edit a file that doesn't exist</li>
-          <li><kbd>BufReadPre</kbd>	starting to edit a new buffer, before RTF</li>
-          <li><kbd>BufRead</kbd>	starting to edit a new buffer, after RTF</li>
-          <li><kbd>BufReadPost</kbd>	starting to edit a new buffer, after RTF</li>
-          <li><kbd>BufReadCmd</kbd>	before starting to edit a new buffer |Cmd-event|</li>
-          <li><kbd>FileReadPre</kbd>	before RAF with a ":read"</li>
-          <li><kbd>FileReadPost</kbd>	after RAF with ":read"</li>
-          <li><kbd>FileReadCmd</kbd>	before RAF with ":read" |Cmd-event|</li>
-          <li><kbd>FilterReadPre</kbd>	before RAF from a filter Cmd</li>
-          <li><kbd>FilterReadPost</kbd>	after RAF from a filter Cmd</li>
-          <li><kbd>StdinReadPre</kbd>	before R from stdin into the buffer</li>
-          <li><kbd>StdinReadPost</kbd>	After R from the stdin into the buffer</li>
-          </ul>
           <a name='Tabs'></a>
           <h2>Tabs</h2>
           <ul>
