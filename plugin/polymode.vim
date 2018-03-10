@@ -2,6 +2,7 @@ let s:polyenabled = -1
 let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
+let s:fbar = gfbar
 function! SetRegistersBE()
       let szIn = input('Set Prefix (@b): ')
       let @b = szIn
