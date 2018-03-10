@@ -59,6 +59,7 @@ function! KeyReset(...)
           nnoremap <silent> <Down>     <down>
           nnoremap <silent> <PageUp>   <pageup>
           nnoremap <silent> <PageDown> <pagedown>
+          nnoremap <silent> <Delete>   <delete>
           nnoremap <silent> <End>  :call PolyModeReset()<cr>
           return s:polyenabled 
 endfunction
@@ -171,7 +172,10 @@ function! PolyMode(direction)
           nnoremap <silent> <Up>       <C-w>s:call PolyModeReset()<cr><C-W>w
           nnoremap <silent> <Down>     <C-w>s:call PolyModeReset()<cr><C-W>w
           nnoremap <silent> <PageUp>   <C-w>s:call PolyModeReset()<cr><C-W>w
-          nnoremap <silent> <PageDown> <C-w>s:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <PageDown> <C-w>v:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <leader><PageUp>    :close<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <leader><PageDown>  :close<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <Delete>  :close<cr>:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 2 
