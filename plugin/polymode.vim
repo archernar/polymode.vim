@@ -125,6 +125,8 @@ function! PolyModeSet(n)
      call PolyMode(0)
 endfunction
 
+function! PolyModeNull()
+endfunction
 function! Poly2Mode()
      call PolyModeReset()
      if s:poly2 == 0
@@ -165,6 +167,16 @@ function! PolyMode(direction)
           return s:polyenabled 
      endif
      if s:polyenabled == 1 
+          call KeyReset("Split")
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
+          nnoremap <silent> <PageUp>   <C-w>s:call PolyModeNull()<cr><C-W>w
+          nnoremap <silent> <PageDown> <C-w>v:call PolyModeNull()<cr><C-W>w
+          nnoremap <silent> <leader><PageUp>    :close<cr>:call PolyModeNull()<cr>
+          nnoremap <silent> <leader><PageDown>  :close<cr>:call PolyModeNull()<cr>
+          nnoremap <silent> <Delete>  :close<cr>:call PolyModeNull()<cr>
+          return s:polyenabled 
+     endif
+     if s:polyenabled == 1000 
           call KeyReset("Split")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <Right>    <C-w>v:call PolyModeReset()<cr><C-W>w
