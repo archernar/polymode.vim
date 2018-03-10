@@ -158,6 +158,12 @@ function! PolyMode(direction)
      endif
 
      if s:polyenabled == 0 
+          call KeyReset("Help")
+          nnoremap <silent> <PageUp> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
+          return s:polyenabled 
+     endif
+     if s:polyenabled == 1 
           call KeyReset("Split")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <Right>    <C-w>v:call PolyModeReset()<cr><C-W>w
@@ -166,7 +172,7 @@ function! PolyMode(direction)
           nnoremap <silent> <Down>     <C-w>s:call PolyModeReset()<cr><C-W>w
           return s:polyenabled 
      endif
-     if s:polyenabled == 1 
+     if s:polyenabled == 2 
           call KeyReset("Enhanced Zoom")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :wincmd _<cr>:wincmd \|<cr>:call PolyModeReset()<cr>
@@ -180,14 +186,14 @@ function! PolyMode(direction)
           nnoremap <silent> <Down>  :wincmd =<cr>:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 2 
+     if s:polyenabled == 3 
           call KeyReset("Close Window")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>    :close<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>  :close<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
-     if s:polyenabled == 3 
+     if s:polyenabled == 4 
           call KeyReset("VimNotes")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenLibrary()<cr>
@@ -195,27 +201,27 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
 
-     if s:polyenabled == 4
+     if s:polyenabled == 5
           call KeyReset("NERDTree")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>    :call PolyModeNERDTreeToggle()<cr>
           return s:polyenabled
      endif
-     if s:polyenabled == 5
+     if s:polyenabled == 6
           call KeyReset("VimScript Help")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>    :edit ~/.vim/vimscript.txt<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>  :edit ~/.vim/vimscript.txt<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
-     if s:polyenabled == 6
+     if s:polyenabled == 7
           call KeyReset("Vim Tutor Text")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>    :edit ~/.vim/vimtutor.txt<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>  :edit ~/.vim/vimtutor.txt<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
-     if s:polyenabled == 7
+     if s:polyenabled == 8
           let s:polyenabled = 15
      endif
 
