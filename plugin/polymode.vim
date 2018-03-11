@@ -162,13 +162,14 @@ function! PolyMode(direction)
 
      if s:polyenabled == 0 
           call KeyReset("Help")
+          nnoremap <silent> <Insert> :call PolyModeReset()<cr>:call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 1 
           call KeyReset("Split")
-          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyModeReset()<cr>:call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>   <C-w>s:call PolyModeNull()<cr><C-W>w
           nnoremap <silent> <PageDown> <C-w>v:call PolyModeNull()<cr><C-W>w
           nnoremap <silent> <leader><PageUp>    :close<cr>:call PolyModeNull()<cr>
