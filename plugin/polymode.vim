@@ -63,24 +63,9 @@ function! KeyReset(...)
           nnoremap <silent> <End>  :call PolyModeReset()<cr>
           return s:polyenabled 
 endfunction
-function! PolyModeResetQuiet()
-          let s:polyenabled = -1
-          call KeyReset()
-          return s:polyenabled 
-endfunction
 function! PMR()
           call PolyModeReset()
 endfunction
-function! PolyModeReset()
-          call PolyModeResetQuiet()
-          let s:nnn = (&columns - ( len(s:fbar) + len("Polymode (reset)") )) -3
-          if s:nnn < 0
-               let s:nnn = 0
-          endif
-          echo "Polymode (reset)".repeat(' ', s:nnn).s:fbar
-          return s:polyenabled 
-endfunction
-
 function! PolyModeBuffergatorToggle()
           let s:polyenabled = -1
           BuffergatorToggle
@@ -118,6 +103,21 @@ function! CoCoDown()
      let s:coco -= 1
      execute "set colorcolumn=".s:coco
      echo s:coco
+endfunction
+
+function! PolyModeResetQuiet()
+          let s:polyenabled = -1
+          call KeyReset()
+          return s:polyenabled 
+endfunction
+function! PolyModeReset()
+          call PolyModeResetQuiet()
+          let s:nnn = (&columns - ( len(s:fbar) + len("Polymode (reset)") )) -3
+          if s:nnn < 0
+               let s:nnn = 0
+          endif
+          echo "Polymode (reset)".repeat(' ', s:nnn).s:fbar
+          return s:polyenabled 
 endfunction
 
 function! PolyModeSet(n)
@@ -162,14 +162,14 @@ function! PolyMode(direction)
 
      if s:polyenabled == 0 
           call KeyReset("Help")
-          nnoremap <silent> <Insert> :call PolyModeReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 1 
           call KeyReset("Split")
-          nnoremap <silent> <Insert> :call PolyModeReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>   <C-w>s:call PolyModeNull()<cr><C-W>w
           nnoremap <silent> <PageDown> <C-w>v:call PolyModeNull()<cr><C-W>w
           nnoremap <silent> <leader><PageUp>    :close<cr>:call PolyModeNull()<cr>
@@ -179,7 +179,7 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 1000 
           call KeyReset("Split")
-          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
           nnoremap <silent> <Right>    <C-w>v:call PolyModeReset()<cr><C-W>w
           nnoremap <silent> <Left>     <C-w>v:call PolyModeReset()<cr><C-W>w
           nnoremap <silent> <Up>       <C-w>s:call PolyModeReset()<cr><C-W>w
@@ -193,7 +193,7 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 2 
           call KeyReset("Enhanced Zoom")
-          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :wincmd _<cr>:wincmd \|<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown> :wincmd =<cr>:call PolyModeReset()<cr>
           if 3 == 4
