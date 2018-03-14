@@ -152,7 +152,7 @@ function! PolyModeResetQuiet()
           return s:polyenabled 
 endfunction
 function! PolyModeReset()
-          call PolyModeResetQuiet()
+          let s:polyenabled = -1
           echo "Polymode (reset)"
           return s:polyenabled 
 endfunction
