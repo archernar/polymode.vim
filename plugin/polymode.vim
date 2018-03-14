@@ -45,6 +45,15 @@ function! PolyModeSourceVimrc()
 endfunction
 
 function! KeyReset(...)
+     let s:fbarct = s:fbarct + 1
+     if   s:fbarct == 0  
+          let s:fbar = s:gfbar0
+     endif
+     if   s:fbarct == 1  
+          let s:fbar = s:gfbar1
+          let s:fbarct = -1
+     endif
+
           let s:nnn = 0
           if a:0 == 1 
                let s:nnn = (&columns - ( len(s:fbar) + len(a:1) )) -3
@@ -162,15 +171,6 @@ function! PolyMode(direction)
           let s:polyenabled = 6 
      endif
 
-     let s:fbarct = s:fbarct + 1
-
-     if   s:fbarct == 0  
-          let s:fbar = s:gfbar0
-     endif
-     if   s:fbarct == 1  
-          let s:fbar = s:gfbar1
-          let s:fbarct = -1
-     endif
 
      if s:polyenabled == 0 
           call KeyReset("Help")
