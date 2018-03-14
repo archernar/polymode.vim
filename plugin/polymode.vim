@@ -241,7 +241,7 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 4 
           call KeyReset("VimNotes")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenLibrary()<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown> :call OpenLibrary()<cr>:call PolyModeReset()<cr>
           return s:polyenabled
@@ -249,21 +249,21 @@ function! PolyMode(direction)
 
      if s:polyenabled == 5
           call KeyReset("NERDTree")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>    :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>    :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 6
           call KeyReset("VimScript Help")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>    :edit ~/.vim/vimscript.txt<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>  :edit ~/.vim/vimscript.txt<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 7
           call KeyReset("Vim Tutor Text")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>    :edit ~/.vim/vimtutor.txt<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>  :edit ~/.vim/vimtutor.txt<cr>:call PolyModeReset()<cr>
           return s:polyenabled
@@ -274,7 +274,7 @@ function! PolyMode(direction)
 
      if s:polyenabled == 15
           call KeyReset("Resize")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <Right> :vertical resize +5<cr>
           nnoremap <silent> <Left>  :vertical resize -5<cr>
           nnoremap <silent> <Up>    :resize -5<cr>
@@ -283,33 +283,33 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 16
           call KeyReset("Buffergator")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call PolyModeBuffergatorToggle()<cr>:PolyModeReset()<cr>
           nnoremap <silent> <PageDown> :call PolyModeBuffergatorToggle()<cr>:PolyModeReset()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 17
           call KeyReset("Drag")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           vmap <Right> :call DVB_Drag('left')<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 18
           call KeyReset("HL Search")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <Up> :call SetHLSearchOn()<cr>
           nnoremap <silent> <Down> :call SetHLSearchOff()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 19 
           call KeyReset("Source .vimrc")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call PolyModeSourceVimrc()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 20 
           call KeyReset("Color Schemes")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call Colorlet(1)<cr>:echom @a<cr>
           nnoremap <silent> <PageDown> :call Colorlet(-1)<cr>:echom @a<cr>
           return s:polyenabled 
@@ -317,7 +317,7 @@ function! PolyMode(direction)
      if s:polyenabled > 20 
           let s:polyenabled = -1 
           call KeyReset("Movement")
-          nnoremap <silent> <Insert> :call KeyReset()<cr>:call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           return s:polyenabled 
      endif
 endfunction
