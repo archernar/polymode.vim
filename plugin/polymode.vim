@@ -55,6 +55,33 @@ function! KeyReset(...)
      endif
 
           let s:nnn = 0
+          let s:nnn = (&columns - ( len(s:fbar) + len(a:1) )) -3
+          if s:nnn < 0
+               let s:nnn = 0
+          endif
+          echo a:1.repeat(' ', s:nnn).s:fbar
+          nnoremap <silent> <Insert>   <insert>
+          nnoremap <silent> <Right>    <right>
+          nnoremap <silent> <Left>     <left>
+          nnoremap <silent> <Up>       <up>
+          nnoremap <silent> <Down>     <down>
+          nnoremap <silent> <PageUp>   <pageup>
+          nnoremap <silent> <PageDown> <pagedown>
+          nnoremap <silent> <Delete>   <delete>
+          nnoremap <silent> <End>  :call PolyModeReset()<cr>
+          return s:polyenabled 
+endfunction
+function! KeyReset222(...)
+     let s:fbarct = s:fbarct + 1
+     if   s:fbarct == 0  
+          let s:fbar = s:gfbar0
+     endif
+     if   s:fbarct == 1  
+          let s:fbar = s:gfbar1
+          let s:fbarct = -1
+     endif
+
+          let s:nnn = 0
           if a:0 == 1 
                let s:nnn = (&columns - ( len(s:fbar) + len(a:1) )) -3
                if s:nnn < 0
