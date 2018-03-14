@@ -53,14 +53,15 @@ function! KeyReset(...)
           let s:fbar = s:gfbar1
           let s:fbarct = -1
      endif
-
+          let s:local = ""
           if a:0 == 1 
-               let s:nnn = (&columns - ( len(s:fbar) + len(a:1) )) -3
-               if s:nnn < 0
-                    let s:nnn = 0
-               endif
-               echo a:1.repeat(' ', s:nnn).s:fbar
+               let s:local = a:1
           endif
+          let s:nnn = (&columns - ( len(s:fbar) + len(s:local) )) -3
+          if s:nnn < 0
+               let s:nnn = 0
+          endif
+          echo s:local.repeat(' ', s:nnn).s:fbar
           nnoremap <silent> <Insert>   <insert>
           nnoremap <silent> <Right>    <right>
           nnoremap <silent> <Left>     <left>
