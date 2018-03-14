@@ -245,7 +245,7 @@ function! PolyMode(direction)
 
      if s:polyenabled == 5
           call KeyReset("NERDTree")
-          nnoremap <silent> <Insert> call PolyMode(-2)<cr>
+          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>    :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>    :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
           return s:polyenabled
