@@ -160,11 +160,12 @@ function! PolyMode(direction)
      endif
 
      let s:fbarct = s:fbarct + 1
-     if let s:fbarct == 0  
-          let s:fbar = gfbar0
+
+     if   s:fbarct == 0  
+          let s:fbar = s:gfbar0
      endif
-     if let s:fbarct == 1  
-          let s:fbar = gfbar1
+     if   s:fbarct == 1  
+          let s:fbar = s:gfbar1
           let s:fbarct = -1
      endif
 
