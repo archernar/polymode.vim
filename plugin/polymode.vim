@@ -54,12 +54,11 @@ function! KeyReset(...)
           let s:fbarct = -1
      endif
 
-          let s:nnn = 0
-          let s:nnn = (&columns - ( len(s:fbar) + len(a:1) )) -3
-          if s:nnn < 0
-               let s:nnn = 0
-          endif
           if a:0 == 1 
+               let s:nnn = (&columns - ( len(s:fbar) + len(a:1) )) -3
+               if s:nnn < 0
+                    let s:nnn = 0
+               endif
                echo a:1.repeat(' ', s:nnn).s:fbar
           endif
           nnoremap <silent> <Insert>   <insert>
