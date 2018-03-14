@@ -59,7 +59,9 @@ function! KeyReset(...)
           if s:nnn < 0
                let s:nnn = 0
           endif
-          echo a:1.repeat(' ', s:nnn).s:fbar
+          if a:0 == 1 
+               echo a:1.repeat(' ', s:nnn).s:fbar
+          endif
           nnoremap <silent> <Insert>   <insert>
           nnoremap <silent> <Right>    <right>
           nnoremap <silent> <Left>     <left>
@@ -146,7 +148,7 @@ endfunction
 
 function! PolyModeResetQuiet()
           let s:polyenabled = -1
-          call KeyReset()
+          call KeyReset("")
           return s:polyenabled 
 endfunction
 function! PolyModeReset()
