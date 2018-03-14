@@ -1,8 +1,8 @@
 let s:polyenabled = -1 
+let s:fbarct = -1 
 let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
-let s:fbar = gfbar
 function! SetRegistersBE()
       let szIn = input('Set Prefix (@b): ')
       let @b = szIn
@@ -155,9 +155,17 @@ function! PolyMode(direction)
      if s:polyenabled < 0 
           let s:polyenabled = 20 
      endif
-
      if s:polyenabled == 14 
           let s:polyenabled = 6 
+     endif
+
+     let s:fbarct = s:fbarct + 1
+     if let s:fbarct == 0  
+          let s:fbar = gfbar0
+     endif
+     if let s:fbarct == 1  
+          let s:fbar = gfbar1
+          let s:fbarct = -1
      endif
 
      if s:polyenabled == 0 
