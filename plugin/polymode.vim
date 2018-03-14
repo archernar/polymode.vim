@@ -1,9 +1,8 @@
-let s:polyenabled = -1 
+et s:polyenabled = -1 
 let s:fbar = "" 
 let s:gfbar0 = "<F2> Next Window, <F3> Next Buffer, <F4> New ShellScript, <F5> Python, <F6> Command, <F7> MRU, <F8> UndoTree, <F9> PasteMode"
 let s:gfbar1 = "OHHHH"
 let s:fbarct = -1 
-let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
 let s:coco = 81
 function! SetRegistersBE()
@@ -47,10 +46,13 @@ endfunction
 function! KeyReset(...)
      let s:fbarct = s:fbarct + 1
      if   s:fbarct == 0  
-          let s:fbar = s:gfbar0
+          let s:fbar = g:help0
      endif
      if   s:fbarct == 1  
-          let s:fbar = s:gfbar1
+          let s:fbar = g:help1
+     endif
+     if   s:fbarct == 2  
+          let s:fbar = g:help2
           let s:fbarct = -1
      endif
           let s:local = ""
@@ -73,7 +75,7 @@ function! KeyReset(...)
           nnoremap <silent> <End>  :call PolyModeReset()<cr>
           return s:polyenabled 
 endfunction
-function! KeyReset222(...)
+function! KeyReset2222(...)
      let s:fbarct = s:fbarct + 1
      if   s:fbarct == 0  
           let s:fbar = s:gfbar0
@@ -82,17 +84,15 @@ function! KeyReset222(...)
           let s:fbar = s:gfbar1
           let s:fbarct = -1
      endif
-
-          let s:nnn = 0
+          let s:local = ""
           if a:0 == 1 
-               let s:nnn = (&columns - ( len(s:fbar) + len(a:1) )) -3
-               if s:nnn < 0
-                    let s:nnn = 0
-               endif
+               let s:local = a:1
           endif
-          if a:0 == 1 
-               echo a:1.repeat(' ', s:nnn).s:fbar
+          let s:nnn = (&columns - ( len(s:fbar) + len(s:local) )) -3
+          if s:nnn < 0
+               let s:nnn = 0
           endif
+          echo s:local.repeat(' ', s:nnn).s:fbar
           nnoremap <silent> <Insert>   <insert>
           nnoremap <silent> <Right>    <right>
           nnoremap <silent> <Left>     <left>
