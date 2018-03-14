@@ -1,4 +1,5 @@
-et s:polyenabled = -1 
+
+let s:polyenabled = -1 
 let s:fbar = "" 
 let s:gfbar0 = "<F2> Next Window, <F3> Next Buffer, <F4> New ShellScript, <F5> Python, <F6> Command, <F7> MRU, <F8> UndoTree, <F9> PasteMode"
 let s:gfbar1 = "OHHHH"
