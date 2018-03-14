@@ -1,4 +1,5 @@
 let s:polyenabled = -1 
+let s:fbar = "" 
 let s:fbarct = -1 
 let s:y3xxxxxxxxx = 0 
 let s:poly2 = 0
