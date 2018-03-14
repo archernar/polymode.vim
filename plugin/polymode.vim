@@ -153,11 +153,7 @@ function! PolyModeResetQuiet()
 endfunction
 function! PolyModeReset()
           call PolyModeResetQuiet()
-          let s:nnn = (&columns - ( len(s:fbar) + len("Polymode (reset)") )) -3
-          if s:nnn < 0
-               let s:nnn = 0
-          endif
-          echo "Polymode (reset)".repeat(' ', s:nnn).s:fbar
+          echo "Polymode (reset)"
           return s:polyenabled 
 endfunction
 
