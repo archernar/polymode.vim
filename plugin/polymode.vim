@@ -318,4 +318,3 @@ function! PolyMode(direction)
      endif
 endfunction
 
-nnoremap <leader> <Home>  :call PolyModeReset()<cr>
