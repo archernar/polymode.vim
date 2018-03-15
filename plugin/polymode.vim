@@ -157,7 +157,7 @@ function! PolyModeResetQuiet()
 endfunction
 function! PolyModeReset()
           let s:polyenabled = -1
-          echo "Polymode (reset)"
+          call KeyReset("Polymode (key reset)")
           return s:polyenabled 
 endfunction
 
@@ -202,7 +202,7 @@ function! PolyMode(direction)
 
 
      if s:polyenabled == 0 
-          call KeyReset("Help")
+          call KeyReset("Help File")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
