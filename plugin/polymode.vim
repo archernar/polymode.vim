@@ -242,8 +242,10 @@ function! PolyMode(direction)
      if s:polyenabled == 4 
           call KeyReset("VimNotes")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp> :call OpenLibrary()<cr>:call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown> :call OpenLibrary()<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageUp>   :call MakeTempBuffer()<cr>execute "edit ~/.vim/vimtutor.txt"<cr>call LockTempBuffer()<cr>
+          nnoremap <silent> <PageDown> :call MakeTempBuffer()<cr>execute "edit ~/.vim/vimtutor.txt"<cr>call LockTempBuffer()<cr>
+          "nnoremap <silent> <PageUp> :call OpenLibrary()<cr>:call PolyModeReset()<cr>
+          "nnoremap <silent> <PageDown> :call OpenLibrary()<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
 
