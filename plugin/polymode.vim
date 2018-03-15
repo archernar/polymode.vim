@@ -31,10 +31,13 @@ function! CloseLibrary()
 endfunction
 
 function! OpenLibrary()
-     execute "botright split ~/.vim/vimscript.txt"
-     execute "botright split ~/.vim/vimtutor.txt"
-     execute "botright split ~/.vim/vimnotes"
-     call PolyModeReset()
+    call MakeTempBuffer()
+    execute "edit ~/.vim/vimtutor.txt"
+    call LockTempBuffer()
+    "execute "botright split ~/.vim/vimscript.txt"
+    "execute "botright split ~/.vim/vimtutor.txt"
+    "execute "botright split ~/.vim/vimnotes"
+    "call PolyModeReset()
 endfunction
 
 function! PolyModeSourceVimrc()
