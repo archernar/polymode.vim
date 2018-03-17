@@ -298,8 +298,8 @@ function! PolyMode(direction)
      if s:polyenabled == 16
           call KeyReset("Buffergator")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp> :BuffergatorToggle<cr>:PolyModeReset()<cr>
-          nnoremap <silent> <PageDown> :call PolyModeBuffergatorToggle()<cr>:PolyModeReset()<cr>
+          nnoremap <silent> <PageUp>   :BuffergatorToggle<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown> :BuffergatorToggle<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 17
