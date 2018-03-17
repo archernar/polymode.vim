@@ -113,8 +113,8 @@ function! PMR()
 endfunction
 function! PolyModeBuffergatorToggle()
           let s:polyenabled = -1
-          BuffergatorToggle
           call PolyModeReset()
+          BuffergatorToggle
           return s:polyenabled 
 endfunction
 function! PolyModeNERDTreeToggle()
