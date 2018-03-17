@@ -10,3 +10,7 @@ cd ..
 punch plugin
 cd plugin
 
+git clone git@github.com:archernar/polymode.vim.git /tmp/repotemp
+ls -lh /tmp/repotemp
+cp -r /tmp/repotemp/* /home/mestes/.vim/bundle/polymode.vim/
+rm -rf /tmp/repotemp
