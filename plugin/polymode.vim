@@ -197,7 +197,7 @@ function! PolyMode(direction)
           let s:polyenabled = 20 
      endif
      if s:polyenabled == 14 
-          let s:polyenabled = 6 
+          let s:polyenabled = 9 
      endif
 
 
