@@ -161,8 +161,8 @@ function! PolyModeReset()
           return s:polyenabled 
 endfunction
 
-function! PolyModeSet(n)
-     let s:polyenabled = n 
+function! PolyModeSet(...)
+     let s:polyenabled = a:1 
      call PolyMode(0)
 endfunction
 
