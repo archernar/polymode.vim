@@ -240,7 +240,7 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 4 
-          call KeyReset("VimTutor")
+          call KeyReset("R1: VimTutor")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenInTempBuffer("~/.vim/vimtutor.txt")<cr>
           nnoremap <silent> <PageDown> :call OpenInTempBuffer("~/.vim/vimtutor.txt")<cr>
@@ -248,31 +248,31 @@ function! PolyMode(direction)
      endif
 
      if s:polyenabled == 5 
-          call KeyReset("VimScript")
+          call KeyReset("R2: VimScript")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenInTempBuffer("~/.vim/vimscript.txt")<cr>
           nnoremap <silent> <PageDown> :call OpenInTempBuffer("~/.vim/vimscript.txt")<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 6 
-          call KeyReset("VimNotes")
-          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp> :call OpenInTempBuffer("~/.vim/vimnotes")<cr>
+          call KeyReset("R3: VimNotes")
+          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
+          nnoremap <silent> <PageUp>   :call OpenInTempBuffer("~/.vim/vimnotes")<cr>
           nnoremap <silent> <PageDown> :call OpenInTempBuffer("~/.vim/vimnotes")<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 7
-          call KeyReset("NERDTree")
+          call KeyReset("R4: VimScript Help")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>    :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown>    :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageUp>    :call OpenInTempBuffer("~/.vim/vimscript.txt")<cr>
+          nnoremap <silent> <PageDown>    :call OpenInTempBuffer("~/.vim/vimscript.txt")<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 8
-          call KeyReset("VimScript Help")
-          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>    :edit ~/.vim/vimscript.txt<cr>:call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown>  :edit ~/.vim/vimscript.txt<cr>:call PolyModeReset()<cr>
+          call KeyReset("NERDTree")
+          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
+          nnoremap <silent> <PageUp>   :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown> :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 9
