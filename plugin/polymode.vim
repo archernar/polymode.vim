@@ -255,10 +255,10 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 6 
-          call KeyReset("R3: VimNotes")
+          call KeyReset("R3: VimNotes (edit mode)")
           nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   :call OpenInTempBuffer("~/.vim/vimnotes")<cr>
-          nnoremap <silent> <PageDown> :call OpenInTempBuffer("~/.vim/vimnotes")<cr>
+          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vim/vimnotes")<cr>
+          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vim/vimnotes")<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 7
@@ -269,17 +269,17 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 8
-          call KeyReset("NERDTree")
-          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown> :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
-          return s:polyenabled
-     endif
-     if s:polyenabled == 9
           call KeyReset("Vim Tutor Text")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>    :edit ~/.vim/vimtutor.txt<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown>  :edit ~/.vim/vimtutor.txt<cr>:call PolyModeReset()<cr>
+          return s:polyenabled
+     endif
+     if s:polyenabled == 9
+          call KeyReset("NERDTree")
+          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
+          nnoremap <silent> <PageUp>   :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown> :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 10 
