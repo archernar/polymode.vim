@@ -203,6 +203,9 @@ function! PolyMode(direction)
 
      if s:polyenabled == 0 
           call KeyReset("Help")
+          " With Help slected certain shortcut keys are enabled
+          " For Enhanced Zoom
+          nnoremap <silent> e :call PolyModeSet(2)<cr>
           " For NERDTree
           nnoremap <silent> n :call PolyModeSet(9)<cr>
           " For Buffergator
