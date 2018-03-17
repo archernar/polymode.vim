@@ -203,6 +203,9 @@ function! PolyMode(direction)
 
      if s:polyenabled == 0 
           call KeyReset("Help")
+          " For NERDTree
+          nnoremap <silent> n :call PolyModeSet(9)<cr>
+          " For Buffergator
           nnoremap <silent> b :call PolyModeSet(16)<cr>
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
