@@ -15,6 +15,7 @@ git clone git@github.com:archernar/polymode.vim.git /tmp/repotemp
 ls -lh /tmp/repotemp
 
 rm -rf /home/mestes/.vim/bundle/polymode.vim
+mkdir /home/mestes/.vim/bundle/polymode.vim
 cp -r /tmp/repotemp/* /home/mestes/.vim/bundle/polymode.vim/
 
 ls -lh /home/mestes/.vim/bundle/polymode.vim
