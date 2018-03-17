@@ -203,6 +203,7 @@ function! PolyMode(direction)
 
      if s:polyenabled == 0 
           call KeyReset("Help")
+          nnoremap <silent> b :call PolyModeSet(16)<cr>
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
