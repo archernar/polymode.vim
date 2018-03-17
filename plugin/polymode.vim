@@ -111,12 +111,6 @@ endfunction
 function! PMR()
           call PolyModeReset()
 endfunction
-function! PolyModeBuffergatorToggle()
-          let s:polyenabled = -1
-          call PolyModeReset()
-          BuffergatorToggle
-          return s:polyenabled 
-endfunction
 function! PolyModeNERDTreeToggle()
           let s:polyenabled = -1
           NERDTreeToggle
