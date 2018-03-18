@@ -61,6 +61,7 @@ function! KeyReset(...)
      endif
           let s:local = ""
           if a:0 == 1 
+               let a:1 = a:1 . " " . s:polyeditmode  
                let s:local = a:1
           endif
           let s:nnn = (&columns - ( len(s:fbar) + len(s:local) )) -3
