@@ -197,14 +197,14 @@ function! PolyMode(direction)
           nnoremap <silent> <PageDown> :call OpenInTempBuffer("~/.usr_41.txt")<cr>
           return s:polyenabled
      endif
-     if s:polyenabled == 4 
+     if s:polyenabled == 5 
           call KeyReset("R0: Vim Key Maps")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call VimKeyMap()<cr>:call OpenInTempBuffer("~/.vimkeymap.txt")<cr>
           nnoremap <silent> <PageDown> :call VimKeyMap()<cr>:call OpenInTempBuffer("~/.vimkeymap.txt")<cr>
           return s:polyenabled
      endif
-     if s:polyenabled == r 
+     if s:polyenabled == 6 
           call KeyReset("R1: VimTutor")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenInTempBuffer("~/.vimtutor.txt")<cr>
