@@ -61,37 +61,8 @@ function! KeyReset(...)
      endif
           let s:local = ""
           if a:0 == 1 
-               let a:1 = a:1 . " " . s:polyeditmode  
-               let s:local = a:1
-          endif
-          let s:nnn = (&columns - ( len(s:fbar) + len(s:local) )) -3
-          if s:nnn < 0
-               let s:nnn = 0
-          endif
-          echo s:local.repeat(' ', s:nnn).s:fbar
-          nnoremap <silent> <Insert>   <insert>
-          nnoremap <silent> <Right>    <right>
-          nnoremap <silent> <Left>     <left>
-          nnoremap <silent> <Up>       <up>
-          nnoremap <silent> <Down>     <down>
-          nnoremap <silent> <PageUp>   <pageup>
-          nnoremap <silent> <PageDown> <pagedown>
-          nnoremap <silent> <Delete>   <delete>
-          nnoremap <silent> <End>  :call PolyModeReset()<cr>
-          return s:polyenabled 
-endfunction
-function! KeyReset2222(...)
-     let s:fbarct = s:fbarct + 1
-     if   s:fbarct == 0  
-          let s:fbar = s:gfbar0
-     endif
-     if   s:fbarct == 1  
-          let s:fbar = s:gfbar1
-          let s:fbarct = -1
-     endif
-          let s:local = ""
-          if a:0 == 1 
-               let s:local = a:1
+               let szTemp = a:1 . " " . s:polyeditmode  
+               let s:local = szTemp
           endif
           let s:nnn = (&columns - ( len(s:fbar) + len(s:local) )) -3
           if s:nnn < 0
