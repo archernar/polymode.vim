@@ -144,6 +144,14 @@ function! CoCoDown()
      echo s:coco
 endfunction
 
+function! PolyModeEditToggle()
+          if s:polyeditmode == 0 
+               let s:polyeditmode = 1 
+          else 
+               let s:polyeditmode = 0 
+          endif
+          echom s:polyeditmode 
+endfunction
 function! PolyModeResetQuiet()
           let s:polyenabled = -1
           call KeyReset("")
@@ -331,12 +339,9 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 21 
           call KeyReset("Edit Mode Toggle")
-          if s:polyeditmode == 0 
-               let s:polyeditmode = 1 
-          else 
-               let s:polyeditmode = 0 
-          endif
-          echom s:polyeditmode 
+          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
+          nnoremap <silent> <PageUp>   :call PolyModeEditToggle()<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown> :call PolyModeEditToggle()<cr>:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled > 22 
