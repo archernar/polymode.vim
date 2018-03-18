@@ -71,7 +71,7 @@ function! KeyReset(...)
           if s:nnn < 0
                let s:nnn = 0
           endif
-          echo s:local.repeat(' ', s:nnn).s:fbar
+          echo l:local.repeat(' ', s:nnn).s:fbar
           nnoremap <silent> <Insert>   <insert>
           nnoremap <silent> <Right>    <right>
           nnoremap <silent> <Left>     <left>
