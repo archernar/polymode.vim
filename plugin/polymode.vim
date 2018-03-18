@@ -1,4 +1,4 @@
-
+let s:polyeditmode = 0 
 let s:polyenabled = -1 
 let s:fbar = "" 
 let s:gfbar0 = "<F2> Next Window, <F3> Next Buffer, <F4> New ShellScript, <F5> Python, <F6> Command, <F7> MRU, <F8> UndoTree, <F9> PasteMode"
@@ -188,7 +188,7 @@ function! PolyMode(direction)
           let s:polyenabled = a:direction
      endif
      if s:polyenabled < 0 
-          let s:polyenabled = 20 
+          let s:polyenabled = 21 
      endif
      if s:polyenabled == 14 
           let s:polyenabled = 9 
@@ -329,7 +329,17 @@ function! PolyMode(direction)
           nnoremap <silent> <PageDown> :call Colorlet(-1)<cr>:echom @a<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled > 20 
+     if s:polyenabled == 21 
+          call KeyReset("Edit Mode Toggle")
+          if s:polyeditmode == 0 
+               s:polyeditmode = 1 
+          else 
+               s:polyeditmode = 0 
+          endif
+          echom s:polyeditmode 
+          return s:polyenabled 
+     endif
+     if s:polyenabled > 22 
           let s:polyenabled = -1 
           call KeyReset("Movement")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
