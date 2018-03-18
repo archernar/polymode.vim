@@ -63,7 +63,7 @@ function! KeyReset(...)
           if a:0 == 1 
                let l:szTemp = a:1
                if  s:polyeditmode == 1
-                    let l:szTemp = a:1 . " (edit mode on)" 
+                    let l:szTemp = a:1 . " (edit mode)" 
                endif
                let l:local = l:szTemp
           endif
@@ -72,7 +72,7 @@ function! KeyReset(...)
                let s:nnn = 0
           endif
           echo l:local.repeat(' ', s:nnn).s:fbar
-          nnoremap <silent> <Insert>   <insert>
+          nnoremap <silent> <Insert>   <Nop>
           nnoremap <silent> <Right>    <right>
           nnoremap <silent> <Left>     <left>
           nnoremap <silent> <Up>       <up>
