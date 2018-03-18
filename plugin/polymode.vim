@@ -5,7 +5,6 @@ let s:gfbar0 = "<F2> Next Window, <F3> Next Buffer, <F4> New ShellScript, <F5> P
 let s:gfbar1 = "OHHHH"
 let s:fbarct = -1 
 let s:poly2 = 0
-let s:coco = 81
 function! SetRegistersBE()
       let szIn = input('Set Prefix (@b): ')
       let @b = szIn
@@ -20,26 +19,6 @@ function! OpenNotes()
      let @x = join(readfile("/home/mestes/.vim/vimnotes","\n"))
      call PolyModeReset()
 endfunction
-function! CloseLibrary()
-     execute "b ~/.vim/vimscript.txt"
-     execute "bd"
-     execute "b ~/.vim/vimtutor.txt"
-     execute "bd"
-     execute "b ~/.vim/vimnotes"
-     execute "bd"
-     call PolyModeReset()
-endfunction
-
-function! OpenLibrary()
-    call MakeTempBuffer()
-    execute "edit ~/.vim/vimtutor.txt"
-    call LockTempBuffer()
-    "execute "botright split ~/.vim/vimscript.txt"
-    "execute "botright split ~/.vim/vimtutor.txt"
-    "execute "botright split ~/.vim/vimnotes"
-    "call PolyModeReset()
-endfunction
-
 function! PolyModeSourceVimrc()
           let s:polyenabled = 0
           source $MYVIMRC
@@ -83,9 +62,6 @@ function! KeyReset(...)
           nnoremap <silent> <End>  :call PolyModeReset()<cr>
           return s:polyenabled 
 endfunction
-function! PMR()
-          call PolyModeReset()
-endfunction
 function! PolyModeNERDTreeToggle()
           let s:polyenabled = -1
           NERDTreeToggle
@@ -108,17 +84,6 @@ function! SetHLSearchOff()
      set nohlsearch
      echo "HL Off"
 endfunction
-function! CoCoUp()
-     let s:coco += 1
-     execute "set colorcolumn=".s:coco
-     echo s:coco
-endfunction
-function! CoCoDown()
-     let s:coco -= 1
-     execute "set colorcolumn=".s:coco
-     echo s:coco
-endfunction
-
 function! PolyModeEditToggle()
           if s:polyeditmode == 0 
                let s:polyeditmode = 1 
