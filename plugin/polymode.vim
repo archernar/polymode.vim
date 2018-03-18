@@ -59,12 +59,15 @@ function! KeyReset(...)
           let s:fbar = g:help2
           let s:fbarct = -1
      endif
-          let s:local = ""
+          let l:local = ""
           if a:0 == 1 
-               let szTemp = a:1 . " " . s:polyeditmode  
-               let s:local = szTemp
+               let l:szTemp = a:1
+               if  s:polyeditmode == 1
+                    let l:szTemp = a:1 . " (edit mode on)" 
+               endif
+               let l:local = l:szTemp
           endif
-          let s:nnn = (&columns - ( len(s:fbar) + len(s:local) )) -3
+          let s:nnn = (&columns - ( len(s:fbar) + len(l:local) )) -3
           if s:nnn < 0
                let s:nnn = 0
           endif
