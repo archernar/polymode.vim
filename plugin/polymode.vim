@@ -332,9 +332,9 @@ function! PolyMode(direction)
      if s:polyenabled == 21 
           call KeyReset("Edit Mode Toggle")
           if s:polyeditmode == 0 
-               s:polyeditmode = 1 
+               let s:polyeditmode = 1 
           else 
-               s:polyeditmode = 0 
+               let s:polyeditmode = 0 
           endif
           echom s:polyeditmode 
           return s:polyenabled 
