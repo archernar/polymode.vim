@@ -68,14 +68,6 @@ function! PolyModeNERDTreeToggle()
           call PolyModeReset()
           return s:polyenabled 
 endfunction
-function! VimNotes()
-     echo system('cat ~/.vimnotes')
-     echo " "
-     echo "F2: Cycle Window, F3: Cycle Buffer, F4:Split Window, F5: Split Window, F10: Quit All, F12: Save and Build"
-     echo "<leader>p InstallPlugins! "
-     call PolyModeResetQuiet()
-     return 0
-endfunction
 function! SetHLSearchOn()
      set hlsearch
      echo "HL On"
@@ -110,20 +102,6 @@ endfunction
 
 function! PolyModeNull()
 endfunction
-function! Poly2Mode()
-     call PolyModeReset()
-     if s:poly2 == 0
-          let s:poly2 = 1
-          wincmd _
-          wincmd \|
-          return s:poly2 
-     endif
-     if s:poly2 == 1
-          let s:poly2 = 0
-          wincmd =
-          return s:poly2 
-     endif
-endfunction
 
 function! PolyMode(direction)
      if a:direction == -1
@@ -145,18 +123,9 @@ function! PolyMode(direction)
 
      if s:polyenabled == 0 
           call KeyReset("Help")
-          " With Help slected certain shortcut keys are enabled
-          " For Enhanced Zoom
-          nnoremap <silent> e :call PolyModeSet(2)<cr>
-          " For Vimscript Manual, usr_41.txt
-          " nnoremap <silent> m :call PolyModeSet(4)<cr>
-          " For NERDTree
-          nnoremap <silent> n :call PolyModeSet(10)<cr>
-          " For Buffergator
-          nnoremap <silent> b :call PolyModeSet(16)<cr>
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown> :call OpenMyNotes()<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimnotes")<cr>
+          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimnotes")<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 1 
@@ -220,10 +189,10 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 8 
-          call KeyReset("R3: VimNotes (edit mode)")
+          call KeyReset("R3: .vimrc  (edit mode)")
           nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimnotes")<cr>
-          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimnotes")<cr>
+          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimrc")<cr>
+          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimrc)<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 8
