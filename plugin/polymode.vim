@@ -186,7 +186,7 @@ function! PolyMode(direction)
           nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimrc)<cr>
           return s:polyenabled
      endif
-     if s:polyenabled == 8
+     if s:polyenabled == 9
           let s:polyenabled = 10 
      endif
      if s:polyenabled == 10 
