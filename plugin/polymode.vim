@@ -160,47 +160,34 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 4 
-          call KeyReset("R0: Vimscript Manual")
+          call KeyReset("Vimscript Manual")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp> :call OpenInTempBuffer("~/.usr_41.txt")<cr>
-          nnoremap <silent> <PageDown> :call OpenInTempBuffer("~/.usr_41.txt")<cr>
+          nnoremap <silent> <PageUp> :call OpenInTempBuffer("~/.vimscript.txt")<cr>
+          nnoremap <silent> <PageDown> :call OpenInTempBuffer("~/.vimscript.txt")<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 5 
-          call KeyReset("R0: Vim Key Maps")
+          call KeyReset("Vim Key Maps")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call VimKeyMap()<cr>:call OpenInTempBuffer("~/.vimkeymap.txt")<cr>
           nnoremap <silent> <PageDown> :call VimKeyMap()<cr>:call OpenInTempBuffer("~/.vimkeymap.txt")<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 6 
-          call KeyReset("R1: VimTutor")
-          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp> :call OpenInTempBuffer("~/.vimtutor.txt")<cr>
-          nnoremap <silent> <PageDown> :call OpenInTempBuffer("~/.vimtutor.txt")<cr>
-          return s:polyenabled
+          s:polyenabled = 7 
      endif
-
      if s:polyenabled == 7 
-          call KeyReset("R2: VimScript")
-          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp> :call OpenInTempBuffer("~/.vimscript.txt")<cr>
-          nnoremap <silent> <PageDown> :call OpenInTempBuffer("~/.vimscript.txt")<cr>
-          return s:polyenabled
+          s:polyenabled = 8 
      endif
      if s:polyenabled == 8 
-          call KeyReset("R3: .vimrc  (edit mode)")
+          call KeyReset(".vimrc  (edit mode)")
           nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimrc")<cr>
           nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimrc)<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 8
-          call KeyReset("R4: VimScript Help")
-          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>      :call OpenInTempBuffer("~/.vimscript.txt")<cr>
-          nnoremap <silent> <PageDown>    :call OpenInTempBuffer("~/.vimscript.txt")<cr>
-          return s:polyenabled
+          s:polyenabled = 10 
      endif
      if s:polyenabled == 10 
           call KeyReset("Vim Tutor Text")
