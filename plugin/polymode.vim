@@ -174,10 +174,10 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 6 
-          s:polyenabled = 7 
+          let s:polyenabled = 7 
      endif
      if s:polyenabled == 7 
-          s:polyenabled = 8 
+          let s:polyenabled = 8 
      endif
      if s:polyenabled == 8 
           call KeyReset(".vimrc  (edit mode)")
@@ -187,7 +187,7 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 8
-          s:polyenabled = 10 
+          let s:polyenabled = 10 
      endif
      if s:polyenabled == 10 
           call KeyReset("Vim Tutor Text")
