@@ -149,7 +149,7 @@ function! PolyMode(direction)
           " For Enhanced Zoom
           nnoremap <silent> e :call PolyModeSet(2)<cr>
           " For Vimscript Manual, usr_41.txt
-          nnoremap <silent> m :call PolyModeSet(4)<cr>
+          " nnoremap <silent> m :call PolyModeSet(4)<cr>
           " For NERDTree
           nnoremap <silent> n :call PolyModeSet(10)<cr>
           " For Buffergator
