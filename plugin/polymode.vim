@@ -130,9 +130,9 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 1 
           call KeyReset("Toggle Folds")
-          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   :zi<cr>:call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown>   :zi<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
+          nnoremap <silent> <PageUp>   zi:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown> zi:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 2 
