@@ -117,7 +117,7 @@ function! PolyMode(direction)
           let s:polyenabled = 21 
      endif
      if s:polyenabled == 14 
-          let s:polyenabled = 11 
+          let s:polyenabled = 10 
      endif
 
 
@@ -129,13 +129,20 @@ function! PolyMode(direction)
           return s:polyenabled 
      endif
      if s:polyenabled == 1 
+          call KeyReset("NERDTree")
+          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
+          nnoremap <silent> <PageUp>   :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown> :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
+          return s:polyenabled
+     endif
+     if s:polyenabled == 2 
           call KeyReset("Toggle Folds")
           nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>   zi:call PolyModeReset()<cr>
           nnoremap <silent> <PageDown> zi:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 2 
+     if s:polyenabled == 3 
           call KeyReset("Split")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>   <C-w>s:call PolyModeNull()<cr><C-W>w
@@ -145,7 +152,7 @@ function! PolyMode(direction)
           nnoremap <silent> <Delete>  :close<cr>:call PolyModeNull()<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 3 
+     if s:polyenabled == 4 
           call KeyReset("Enhanced Zoom")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :wincmd _<cr>:wincmd \|<cr>:call PolyModeReset()<cr>
@@ -159,29 +166,26 @@ function! PolyMode(direction)
           nnoremap <silent> <Down>  :wincmd =<cr>:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled == 4 
+     if s:polyenabled == 5 
           call KeyReset("Close Window")
-          nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>    :close<cr>:call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown>  :close<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
+          nnoremap <silent> <PageUp>   :close<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageDown> :close<cr>:call PolyModeReset()<cr>
           return s:polyenabled
      endif
-     if s:polyenabled == 5 
+     if s:polyenabled == 6 
           call KeyReset("Vimscript Manual")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call OpenInTempBuffer("~/.vimscript.txt")<cr>
           nnoremap <silent> <PageDown> :call OpenInTempBuffer("~/.vimscript.txt")<cr>
           return s:polyenabled
      endif
-     if s:polyenabled == 6 
+     if s:polyenabled == 7 
           call KeyReset("Vim Key Maps")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call VimKeyMap()<cr>:call OpenInTempBuffer("~/.vimkeymap.txt")<cr>
           nnoremap <silent> <PageDown> :call VimKeyMap()<cr>:call OpenInTempBuffer("~/.vimkeymap.txt")<cr>
           return s:polyenabled
-     endif
-     if s:polyenabled == 7 
-          let s:polyenabled = 8 
      endif
      if s:polyenabled == 8 
           call KeyReset(".vimrc  (edit mode)")
@@ -201,13 +205,6 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 11 
-          call KeyReset("NERDTree")
-          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown> :call PolyModeNERDTreeToggle()<cr>:call PolyModeReset()<cr>
-          return s:polyenabled
-     endif
-     if s:polyenabled == 12 
           let s:polyenabled = 15
      endif
 
