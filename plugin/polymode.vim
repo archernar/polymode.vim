@@ -124,8 +124,8 @@ function! PolyMode(direction)
      if s:polyenabled == 0 
           call KeyReset("Help")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimnotes")<cr>:wincmd o<cr>
-          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimnotes")<cr>:wincmd o<cr>
+          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimnotes")<cr>:wincmd o<cr>:normal zi<cr>
+          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimnotes")<cr>:wincmd o<cr>:normal zi<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 1 
