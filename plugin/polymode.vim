@@ -183,8 +183,8 @@ function! PolyMode(direction)
      if s:polyenabled == 7 
           call KeyReset("Edit .vimrc")
           nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimrc")<cr>
-          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimrc)<cr>
+          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimrc")<cr>:normal zR<cr>:resize +15<cr>
+          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimrc")<cr>:normal zR<cr>:resize +15<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 8 
@@ -200,8 +200,8 @@ function! PolyMode(direction)
      if s:polyenabled == 10 
           call KeyReset("Vim Tutor Text")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>    :edit ~/.vimtutor.txt<cr>:call PolyModeReset()<cr>
-          nnoremap <silent> <PageDown>  :edit ~/.vimtutor.txt<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimtutor")<cr>:normal zR<cr>:resize +15<cr>
+          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimtutor")<cr>:normal zR<cr>:resize +15<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 11 
