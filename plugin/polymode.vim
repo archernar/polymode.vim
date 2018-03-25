@@ -181,17 +181,17 @@ function! PolyMode(direction)
           return s:polyenabled
      endif
      if s:polyenabled == 7 
+          call KeyReset("Edit .vimrc")
+          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
+          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimrc")<cr>
+          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimrc)<cr>
+          return s:polyenabled
+     endif
+     if s:polyenabled == 8 
           call KeyReset("Vim Key Maps")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp> :call VimKeyMap()<cr>:call OpenInTempBuffer("~/.vimkeymap.txt")<cr>
           nnoremap <silent> <PageDown> :call VimKeyMap()<cr>:call OpenInTempBuffer("~/.vimkeymap.txt")<cr>
-          return s:polyenabled
-     endif
-     if s:polyenabled == 8 
-          call KeyReset(".vimrc  (edit mode)")
-          nnoremap <silent> <Insert>   :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   :call EditInTempBuffer("~/.vimrc")<cr>
-          nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimrc)<cr>
           return s:polyenabled
      endif
      if s:polyenabled == 9
@@ -257,7 +257,7 @@ function! PolyMode(direction)
           nnoremap <silent> <PageDown> :call PolyModeEditToggle()<cr>:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
-     if s:polyenabled > 22 
+     if s:polyenabled > 21 
           let s:polyenabled = -1 
           call KeyReset("Movement")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
