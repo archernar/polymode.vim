@@ -145,11 +145,11 @@ function! PolyMode(direction)
      if s:polyenabled == 2 
           call KeyReset("Split")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   <C-w>s:call PolyModeNull()<cr><C-W>w
-          nnoremap <silent> <PageDown> <C-w>v:call PolyModeNull()<cr><C-W>w
-          nnoremap <silent> <leader><PageUp>    :close<cr>:call PolyModeNull()<cr>
-          nnoremap <silent> <leader><PageDown>  :close<cr>:call PolyModeNull()<cr>
-          nnoremap <silent> <Delete>  :close<cr>:call PolyModeNull()<cr>
+          nnoremap <silent> <PageUp>   <C-w>s:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <PageDown> <C-w>v:call PolyModeReset()<cr><C-W>w
+          nnoremap <silent> <leader><PageUp>    :close<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <leader><PageDown>  :close<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <Delete>  :close<cr>:call PolyModeReset()<cr>
           return s:polyenabled 
      endif
      if s:polyenabled == 3 
