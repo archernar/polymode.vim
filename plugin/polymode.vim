@@ -151,7 +151,7 @@ function! PolyMode(direction)
      if s:polyenabled == 2 
           call KeyReset("Split & Close Mode        <End> to exit mode")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   <C-w>s:call PromptAndEdit()<cr>
+          nnoremap <silent> <PageUp>   <C-w>s<C-w>w:call PromptAndEdit()<cr>
           nnoremap <silent> <PageDown> <C-w>v:call PolyModeReset()<cr><C-W>w
           nnoremap <silent> <leader><PageUp>    :close<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <leader><PageDown>  :close<cr>:call PolyModeReset()<cr>
