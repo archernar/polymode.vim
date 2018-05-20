@@ -26,6 +26,19 @@ function! PolyModeSourceVimrc()
           return s:polyenabled 
 endfunction
 
+function! MapReset()
+          nnoremap <silent> <Insert>   <Nop>
+          nnoremap <silent> <Right>    <right>
+          nnoremap <silent> <Left>     <left>
+          nnoremap <silent> <Up>       <up>
+          nnoremap <silent> <Down>     <down>
+          nnoremap <silent> <PageUp>   <pageup>
+          nnoremap <silent> <PageDown> <pagedown>
+          nnoremap <silent> <Delete>   <delete>
+          nnoremap <silent> <End>  :call PolyModeReset()<cr>
+          return s:polyenabled 
+endfunction
+
 function! KeyReset(...)
      let s:fbarct = s:fbarct + 1
      if   s:fbarct == 0  
@@ -104,7 +117,7 @@ function! PromptAndEdit()
      let szIn = input('Edit File>> ')
      execute "edit ". szIn
      let s:polyenabled = -1
-     call KeyReset("Polymode (key reset)")
+     call MapReset()
 endfunction
 
 function! PolyModeNull()
