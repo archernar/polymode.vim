@@ -103,7 +103,7 @@ endfunction
 function! PromptAndEdit()
      let szIn = input('Edit File>> ')
      execute "edit ". szIn
-     call PolyModeReset()
+     call PolyModeNull()
 endfunction
 
 function! PolyModeNull()
