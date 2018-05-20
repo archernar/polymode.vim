@@ -100,6 +100,12 @@ function! PolyModeSet(...)
      call PolyMode(0)
 endfunction
 
+function! PromptAndEdit()
+     let szIn = input('Edit File>> ')
+     execute "edit ". szIn
+     call PolyModeReset()
+endfunction
+
 function! PolyModeNull()
 endfunction
 
@@ -145,7 +151,7 @@ function! PolyMode(direction)
      if s:polyenabled == 2 
           call KeyReset("Split & Close Mode        <End> to exit mode")
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-          nnoremap <silent> <PageUp>   <C-w>s:call PromptAndEdit()<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> <PageUp>   <C-w>s:call PromptAndEdit()<cr>
           nnoremap <silent> <PageDown> <C-w>v:call PolyModeReset()<cr><C-W>w
           nnoremap <silent> <leader><PageUp>    :close<cr>:call PolyModeReset()<cr>
           nnoremap <silent> <leader><PageDown>  :close<cr>:call PolyModeReset()<cr>
