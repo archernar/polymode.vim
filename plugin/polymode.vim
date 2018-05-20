@@ -103,7 +103,8 @@ endfunction
 function! PromptAndEdit()
      let szIn = input('Edit File>> ')
      execute "edit ". szIn
-     call PolyModeNull()
+     let s:polyenabled = -1
+     call KeyReset("Polymode (key reset)")
 endfunction
 
 function! PolyModeNull()
