@@ -39,18 +39,6 @@ function! PolyModeSourceVimrc()
           return s:polyenabled 
 endfunction
 
-function! MapReset()
-          nnoremap <silent> <Insert>   <Nop>
-          nnoremap <silent> <Right>    <right>
-          nnoremap <silent> <Left>     <left>
-          nnoremap <silent> <Up>       <up>
-          nnoremap <silent> <Down>     <down>
-          nnoremap <silent> <PageUp>   <pageup>
-          nnoremap <silent> <PageDown> <pagedown>
-          nnoremap <silent> <Delete>   <delete>
-          nnoremap <silent> <End>  :call PolyModeReset()<cr>
-          return s:polyenabled 
-endfunction
 
 function! KeyReset(...)
      let s:fbarct = s:fbarct + 1
@@ -79,15 +67,17 @@ function! KeyReset(...)
           if a:0 > 0 
                echo l:local.repeat(' ', s:nnn).s:fbar
           endif
-          nnoremap <silent> <Insert>   <Nop>
-          nnoremap <silent> <Right>    <right>
-          nnoremap <silent> <Left>     <left>
-          nnoremap <silent> <Up>       <up>
-          nnoremap <silent> <Down>     <down>
-          nnoremap <silent> <PageUp>   <pageup>
-          nnoremap <silent> <PageDown> <pagedown>
-          nnoremap <silent> <Delete>   <delete>
-          nnoremap <silent> <End>  :call PolyModeReset()<cr>
+            call  MapReset()
+"           nnoremap <silent> r r
+"           nnoremap <silent> <Insert>   <Nop>
+"           nnoremap <silent> <Right>    <right>
+"           nnoremap <silent> <Left>     <left>
+"           nnoremap <silent> <Up>       <up>
+"           nnoremap <silent> <Down>     <down>
+"           nnoremap <silent> <PageUp>   <pageup>
+"           nnoremap <silent> <PageDown> <pagedown>
+"           nnoremap <silent> <Delete>   <delete>
+"           nnoremap <silent> <End>  :call PolyModeReset()<cr>
           return s:polyenabled 
 endfunction
 function! PolyModeNERDTreeToggle()
@@ -119,7 +109,7 @@ function! PolyModeResetQuiet()
 endfunction
 function! PolyModeReset()
           let s:polyenabled = -1
-          call KeyReset("Polymode (key reset)")
+          call KeyReset("Polymode Disabled (keys reset)")
           return s:polyenabled 
 endfunction
 
@@ -154,6 +144,25 @@ function! RegiMode()
      endif
 endfunction
 
+function! MapReset()
+          nnoremap <F1> <C-W>w:call PolyModeReset()<cr>
+          nnoremap <F2> <C-W>w:call PolyModeReset()<cr>
+          nnoremap <F3> :bnext<CR>:call PolyModeReset()<cr>
+          nnoremap <silent> r r
+          nnoremap <silent> v v
+          nnoremap <silent> s s
+          nnoremap <silent> e e
+          nnoremap <silent> <Insert>   <Nop>
+          nnoremap <silent> <Right>    <right>
+          nnoremap <silent> <Left>     <left>
+          nnoremap <silent> <Up>       <up>
+          nnoremap <silent> <Down>     <down>
+          nnoremap <silent> <PageUp>   <pageup>
+          nnoremap <silent> <PageDown> <pagedown>
+          nnoremap <silent> <Delete>   <delete>
+          nnoremap <silent> <End>  :call PolyModeReset()<cr>
+          return s:polyenabled 
+endfunction
 
 function! PolyMode(direction)
      if a:direction == -1
@@ -174,7 +183,11 @@ function! PolyMode(direction)
 
 
      if s:polyenabled == 0 
-          call KeyReset("Help")
+          call KeyReset("Polymode - End to exit")
+          nnoremap <silent> r <C-w>r
+          nnoremap <silent> v :vnew<cr>
+          nnoremap <silent> s :new<cr>
+          nnoremap <silent> e <C-w>v<C-w>w:call PromptAndEdit()<cr>
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>   :call OpenInTempBuffer("~/.vimnotes")<cr>:normal zR<cr>:resize +15<cr>
           "nnoremap <silent> <PageDown> :call EditInTempBuffer("~/.vimnotes")<cr>:normal zR<cr>:resize +15<cr>
