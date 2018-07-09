@@ -107,7 +107,7 @@ function! PolyModeEditToggle()
 endfunction
 function! PolyModeResetQuiet()
           let s:polyenabled = -1
-          call KeyReset()
+          call KeyReset("")
           return s:polyenabled 
 endfunction
 function! PolyModeReset()
@@ -167,7 +167,17 @@ function! PolyMode(direction)
 
 
      if s:polyenabled == 0 
-          call KeyReset("Polymode On (End to exit)", "r v s e")
+          call KeyReset("Polymode On (End to exit)", "r v s e o O b")
+          nnoremap <silent> 0 :Obsess!<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> 1 :Obsess ~/vimsessions/session_1.vim<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> 2 :Obsess ~/vimsessions/session_2.vim<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> 3 :Obsess ~/vimsessions/session_3.vim<cr>:call PolyModeReset()<cr>
+
+
+          nnoremap <silent> o :Obsess ~/vimsessions/session.vim<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> O :Obsess!<cr>:call PolyModeReset()<cr>
+
+          nnoremap <silent> b :call PolyModeResetQuiet()<cr>:BuffergatorToggle<cr>
           nnoremap <silent> r <C-w>r:call PolyModeReset()<cr>
           nnoremap <silent> v :vnew<cr>:call PolyModeReset()<cr>
           nnoremap <silent> s :new<cr>:call PolyModeReset()<cr>
