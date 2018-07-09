@@ -46,15 +46,18 @@ function! KeyReset(...)
           let s:fbar = g:help0
      endif
      if   s:fbarct == 1  
-          let s:fbar = g:help1
+          let s:fbar = g:help0
      endif
      if   s:fbarct == 2  
-          let s:fbar = g:help2
+          let s:fbar = g:help0
           let s:fbarct = -1
      endif
           let l:local = ""
-          if a:0 == 1 
+          if a:0 > 0 
                let l:szTemp = a:1
+               if a:0 > 1 
+                    let l:szTemp = a:1 . "  (" . a:2 . ") "
+               endif
                if  s:polyeditmode == 1
                     let l:szTemp = a:1 . " (edit mode)" 
                endif
@@ -67,7 +70,7 @@ function! KeyReset(...)
           if a:0 > 0 
                echo l:local.repeat(' ', s:nnn).s:fbar
           endif
-            call  MapReset()
+            call  PolyModeMapReset()
 "           nnoremap <silent> r r
 "           nnoremap <silent> <Insert>   <Nop>
 "           nnoremap <silent> <Right>    <right>
@@ -122,7 +125,7 @@ function! PromptAndEdit()
      let szIn = input('Edit File>> ')
      execute "edit ". szIn
      let s:polyenabled = -1
-     call MapReset()
+     call PolyModeMapReset()
 endfunction
 
 function! PolyModeNull()
@@ -144,25 +147,6 @@ function! RegiMode()
      endif
 endfunction
 
-function! MapReset()
-          nnoremap <F1> <C-W>w:call PolyModeReset()<cr>
-          nnoremap <F2> <C-W>w:call PolyModeReset()<cr>
-          nnoremap <F3> :bnext<CR>:call PolyModeReset()<cr>
-          nnoremap <silent> r r
-          nnoremap <silent> v v
-          nnoremap <silent> s s
-          nnoremap <silent> e e
-          nnoremap <silent> <Insert>   <Nop>
-          nnoremap <silent> <Right>    <right>
-          nnoremap <silent> <Left>     <left>
-          nnoremap <silent> <Up>       <up>
-          nnoremap <silent> <Down>     <down>
-          nnoremap <silent> <PageUp>   <pageup>
-          nnoremap <silent> <PageDown> <pagedown>
-          nnoremap <silent> <Delete>   <delete>
-          nnoremap <silent> <End>  :call PolyModeReset()<cr>
-          return s:polyenabled 
-endfunction
 
 function! PolyMode(direction)
      if a:direction == -1
@@ -183,7 +167,7 @@ function! PolyMode(direction)
 
 
      if s:polyenabled == 0 
-          call KeyReset("Polymode - End to exit")
+          call KeyReset("Polymode - End to exit", "r v s e")
           nnoremap <silent> r <C-w>r
           nnoremap <silent> v :vnew<cr>
           nnoremap <silent> s :new<cr>
