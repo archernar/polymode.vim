@@ -112,7 +112,7 @@ function! PolyModeResetQuiet()
 endfunction
 function! PolyModeReset()
           let s:polyenabled = -1
-          call KeyReset("Polymode Disabled (keys reset)")
+          call KeyReset("Polymode Off (keys reset)")
           return s:polyenabled 
 endfunction
 
@@ -167,10 +167,10 @@ function! PolyMode(direction)
 
 
      if s:polyenabled == 0 
-          call KeyReset("Polymode - End to exit", "r v s e")
-          nnoremap <silent> r <C-w>r
-          nnoremap <silent> v :vnew<cr>
-          nnoremap <silent> s :new<cr>
+          call KeyReset("Polymode On (End to exit)", "r v s e")
+          nnoremap <silent> r <C-w>r:call PolyModeReset()<cr>
+          nnoremap <silent> v :vnew<cr>:call PolyModeReset()<cr>
+          nnoremap <silent> s :new<cr>:call PolyModeReset()<cr>
           nnoremap <silent> e <C-w>v<C-w>w:call PromptAndEdit()<cr>
           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
           nnoremap <silent> <PageUp>   :call OpenInTempBuffer("~/.vimnotes")<cr>:normal zR<cr>:resize +15<cr>
