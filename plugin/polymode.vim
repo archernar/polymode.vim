@@ -19,6 +19,11 @@ let s:gfbar0 = "<F2> Next Window, <F3> Next Buffer, <F4> New ShellScript, <F5> P
 let s:gfbar1 = "OHHHH"
 let s:fbarct = -1 
 let s:poly2 = 0
+
+function! PolyModeVersion()
+     echo "PolyMode Version 1.0"
+endfunction
+
 function! SetRegistersBE()
       let szIn = input('Set Prefix (@b): ')
       let @b = szIn
