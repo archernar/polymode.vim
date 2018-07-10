@@ -1,2 +1,0 @@
-rm -f ~/.vim/bundle/polymode.vim/plugin/polymode.vim
-cp polymode.vim ~/.vim/bundle/polymode.vim/plugin
