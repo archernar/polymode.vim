@@ -171,7 +171,8 @@ function! PolyMode(direction)
           let s:polyenabled = 9 
      endif
      if s:polyenabled == 0 
-          call KeyReset("Polymode On (End to exit)", "r v s e b n")
+          call KeyReset("Polymode On (End to exit)", "r v s e b n 3")
+           nnoremap <silent> 3 :call PolyModeResetQuiet()<cr>:set relativenumber!<cr>
            nnoremap <silent> n :call PolyModeResetQuiet()<cr>:NERDTreeToggle<cr>
            nnoremap <silent> b :call PolyModeResetQuiet()<cr>:BuffergatorToggle<cr>
            nnoremap <silent> r <C-w>r:call PolyModeReset()<cr>
