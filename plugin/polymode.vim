@@ -176,7 +176,7 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 0 
           call KeyReset("Polymode On (End to exit)", "r v s e b n 3 g")
-           nnoremap <silent> <expr> g (g:greppy_mode_active == 1) ? ':call Greppyon(1)<cr>' : ':call Greppyoff()<cr>'
+           nnoremap <silent> <expr> g (g:greppy_mode_active == 0) ? ':call Greppyon(1)<cr>' : ':call Greppyoff()<cr>'
            nnoremap <silent> 3 :call PolyModeResetQuiet()<cr>:set relativenumber!<cr>
            nnoremap <silent> n :call PolyModeResetQuiet()<cr>:NERDTreeToggle<cr>
            nnoremap <silent> b :call PolyModeResetQuiet()<cr>:BuffergatorToggle<cr>
