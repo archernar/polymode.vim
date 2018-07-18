@@ -186,8 +186,8 @@ function! PolyMode(direction)
            nnoremap <silent> n :call PolyModeResetQuiet()<cr>:NERDTreeToggle<cr>
            nnoremap <silent> b :call PolyModeResetQuiet()<cr>:BuffergatorToggle<cr>
            nnoremap <silent> r <C-w>r:call PolyModeReset()<cr>
-           nnoremap <silent> v :vnew<cr>:call PolyModeReset()<cr>
-           nnoremap <silent> s :new<cr>:call PolyModeReset()<cr>
+           nnoremap <silent> v :call PolyModeResetQuiet()<cr>:vnew<cr>
+           nnoremap <silent> s :call PolyModeResetQuiet()<cr>:new<cr>
            nnoremap <silent> e <C-w>v<C-w>w:call PromptAndEdit()<cr>
            nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
            nnoremap <silent> <PageUp>   :call OpenInTempBuffer("~/.vimnotes")<cr>:normal zR<cr>:resize +15<cr>
