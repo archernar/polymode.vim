@@ -159,6 +159,9 @@ function! RegiMode()
      endif
 endfunction
 
+function! MasterMapper(...)
+           execute a:1
+endfunction
 
 function! PolyMode(direction)
      if a:direction == -1
@@ -178,6 +181,7 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 0 
           call KeyReset("Polymode On (End to exit)", "r v s e b n 3 a p k")
+           call MasterMapper("nnoremap <silent> t :call PolyModeResetQuiet()<cr> :tabnew<cr>")
            nnoremap <silent> t :call PolyModeResetQuiet()<cr> :tabnew<cr>
            nnoremap <silent> k :call PolyModeResetQuiet()<cr>:close<cr>:echom "Closed"<cr>
            nnoremap <silent> p :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>
