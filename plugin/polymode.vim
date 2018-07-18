@@ -119,22 +119,12 @@ function! PolyModeResetQuiet()
           let s:polyenabled = -1
           call KeyReset("")
           execute "ccl"
-          for win in range(1, winnr('$'))
-             if getwinvar(win, 'scratch')
-                  execute win . 'windo close'
-             endif
-          endfor
           return s:polyenabled 
 endfunction
 function! PolyModeReset()
           let s:polyenabled = -1
           call KeyReset("Polymode Off (keys reset)")
           execute "ccl"
-          for win in range(1, winnr('$'))
-             if getwinvar(win, 'scratch')
-                  execute win . 'windo close'
-             endif
-          endfor
           return s:polyenabled 
 endfunction
 
