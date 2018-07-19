@@ -12,6 +12,7 @@
 " README.md End
 " 
 " 
+let g:polymode_loaded = 1 
 let s:polyeditmode = 0 
 let s:polyenabled = -1 
 let s:fbar = "" 
