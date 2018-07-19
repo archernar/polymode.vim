@@ -163,6 +163,24 @@ function! MasterMapper(...)
            execute a:1
 endfunction
 
+function! PolyModeZeroMappings()
+           call g:MyKeyMapper("nnoremap <silent> m :call PolyModeResetQuiet()<cr>:vnew<cr>","v new")
+           call g:MyKeyMapper("nnoremap <silent> t :call PolyModeResetQuiet()<cr> :tabnew<cr>","Tab New")
+           call g:MyKeyMapper("nnoremap <silent> k :call PolyModeResetQuiet()<cr>:close<cr>:echom 'Closed'<cr>","Close Window")
+           call g:MyKeyMapper("nnoremap <silent> p :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>","Greppy Mode One")
+           call g:MyKeyMapper("nnoremap <silent> a :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>","Greppy Mode Two")
+           call g:MyKeyMapper("nnoremap <silent> 3 :call PolyModeResetQuiet()<cr>:set relativenumber!<cr>","Relative Numbering Toggle")
+           call g:MyKeyMapper("nnoremap <silent> n :call PolyModeResetQuiet()<cr>:NERDTreeToggle<cr>","NERD Tree")
+           call g:MyKeyMapper("nnoremap <silent> b :call PolyModeResetQuiet()<cr>:BuffergatorToggle<cr>","Buffergator")
+           call g:MyKeyMapper("nnoremap <silent> r <C-w>r:call PolyModeReset()<cr>","")
+           call g:MyKeyMapper("nnoremap <silent> v :call PolyModeResetQuiet()<cr>:vnew<cr>","Vertical")
+           call g:MyKeyMapper("nnoremap <silent> s :call PolyModeResetQuiet()<cr>:new<cr>","Horozontal")
+           call g:MyKeyMapper("nnoremap <silent> e <C-w>v<C-w>w:call PromptAndEdit()<cr>","Prompt and Edit")
+           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
+           nnoremap <silent> <PageUp>   :call OpenInTempBuffer("~/.vimnotes")<cr>:normal zR<cr>:resize +15<cr>
+           nnoremap <silent> <PageDown> :call RegiMode()<cr>:call PolyModeResetQuiet()<cr>
+endfunction
+
 function! PolyMode(direction)
      if a:direction == -1
           let s:polyenabled = s:polyenabled + 1
@@ -181,21 +199,7 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 0 
           call KeyReset("Polymode On (End to exit)", "r v s e b n 3 a p k")
-           call g:MyKeyMapper("nnoremap <silent> m :call PolyModeResetQuiet()<cr>:vnew<cr>","v new")
-           call g:MyKeyMapper("nnoremap <silent> t :call PolyModeResetQuiet()<cr> :tabnew<cr>","Tab New")
-           call g:MyKeyMapper("nnoremap <silent> k :call PolyModeResetQuiet()<cr>:close<cr>:echom 'Closed'<cr>","Close Window")
-            call g:MyKeyMapper("nnoremap <silent> p :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>","Greppy Mode One")
-            call g:MyKeyMapper("nnoremap <silent> a :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>","Greppy Mode Two")
-            call g:MyKeyMapper("nnoremap <silent> 3 :call PolyModeResetQuiet()<cr>:set relativenumber!<cr>","Relative Numbering Toggle")
-            call g:MyKeyMapper("nnoremap <silent> n :call PolyModeResetQuiet()<cr>:NERDTreeToggle<cr>","NERD Tree")
-            call g:MyKeyMapper("nnoremap <silent> b :call PolyModeResetQuiet()<cr>:BuffergatorToggle<cr>","Buffergator")
-            call g:MyKeyMapper("nnoremap <silent> r <C-w>r:call PolyModeReset()<cr>","")
-            call g:MyKeyMapper("nnoremap <silent> v :call PolyModeResetQuiet()<cr>:vnew<cr>","Vertical")
-            call g:MyKeyMapper("nnoremap <silent> s :call PolyModeResetQuiet()<cr>:new<cr>","Horozontal")
-            call g:MyKeyMapper("nnoremap <silent> e <C-w>v<C-w>w:call PromptAndEdit()<cr>","Prompt and Edit")
-           nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
-           nnoremap <silent> <PageUp>   :call OpenInTempBuffer("~/.vimnotes")<cr>:normal zR<cr>:resize +15<cr>
-           nnoremap <silent> <PageDown> :call RegiMode()<cr>:call PolyModeResetQuiet()<cr>
+          call PolyModeZeroMappings()
           return s:polyenabled 
      endif
      if s:polyenabled == 1 
