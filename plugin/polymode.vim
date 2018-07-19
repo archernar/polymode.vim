@@ -181,18 +181,18 @@ function! PolyMode(direction)
      endif
      if s:polyenabled == 0 
           call KeyReset("Polymode On (End to exit)", "r v s e b n 3 a p k")
-           call MasterMapper("nnoremap <silent> m :call PolyModeResetQuiet()<cr>:vnew<cr>")
-           nnoremap <silent> t :call PolyModeResetQuiet()<cr> :tabnew<cr>
-           nnoremap <silent> k :call PolyModeResetQuiet()<cr>:close<cr>:echom "Closed"<cr>
-           nnoremap <silent> p :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>
-           nnoremap <silent> a :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>
-           nnoremap <silent> 3 :call PolyModeResetQuiet()<cr>:set relativenumber!<cr>
-           nnoremap <silent> n :call PolyModeResetQuiet()<cr>:NERDTreeToggle<cr>
-           nnoremap <silent> b :call PolyModeResetQuiet()<cr>:BuffergatorToggle<cr>
-           nnoremap <silent> r <C-w>r:call PolyModeReset()<cr>
-           nnoremap <silent> v :call PolyModeResetQuiet()<cr>:vnew<cr>
-           nnoremap <silent> s :call PolyModeResetQuiet()<cr>:new<cr>
-           nnoremap <silent> e <C-w>v<C-w>w:call PromptAndEdit()<cr>
+           call MyKeyMapper("nnoremap <silent> m :call PolyModeResetQuiet()<cr>:vnew<cr>","v new")
+           call MyKeyMapper("nnoremap <silent> t :call PolyModeResetQuiet()<cr> :tabnew<cr>","Tab New")
+           call MyKeyMapper("nnoremap <silent> k :call PolyModeResetQuiet()<cr>:close<cr>:echom "Closed"<cr>","Close Window")
+           call MyKeyMapper("nnoremap <silent> p :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>","Greppy Mode One")
+           call MyKeyMapper("nnoremap <silent> a :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>","Greppy Mode Two")
+           call MyKeyMapper("nnoremap <silent> 3 :call PolyModeResetQuiet()<cr>:set relativenumber!<cr>","Relative Numbering Toggle")
+           call MyKeyMapper("nnoremap <silent> n :call PolyModeResetQuiet()<cr>:NERDTreeToggle<cr>","NERD Tree")
+           call MyKeyMapper("nnoremap <silent> b :call PolyModeResetQuiet()<cr>:BuffergatorToggle<cr>","Buffergator")
+           call MyKeyMapper("nnoremap <silent> r <C-w>r:call PolyModeReset()<cr>","")
+           call MyKeyMapper("nnoremap <silent> v :call PolyModeResetQuiet()<cr>:vnew<cr>","Vertical")
+           call MyKeyMapper("nnoremap <silent> s :call PolyModeResetQuiet()<cr>:new<cr>","Horozontal")
+           call MyKeyMapper("nnoremap <silent> e <C-w>v<C-w>w:call PromptAndEdit()<cr>","Prompt and Edit")
            nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
            nnoremap <silent> <PageUp>   :call OpenInTempBuffer("~/.vimnotes")<cr>:normal zR<cr>:resize +15<cr>
            nnoremap <silent> <PageDown> :call RegiMode()<cr>:call PolyModeResetQuiet()<cr>
