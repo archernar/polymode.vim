@@ -128,6 +128,10 @@ function! PolyModeReset()
           execute "ccl"
           return s:polyenabled 
 endfunction
+function! PMR()
+          call PolyModeReset()
+          return s:polyenabled 
+endfunction
 
 function! PolyModeSet(...)
      let s:polyenabled = a:1 
