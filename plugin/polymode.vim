@@ -183,6 +183,7 @@ function! PolyModeZeroMappings()
            call g:MyKeyMapper("nnoremap <silent> q :call PolyModeResetQuiet()<cr>:copen<cr>","QuickFix Open")
            call g:MyKeyMapper("nnoremap <silent> r <C-w>r:call PolyModeReset()<cr>","")
            call g:MyKeyMapper("nnoremap <silent> v :call PolyModeResetQuiet()<cr>:vnew<cr>","Vertical")
+           call g:MyKeyMapper("nnoremap <silent> w :call PolyModeResetQuiet()<cr>:set wrap!<cr>","Toggle line wrap (set wrap)")
            call g:MyKeyMapper("nnoremap <silent> s :call PolyModeResetQuiet()<cr>:new<cr>","Horozontal")
            call g:MyKeyMapper("nnoremap <silent> e <C-w>v<C-w>w:call PromptAndEdit()<cr>","Prompt and Edit")
            nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
