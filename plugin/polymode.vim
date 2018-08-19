@@ -170,6 +170,7 @@ endfunction
 
 function! PolyModeZeroMappings()
            let g:MyKeyMapperMode = "POLY"
+           call g:MyKeyMapper("nnoremap <silent> ? :call PolyModeResetQuiet()<cr>:KPOLY<cr>","Polymode Help")
            call g:MyKeyMapper("nnoremap <silent> h :call PolyModeResetQuiet()<cr>:call MyKeyMapperDump()<cr>","Key Map Help")
            call g:MyKeyMapper("nnoremap <silent> m :call PolyModeResetQuiet()<cr>:vnew<cr>","v new")
            call g:MyKeyMapper("nnoremap <silent> t :call PolyModeResetQuiet()<cr> :tabnew<cr>","Tab New")
