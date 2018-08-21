@@ -171,20 +171,21 @@ endfunction
 function! PolyModeZeroMappings()
            let g:MyKeyMapperMode = "POLY"
            call g:MyKeyMapper("nnoremap <silent> ? :call PolyModeResetQuiet()<cr>:KPOLY<cr>","Polymode Help")
-           call g:MyKeyMapper("nnoremap <silent> h :call PolyModeResetQuiet()<cr>:call MyKeyMapperDump()<cr>","Key Map Help")
-           call g:MyKeyMapper("nnoremap <silent> m :call PolyModeResetQuiet()<cr>:vnew<cr>","v new")
-           call g:MyKeyMapper("nnoremap <silent> t :call PolyModeResetQuiet()<cr> :tabnew<cr>","Tab New")
-           call g:MyKeyMapper("nnoremap <silent> k :call PolyModeResetQuiet()<cr>:close<cr>:echom 'Closed'<cr>","Close Window")
            call g:MyKeyMapper("nnoremap <silent> p :call PolyModeResetQuiet()<cr> :call Greppyon()<cr>","Greppy Mode WUC")
            call g:MyKeyMapper("nnoremap <silent> a :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>","Greppy Mode Enter")
-           call g:MyKeyMapper("nnoremap <silent> 3 :call PolyModeResetQuiet()<cr>:set relativenumber!<cr>","Relative Numbering Toggle")
+           call g:MyKeyMapper("nnoremap <silent> v :call PolyModeResetQuiet()<cr>:vnew<cr>","Vertical New Window")
+           call g:MyKeyMapper("nnoremap <silent> s :call PolyModeResetQuiet()<cr>:new<cr>","Horozontal New Window")
+           
            call g:MyKeyMapper("nnoremap <silent> n :call PolyModeResetQuiet()<cr>:NERDTreeToggle<cr>","NERD Tree")
            call g:MyKeyMapper("nnoremap <silent> b :call PolyModeResetQuiet()<cr>:BuffergatorToggle<cr>","Buffergator")
+
+           call g:MyKeyMapper("nnoremap <silent> h :call PolyModeResetQuiet()<cr>:call MyKeyMapperDump()<cr>","Key Map Help")
+           call g:MyKeyMapper("nnoremap <silent> t :call PolyModeResetQuiet()<cr> :tabnew<cr>","Tab New")
+           call g:MyKeyMapper("nnoremap <silent> k :call PolyModeResetQuiet()<cr>:close<cr>:echom 'Closed'<cr>","Close Window")
+           call g:MyKeyMapper("nnoremap <silent> 3 :call PolyModeResetQuiet()<cr>:set relativenumber!<cr>","Relative Numbering Toggle")
            call g:MyKeyMapper("nnoremap <silent> q :call PolyModeResetQuiet()<cr>:copen<cr>","QuickFix Open")
            call g:MyKeyMapper("nnoremap <silent> r <C-w>r:call PolyModeReset()<cr>","")
-           call g:MyKeyMapper("nnoremap <silent> v :call PolyModeResetQuiet()<cr>:vnew<cr>","Vertical")
            call g:MyKeyMapper("nnoremap <silent> w :call PolyModeResetQuiet()<cr>:set wrap!<cr>","Toggle line wrap (set wrap)")
-           call g:MyKeyMapper("nnoremap <silent> s :call PolyModeResetQuiet()<cr>:new<cr>","Horozontal")
            call g:MyKeyMapper("nnoremap <silent> e <C-w>v<C-w>w:call PromptAndEdit()<cr>","Prompt and Edit")
            nnoremap <silent> <Insert> :call PolyMode(-2)<cr>
            nnoremap <silent> <PageUp>   :call OpenInTempBuffer("~/.vimnotes")<cr>:normal zR<cr>:resize +15<cr>
