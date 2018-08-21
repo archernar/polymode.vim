@@ -19,7 +19,7 @@ ec2sg | A sg check utility | ec2sg -a "\<profile list\>" -r "\<region list\>" | 
 User Commands  
      usercreateadmin              -a -u -p     Create admin user
      usercreate                   -a -u -p -t  Create a user and assign access keys
-     usercreatedefault            -a -u -p -t  Create a user with default settings
+     usercreatedefault            -a -u        Create a user with default settings
      usercreatenokey              -a -u -p     Create a user with no access keys
      usercreatereadonly           -a -u -p     Create readonly user
      userdelete                   -a -u        Delete user
@@ -31,6 +31,7 @@ User Commands
 Password Commands  
      passwordchange               -a -u -p     Change a users password
      passwordchangehard           -a -u -p     Change a users password
+     passwordfixed                -a -u -p     Change a users password (fixed)
      passwordscram                -a -u        Make a users password unkown (scram)
      passwordscramset             -a -u        Make fileset of user password unkown (scram)
   
@@ -60,6 +61,16 @@ Policy Commands
      policylistaws                -a           List all AWS policies
      policylistlocal              -a           List local policies
      policylistuser               -a -u        List policies atttached to user
+     policyp1-add                 -a -u -t     Attach policy P1 to user
+     policyp1-remove              -a -u -t     Remove policy P1 to user
+     policyp2-add                 -a -u -t     Attach policy P2 to user
+     policyp2-remove              -a -u -t     Remove policy P2 to user
+     policyp3-add                 -a -u -t     Attach policy P3 to user
+     policyp3-remove.p3r          -a -u -t     Remove policy P3 to user
+     policyp4-add                 -a -u -t     Attach policy P4 to user
+     policyp4-remove              -a -u -t     Remove policy P4 to user
+     policyp5-add                 -a -u -t     Attach policy P5 to user
+     policyp5-remove              -a -u -t     Remove policy P5 to user
      policysetattach              -a -u        Attach all policies specified in policyset.txt to user
      policysetremove              -a -u        Remove all policies specified in policyset.txt from user
      policyupdate                 -a -t -D     Update policy
@@ -71,8 +82,18 @@ Group Commands
      groupadduser                 -a -t        Add user/userlist to group
      groupcreate                  -a -t        Create group in profile
      groupdelete                  -a -u -t     Delete group from profile by group name
+     groupg1-add                  -a -t        Add usert to group G1
+     groupg1-remove               -a -t        Remove user from group G1
+     groupg2-add                  -a -t        Add usert to group G2
+     groupg3-add                  -a -t        Add usert to group G3
+     groupg4-add                  -a -t        Add usert to group G4
+     groupg5-add                  -a -t        Add usert to group G5
      grouplistusers               -a           List users in group
      groupls                      -a           List groups in profile
+     groupp2-remove               -a -t        Remove user from group G2
+     groupp3-remove               -a -t        Remove user from group G3
+     groupp4-remove               -a -t        Remove user from group G4
+     groupp5-remove               -a -t        Remove user from group G5
      groupremoveallusers          -a           Remove all groups atttach to user
      groupremoveuser              -a           Remove user from group by group name
      groupsforuser                -a           List groups attached to user
@@ -100,6 +121,14 @@ EC2 Commands
      ec2terminate                 -a           Terminate Instance
      ec2terminatelast             -a           Terminate Last Instance
      ec2-util                     -a           CloudWatch CPU Utilization
+  
+VOLUME Commands  
+     volumesls                    -a           Volume List
+     volumestorage                -a           Aggregate Volume Size
+  
+RDS Commands  
+     rdslimits                    -a -u -p     List RDS Limits
+     rdslist                      -a -r -t (grep) List RDS Instances
   
 AMI Commands  
      amils                        -a           List Local AMIs
@@ -142,6 +171,7 @@ Vim Commands
   
 CloudTrail Commands  
      cloudtrail-active            -a           Cloudtrail watch all activity in the time window
+     cloudtrailbyuser-raw         -a           CloudTrail Raw By User
      cloudtrailmenu               -a           Menu interface to pick and watch users via cloudtrail
      cloudtrail-user              -a           Tracks a user's activity via cloud trail
      cloudtrail-watch             -a           Cloudtrail watch a user across multiple profiles
@@ -171,11 +201,21 @@ ACCESSKEYREPLACE                 REPLACEACCESSKEYS
 ACCESSKEYSDELETE                 ACCESSKEYCLEAR           DELETEACCESSKEYS                                 
 ACCESSKEYSLS                     ACCESSKEYLIST            LISTACCESSKEY                                    
 AMILS                                                                                                      
+CL                                                                                                         
 CLOUDTRAIL-ACTIVE                                                                                          
 CLOUDTRAIL-USER                  CU                                                                        
 CLOUDTRAIL-WATCH                                                                                           
+CLOUDTRAILBYUSER-RAW             CTRU                                                                      
 CLOUDTRAILMENU                                                                                             
 CLOUDTRAILWORLD                  WORLD                                                                     
+CONSOLEOPEN                                                                                                
+DDBCREATENAMEVALUETABLE                                                                                    
+DDBCREATETABLE                                                                                             
+DDBDELETETABLE                                                                                             
+DDBGETNAMEVALUE                                                                                            
+DDBLIST                                                                                                    
+DDBPUTNAMEVALUE                                                                                            
+DDBQUERYNAMEVALUE                                                                                          
 EC2-UTIL                                                                                                   
 EC2LS                            EC2LIST                                                                   
 EC2LS2                           EC2LIST2                                                                  
@@ -189,11 +229,22 @@ EC2TAGS
 EC2TAGS2222                                                                                                
 EC2TERMINATE                                                                                               
 EC2TERMINATELAST                                                                                           
+GAPP                                                                                                       
 GROUPADDUSER                     GROUPADD                                                                  
 GROUPCREATE                                                                                                
 GROUPDELETE                                                                                                
+GROUPG1-ADD                                                                                                
+GROUPG1-REMOVE                                                                                             
+GROUPG2-ADD                                                                                                
+GROUPG3-ADD                                                                                                
+GROUPG4-ADD                                                                                                
+GROUPG5-ADD                                                                                                
 GROUPLISTUSERS                   LISTUSERSINGROUP                                                          
 GROUPLS                          GROUPLIST                LISTGROUPS                                       
+GROUPP2-REMOVE                                                                                             
+GROUPP3-REMOVE                                                                                             
+GROUPP4-REMOVE                                                                                             
+GROUPP5-REMOVE                                                                                             
 GROUPREMOVEALLUSERS                                                                                        
 GROUPREMOVEUSER                                                                                            
 GROUPSFORUSER                    LISTUSERGROUPS                                                            
@@ -202,6 +253,7 @@ LAMBDALS                         LAMBDATLIST
 LOGINPROFILECREATE                                                                                         
 PASSWORDCHANGE                   CHANGEPASSWORD                                                            
 PASSWORDCHANGEHARD               CHANGEPASSWORDHARD                                                        
+PASSWORDFIXED                    FIXED                                                                     
 PASSWORDSCRAM                    SCRAMPASSWORD                                                             
 PASSWORDSCRAMSET                 SCRAMPASSWORDSET                                                          
 POLICYATTACHTOALLUSERS           ATTACHPOLICYTOALLUSERS                                                    
@@ -223,12 +275,24 @@ POLICYLISTALL                    LISTALLPOLICIES
 POLICYLISTAWS                    LISTAWSPOLICIES                                                           
 POLICYLISTLOCAL                  LISTLOCALPOLICIES                                                         
 POLICYLISTUSER                   LISTUSERPOLICIES                                                          
+POLICYP1-ADD                     P1A                                                                       
+POLICYP1-REMOVE                  P1R                                                                       
+POLICYP2-ADD                     P2A                                                                       
+POLICYP2-REMOVE                  P2R                                                                       
+POLICYP3-ADD                     P3A                                                                       
+POLICYP3-REMOVE.P3R                                                                                        
+POLICYP4-ADD                     P4A                                                                       
+POLICYP4-REMOVE                  P4R                                                                       
+POLICYP5-ADD                     P5A                                                                       
+POLICYP5-REMOVE                  P5R                                                                       
 POLICYSETATTACH                  ATTACHPOLICYSET                                                           
 POLICYSETREMOVE                  REMOVEPOLICYSET                                                           
 POLICYUPDATE                     UPDATEPOLICY                                                              
 POLICYUSERCHANGEPASSWORD-ADD     IAMUSERCHANGEPASSWORD-ADD                                                  
 POLICYUSERCHANGEPASSWORD-REMOVE  IAMUSERCHANGEPASSWORD-REMOVE                                                  
 POLICYUSERDETACHALL              DETACHUSERPOLICIES                                                        
+RDSLIMITS                                                                                                  
+RDSLIST                          RDSLS                                                                     
 ROLELS                           ROLESLIST                LISTROLES                                        
 S3CLEARBUCKET                    S3CLEAR                                                                   
 S3COPY                                                                                                     
@@ -255,6 +319,7 @@ S3PUTTEXT
 S3REMOVE                         S3RM                                                                      
 S3RMFILESET                                                                                                
 S3URL                                                                                                      
+TAGG                                                                                                       
 TAGSLS                           TAGSLIST                                                                  
 USERCREATE                       CREATEUSER                                                                
 USERCREATEADMIN                  CREATEREADMINUSER                                                         
@@ -282,6 +347,9 @@ UTILREPO                         REPO
 UTILSWAP                                                                                                   
 UTILTIME                         TIME                                                                      
 VIMS3PUT                         S3VIMPUT                                                                  
+VOLUMESLS                        VOLUMELS                                                                  
+VOLLS                                                                                                      
+VOLUMESTORAGE                                                                                              
 VPCCREATE                        CREATEVPC-2SUBNETS                                                        
 VPCDELETE                        DELETEVPC                                                                 
 VPCINSTANCE                                                                                                
@@ -293,5 +361,5 @@ WWEC2
 </pre>
 ### Build Date
 <pre>
-Sun Aug  5 09:06:00 EDT 2018
+Tue Aug 21 05:48:27 EDT 2018
 </pre>
