@@ -171,6 +171,7 @@ endfunction
 function! PolyModeZeroMappings()
            let g:MyKeyMapperMode = "POLY"
            call g:MyKeyMapper("nnoremap <silent> ? :call PolyModeResetQuiet()<cr>:KPOLY<cr>","Polymode Help")
+           call g:MyKeyMapper("nnoremap <silent> m :call PolyModeResetQuiet()<cr> :w !~/vimmailme<cr>","Mail Me This BufferC")
            call g:MyKeyMapper("nnoremap <silent> p :call PolyModeResetQuiet()<cr> :call Greppyon()<cr>","Greppy Mode WUC")
            call g:MyKeyMapper("nnoremap <silent> a :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>","Greppy Mode Enter")
            call g:MyKeyMapper("nnoremap <silent> v :call PolyModeResetQuiet()<cr>:vnew<cr>","Vertical New Window")
