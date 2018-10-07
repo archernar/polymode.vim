@@ -183,7 +183,8 @@ function! PolyModeZeroMappings()
 
            call g:MyKeyMapper("nnoremap <silent> h :call PolyModeResetQuiet()<cr>:call MyKeyMapperDump()<cr>","Key Map Help")
            call g:MyKeyMapper("nnoremap <silent> t :call PolyModeResetQuiet()<cr> :tabnew<cr>","Tab New")
-           call g:MyKeyMapper("nnoremap <silent> k :call PolyModeResetQuiet()<cr>:close<cr>:echom 'Closed'<cr>","Close Window")
+           " call g:MyKeyMapper("nnoremap <silent> k :call PolyModeResetQuiet()<cr>:close<cr>:echom 'Closed'<cr>","Close Window")
+           call g:MyKeyMapper("nnoremap <silent> k :call PolyModeResetQuiet()<cr>:bdelete!<cr>","Delete Bufer")
            call g:MyKeyMapper("nnoremap <silent> 3 :call PolyModeResetQuiet()<cr>:set relativenumber!<cr>","Relative Numbering Toggle")
            call g:MyKeyMapper("nnoremap <silent> q :call PolyModeResetQuiet()<cr>:copen<cr>","QuickFix Open")
 
