@@ -47,6 +47,12 @@ function! PolyModeSourceVimrc()
 endfunction
 
 
+function! KeyResetSimple(...)
+     echo   a:1
+     call   PolyModeMapReset()
+     return s:polyenabled 
+endfunction
+
 function! KeyReset(...)
      let s:fbarct = s:fbarct + 1
      if   s:fbarct == 0  
