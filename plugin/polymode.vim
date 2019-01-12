@@ -45,7 +45,9 @@ function! PolyModeSourceVimrc()
           call PolyModeReset()
           return s:polyenabled 
 endfunction
-
+function! Pad(s,amt)
+    return a:s . repeat(' ',a:amt - len(a:s))
+endfunction
 
 function! KeyResetSimple(...)
      echo   a:1
@@ -56,7 +58,7 @@ endfunction
 function! KeyReset(...)
           let s:fbar = g:help0
           if a:0 > 0 
-               let s:fbar = a:1 . "   " . g:help0
+               let s:fbar = Pad(a:1,16) . "   " . g:help0
           endif
           echo s:fbar
           call  PolyModeMapReset()
