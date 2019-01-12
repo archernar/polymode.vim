@@ -124,7 +124,7 @@ function! PolyModeResetQuiet()
 endfunction
 function! PolyModeReset()
           let s:polyenabled = -1
-          call KeyReset("Polymode Off (keys reset)")
+          call KeyReset("PMODE OFF")
           execute "ccl"
           return s:polyenabled 
 endfunction
