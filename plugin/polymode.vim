@@ -213,7 +213,7 @@ function! PolyMode(direction)
           let s:polyenabled = 9 
      endif
      if s:polyenabled == 0 
-          call KeyReset("Polymode On (End to exit)", "r v s e b n 3 a p k")
+          call KeyReset("PMODE ON (End2x)", "r v s e b n 3 a p k")
           call PolyModeZeroMappings()
           return s:polyenabled 
      endif
