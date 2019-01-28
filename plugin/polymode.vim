@@ -188,6 +188,17 @@ function! MasterMapper(...)
            execute a:1
 endfunction
 
+function! ToggleSyntax()
+     if ( g:SYNTAX_TOGGLE == "1")
+         let g:SYNTAX_TOGGLE = "0"
+         syntax off
+         echom "Syntax off"
+     else
+         let g:SYNTAX_TOGGLE = "1"
+         syntax enable
+         echom "Syntax on"
+     endif
+endfunction
            " call g:MyKeyMapper("nnoremap <silent> m :call PolyModeResetQuiet()<cr> :w !~/vimmailme<cr>","Mail Me This BufferC")
 function! PolyModeZeroMappings()
            let g:MyKeyMapperMode = "POLY"
