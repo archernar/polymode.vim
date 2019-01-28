@@ -59,6 +59,9 @@ function! KeyReset(...)
           let s:fbar = g:help0
           if a:0 > 0 
                let s:fbar = Pad(a:1,18) . " " . g:help0
+               if  a:1  == ""  
+                    let s:fbar = ""
+               endif
           endif
           echo s:fbar
           call  PolyModeMapReset()
