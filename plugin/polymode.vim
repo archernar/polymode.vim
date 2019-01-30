@@ -188,17 +188,6 @@ function! MasterMapper(...)
            execute a:1
 endfunction
 
-function! ToggleSyntax()
-     if ( g:SYNTAX_TOGGLE == "1")
-         let g:SYNTAX_TOGGLE = "0"
-         syntax off
-         echom "Syntax off"
-     else
-         let g:SYNTAX_TOGGLE = "1"
-         syntax enable
-         echom "Syntax on"
-     endif
-endfunction
            " call g:MyKeyMapper("nnoremap <silent> m :call PolyModeResetQuiet()<cr> :w !~/vimmailme<cr>","Mail Me This BufferC")
 function! PolyModeZeroMappings()
            let g:MyKeyMapperMode = "POLY"
@@ -208,7 +197,6 @@ function! PolyModeZeroMappings()
            call g:MyKeyMapper("nnoremap <silent> a :call PolyModeResetQuiet()<cr> :call Greppyon(1)<cr>","Greppy Mode Enter")
            call g:MyKeyMapper("nnoremap <silent> v :call PolyModeResetQuiet()<cr>:vnew<cr>","Vertical New Window")
            call g:MyKeyMapper("nnoremap <silent> s :call PolyModeResetQuiet()<cr>:new<cr>","Horozontal New Window")
-           call g:MyKeyMapper("nnoremap <silent> c :call PolyModeResetQuiet()<cr>:call ToggleSyntax()<cr><cr>","Toggle Syntax")
            
            call g:MyKeyMapper("nnoremap <silent> n :call PolyModeResetQuiet()<cr>:NERDTreeToggle<cr>","NERD Tree")
            call g:MyKeyMapper("nnoremap <silent> b :call PolyModeResetQuiet()<cr>:BuffergatorToggle<cr>","Buffergator")
